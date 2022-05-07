@@ -8,18 +8,13 @@
              mc:Ignorable="d" 
              x:Name="infordetail"
              Background="White"
-             
              Tag="{Binding Tag, UpdateSourceTrigger=PropertyChanged}"
              xmlns:Converter="clr-namespace:MayEpCHADesktopApp.Core.ValueConverter;assembly=MayEpCHADesktopApp.Core"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="400"
              d:DesignWidth="350"
-             
              >
-    <UserControl.Resources>
-        <!--DataContext="{x:Static viewmodel:DetailMachineViewModel.Instance}"-->
-        <!--DataContext="{StaticResource DetailMachine}"-->
-    </UserControl.Resources>
+
     <Grid Height="{Binding ElementName=infordetail, Path=ActualHeight ,Converter={Converter:SizeConverter}, ConverterParameter=1}"
           Width="{Binding ElementName=infordetail, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=1}">
         <Grid.RowDefinitions>
@@ -32,7 +27,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" x:Name="C1">
             <Grid
-                Visibility="{Binding Animation1, Converter={StaticResource BooleanToVisibilityConverter}}">
+                Visibility="{Binding ElementName=infordetail, Path=Animation1, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Label Content="{Binding ElementName=infordetail, Path=MachineName}"
                    FontWeight="Bold"
                    Padding="20 0 0 0"
@@ -71,7 +66,7 @@
 
                 </StackPanel>
             </Grid>
-            <Grid Visibility="{Binding Animation2, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid Visibility="{Binding ElementName=infordetail, Path=Animation2, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Label HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontWeight="SemiBold"
@@ -90,51 +85,57 @@
 
         </Grid>
         <Grid Grid.Row="2">
-            <Label Content="Mã Khuôn:"
-                   Visibility="{Binding Animation1, Converter={StaticResource BooleanToVisibilityConverter}}"
-                   Padding=" 20 0 0 0"
-                   HorizontalContentAlignment="Left"
-                   VerticalContentAlignment="Center"
-                   FontWeight="SemiBold"
-                   ></Label>
-            <Label Content="Mã Khuôn Mới:"
-                   Padding=" 20 0 0 0"
-                   Visibility="{Binding Animation2, Converter={StaticResource BooleanToVisibilityConverter}}"                   HorizontalContentAlignment="Left"
-                   VerticalContentAlignment="Center"
-                   FontWeight="SemiBold"
-                   ></Label>
-
-            <Label Content="B009"
-                    Visibility="{Binding Animation1, Converter={StaticResource BooleanToVisibilityConverter}}"                   Padding=" 90 0 0 0"
-                   HorizontalContentAlignment="Left"
-                    FontWeight="SemiBold"
-                   VerticalContentAlignment="Center"></Label>
-            <ComboBox 
-                Width="70"
-                   Padding="2 0 0 0"
-                   HorizontalContentAlignment="Center"
-                    Visibility="{Binding Animation2, Converter={StaticResource BooleanToVisibilityConverter}}"                materialDesign:HintAssist.Hint="Chọn ca"
-                
-                   Margin="80 0 175 2 "
-                   VerticalContentAlignment="Center"></ComboBox>
             <Label Content="Mã sản phẩm:"
-                   Padding=" 0 0 100 0"
-                   HorizontalContentAlignment="Right"
+                   
+                   Padding=" 10 0 0 0"
+                   HorizontalContentAlignment="Left"
                    VerticalContentAlignment="Center"
                    FontWeight="SemiBold"
                    ></Label>
 
-            <Label Content="B009"
-                    Visibility="{Binding Animation1, Converter={StaticResource BooleanToVisibilityConverter}}"                   Padding=" 0 0 50 0"
-                   HorizontalContentAlignment="Right"
+
+            <Label Content="{Binding ElementName=infordetail, Path=ProductCode}"
+                    Visibility="{Binding ElementName=infordetail, Path=Animation1, Converter={StaticResource BooleanToVisibilityConverter}}"           
+                   Padding=" 110 0 0 0"
+                   HorizontalContentAlignment="Left"
                     FontWeight="SemiBold"
+                   
                    VerticalContentAlignment="Center"></Label>
             <ComboBox 
                 Width="70"
                    Padding="2 0 0 0"
                    HorizontalContentAlignment="Center"
-                    Visibility="{Binding Animation2, Converter={StaticResource BooleanToVisibilityConverter}}"                materialDesign:HintAssist.Hint="Chọn mã"
-                
+                    Visibility="{Binding ElementName=infordetail, Path=Animation2, Converter={StaticResource BooleanToVisibilityConverter}}"               
+                materialDesign:HintAssist.Hint="Chọn ca"
+                    ItemsSource="{Binding ListProduct}"
+                    DisplayMemberPath="Id"
+                   Margin="90 0 190 2 "
+                SelectedItem="{Binding Product}"
+                   VerticalContentAlignment="Center"></ComboBox>
+            <Label Content="Mã khuôn:"
+                   Padding=" 0 0 0 0"
+                   HorizontalContentAlignment="Right"
+                   VerticalContentAlignment="Center"
+                   FontWeight="SemiBold"
+                   Margin="100 0 30 0"
+                   Width="90"
+                   ></Label>
+
+            <Label Content="{Binding ElementName=infordetail, Path=MoldCode}"
+                    Visibility="{Binding ElementName=infordetail, Path=Animation1, Converter={StaticResource BooleanToVisibilityConverter}}"      
+                   Padding=" 0 0 20 0"
+                   HorizontalContentAlignment="Right"
+                    FontWeight="SemiBold"
+                   VerticalContentAlignment="Center"></Label>
+            <ComboBox 
+                Width="80"
+                   Padding="0 0 0 0"
+                   HorizontalContentAlignment="Center"
+                  ItemsSource="{Binding ListMold}"
+                    DisplayMemberPath="Id"
+                    Visibility="{Binding ElementName=infordetail, Path=Animation2, Converter={StaticResource BooleanToVisibilityConverter}}"               
+                materialDesign:HintAssist.Hint="Chọn mã"
+                SelectedItem="{Binding Mold}"
                    Margin="283 0 0 0 "
                    VerticalContentAlignment="Center"></ComboBox>
 
@@ -144,8 +145,17 @@
                 <ColumnDefinition Width="323*"/>
                 <ColumnDefinition Width="27*"/>
             </Grid.ColumnDefinitions>
+            <Label Width="70"
+                  Visibility="{Binding ElementName=infordetail, Path=Animation1, Converter={StaticResource BooleanToVisibilityConverter}}"               
+
+                   Content="{Binding ElementName=infordetail, Path=CountProduct}"
+                   FontWeight="SemiBold"
+                   Margin="260 0 -65 0 "
+                   >
+                
+            </Label>
             <Label Content="Chu kì ép:"
-                   Padding=" 20 0 0 0"
+                   Padding=" 10 0 0 0"
                    HorizontalContentAlignment="Left"
                    VerticalContentAlignment="Center"
                    FontWeight="SemiBold" Grid.ColumnSpan="2"
@@ -153,24 +163,29 @@
 
 
             <Label Content="Số lượng:"
-                   Padding=" 0 0 124 0"
+                   Padding=" 0 0 123 0"
+                   
                    HorizontalContentAlignment="Right"
                    VerticalContentAlignment="Center"
+                    Visibility="{Binding ElementName=infordetail, Path=Animation1, Converter={StaticResource BooleanToVisibilityConverter}}" 
                    FontWeight="SemiBold" Grid.ColumnSpan="2"
                    ></Label>
             <TextBox 
                 Width="70"
                    Padding="2 0 0 0"
                    HorizontalContentAlignment="Center"
-                    Visibility="{Binding Animation2, Converter={StaticResource BooleanToVisibilityConverter}}"                materialDesign:HintAssist.Hint="Thời gian"
+                    Visibility="{Binding ElementName=infordetail, Path=Animation2, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                materialDesign:HintAssist.Hint="Thời gian"
                 
                    Margin="92,1,161,5"
                 Height="{Binding ElementName=gr, Path=ActualHeight, Converter={Converter:SizeConverter},ConverterParameter=0.75}"
                    VerticalContentAlignment="Center"
-                BorderThickness="0.25"></TextBox>
+                BorderThickness="0.25"
+                Text="{Binding Cycle}"
+                ></TextBox>
             <StackPanel Orientation="Horizontal" 
-                Visibility="{Binding Animation1, Converter={StaticResource BooleanToVisibilityConverter}}"                        Grid.ColumnSpan="2" >
-                <Label Content="31.2"
+                Visibility="{Binding ElementName=infordetail, Path=Animation1, Converter={StaticResource BooleanToVisibilityConverter}}"                        Grid.ColumnSpan="2" >
+                <Label Content="{Binding ElementName=infordetail, Path=RealCycle}"
                        Padding="80 0 0 0"
                        HorizontalAlignment="Center"
                       HorizontalContentAlignment="Center"
@@ -179,27 +194,11 @@
                 <Label Content="/"
                        VerticalContentAlignment="Center"
                        FontWeight="SemiBold"></Label>
-                <Label Content="35"
+                <Label Content="{Binding ElementName=infordetail, Path=CycleStandard}"
                        VerticalContentAlignment="Center"
                        FontWeight="SemiBold"></Label>
             </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        Visibility="Hidden"
-                        Width="70"
-                        HorizontalAlignment="Left" Margin="298,0,0,0" Grid.ColumnSpan="2">
-                <Label Content="31.2"
-                       Padding="10 0 0 0"
-                       HorizontalAlignment="Center"
-                      HorizontalContentAlignment="Center"
-                       VerticalContentAlignment="Center"
-                       FontWeight="SemiBold"></Label>
-                <Label Content="/"
-                       VerticalContentAlignment="Center"
-                       FontWeight="SemiBold"></Label>
-                <Label Content="35"
-                       VerticalContentAlignment="Center"
-                       FontWeight="SemiBold"></Label>
-            </StackPanel>
+            
         </Grid>
         <Grid Grid.Row="4" x:Name="Griddata">
             <Border Width="{Binding ElementName=Griddata, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.98}"
@@ -209,6 +208,7 @@
                 <DataGrid 
                  Style="{StaticResource DataGrid}" 
                 BorderThickness="0"
+                   ItemsSource="{Binding ElementName=infordetail, Path=ListEvent}"
                  Width="{Binding ElementName=Griddata, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.97}"
                 HorizontalAlignment="Center"
                  Height="{Binding ElementName=Griddata, Path=ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.94}"
@@ -248,8 +248,8 @@
                     </DataGrid.CellStyle>
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Employee State"
-                                        Width="50"           
-                                        Binding="{Binding employeeState}">
+                                        Width="70"           
+                                        Binding="{Binding Name}">
                             <DataGridTextColumn.HeaderTemplate>
                                 <DataTemplate>
                                     <StackPanel                                   
@@ -270,8 +270,8 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Employee State" Width="100"
-                                        Binding="{Binding employeeState}">
+                        <DataGridTextColumn Header="Employee State" Width="110"
+                                        Binding="{Binding Name}">
                             <DataGridTextColumn.HeaderTemplate>
                                 <DataTemplate>
                                     <StackPanel                                         
@@ -293,79 +293,13 @@
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="Employee State" Width="100"
-                                        Binding="{Binding employeeState}">
+                                        Binding="{Binding Content}">
                             <DataGridTextColumn.HeaderTemplate>
                                 <DataTemplate>
                                     <StackPanel                                         
                                             Orientation="Horizontal"
                                             HorizontalAlignment="Center">
-                                        <TextBlock Margin="0 0 0 0 " Padding="0 5 2 5" Text="Chu kì ép" FontSize="11" ></TextBlock>
-                                        <fa:FontAwesome Margin="0 4 0 0" Height="12" Width="12" Foreground="#FF68EB48" Icon="ArrowDown" ></fa:FontAwesome>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTextColumn.HeaderTemplate>
-                            <DataGridTextColumn.Foreground>
-                                <SolidColorBrush Color="Black" />
-                            </DataGridTextColumn.Foreground>
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="HorizontalAlignment" Value="Center" />
-                                    <Setter Property="Background" Value="Transparent"></Setter>
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="Employee State" Width="100"
-                                        Binding="{Binding employeeState}">
-                            <DataGridTextColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <StackPanel                                         
-                                            Orientation="Horizontal"
-                                            HorizontalAlignment="Center">
-                                        <TextBlock Margin="0 0 0 0 " Padding="0 5 2 5" Text="Chu kì ép" FontSize="11" ></TextBlock>
-                                        <fa:FontAwesome Margin="0 4 0 0" Height="12" Width="12" Foreground="#FF68EB48" Icon="ArrowDown" ></fa:FontAwesome>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTextColumn.HeaderTemplate>
-                            <DataGridTextColumn.Foreground>
-                                <SolidColorBrush Color="Black" />
-                            </DataGridTextColumn.Foreground>
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="HorizontalAlignment" Value="Center" />
-                                    <Setter Property="Background" Value="Transparent"></Setter>
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="Employee State" Width="100"
-                                        Binding="{Binding employeeState}">
-                            <DataGridTextColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <StackPanel                                         
-                                            Orientation="Horizontal"
-                                            HorizontalAlignment="Center">
-                                        <TextBlock Margin="0 0 0 0 " Padding="0 5 2 5" Text="Chu kì ép" FontSize="11" ></TextBlock>
-                                        <fa:FontAwesome Margin="0 4 0 0" Height="12" Width="12" Foreground="#FF68EB48" Icon="ArrowDown" ></fa:FontAwesome>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTextColumn.HeaderTemplate>
-                            <DataGridTextColumn.Foreground>
-                                <SolidColorBrush Color="Black" />
-                            </DataGridTextColumn.Foreground>
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="HorizontalAlignment" Value="Center" />
-                                    <Setter Property="Background" Value="Transparent"></Setter>
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="Employee State" Width="100"
-                                        Binding="{Binding employeeState}">
-                            <DataGridTextColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <StackPanel                                         
-                                            Orientation="Horizontal"
-                                            HorizontalAlignment="Center">
-                                        <TextBlock Margin="0 0 0 0 " Padding="0 5 2 5" Text="Chu kì ép" FontSize="11" ></TextBlock>
+                                        <TextBlock Margin="0 0 0 0 " Padding="0 5 2 5" Text="Nội dung " FontSize="11" ></TextBlock>
                                         <fa:FontAwesome Margin="0 4 0 0" Height="12" Width="12" Foreground="#FF68EB48" Icon="ArrowDown" ></fa:FontAwesome>
                                     </StackPanel>
                                 </DataTemplate>
@@ -396,7 +330,7 @@
                         Width="{Binding ElementName=Row5, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.45}"
                         Margin="7 2 7 2"
                         x:Name="bt1"
-                        Content="{Binding Content}"
+                        Content="{Binding ElementName=infordetail, Path=ContentBt}"
                         Background="#FF00294D"
                         FontSize="{Binding ElementName=Row5, Path=ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.25}" Click="Button_Click"
                         Command="{Binding PauseCommand}"

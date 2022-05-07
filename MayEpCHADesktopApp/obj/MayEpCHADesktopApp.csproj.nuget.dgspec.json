@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[6.0.3, )"
             },
+            "MassTransit.Grpc": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[6.0.4, )"
@@ -71,7 +75,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -127,6 +131,10 @@
               "target": "Package",
               "version": "[0.9.7, )"
             },
+            "MassTransit.Grpc": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
             "MaterialDesignColors": {
               "target": "Package",
               "version": "[2.0.5, )"
@@ -170,7 +178,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

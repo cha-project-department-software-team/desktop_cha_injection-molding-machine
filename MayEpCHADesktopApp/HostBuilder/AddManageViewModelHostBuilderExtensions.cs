@@ -22,20 +22,14 @@ namespace MayEpCHADesktopApp.HostBuilder
             host.ConfigureServices(services =>
 
             {
-                
                 services.AddSingleton<MoldCodeViewModel>();
                 services.AddSingleton<EmployeeManageViewModel>();
                 services.AddSingleton<ProductCodeViewModel>();
-
-                
                 services.AddSingleton<ManageViewModel>((IServiceProvider serviceprovider) =>
                 {
                     var Store = serviceprovider.GetRequiredService<NavigationStore>();
                     return new ManageViewModel(Store, CreateEmployeeManageViewModel(serviceprovider, Store), CreateProductCodeViewModell(serviceprovider, Store), CreateMoldCodeViewModel(serviceprovider, Store));
                 });
-
-
-           
         });
       
             return host;

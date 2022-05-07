@@ -23,9 +23,12 @@ namespace MayEpCHADesktopApp
     {
         public MainWindow(Object DataContext)
         {
+
+                // Runtime mode specific functionality
             this.DataContext = DataContext;
             this.StateChanged += new EventHandler(MainWindow_StateChanged);
             InitializeComponent();
+
         }
         private void MainWindow_StateChanged(object sender, EventArgs e)
         {

@@ -27,14 +27,82 @@ namespace MayEpCHADesktopApp.HostBuilder
             host.ConfigureServices(services =>
 
             {
-                services.AddSingleton<ObservationMachinePage1ViewModel>((IServiceProvider serviceProvider) => { return new ObservationMachinePage1ViewModel(serviceProvider.GetRequiredService<DetailMachineViewModel>()); });
-                services.AddSingleton<ObservationMachinePage2ViewModel>();
-                services.AddSingleton<ObservationMachinePage3ViewModel>();
-                services.AddSingleton<ObservationMachinePage4ViewModel>();
-                services.AddSingleton<ObservationMachinePage5ViewModel>();
-                services.AddSingleton<ObservationMachinePage6ViewModel>();
-                services.AddSingleton<ObservationMachinePage7ViewModel>();
-              
+                services.AddSingleton<ObservationMachinePage1ViewModel>((IServiceProvider serviceProvider) => { return 
+                new ObservationMachinePage1ViewModel(serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>()
+                                                    
+                ); });
+                services.AddSingleton<ObservationMachinePage2ViewModel>((IServiceProvider serviceProvider) => {
+                    return
+                    new ObservationMachinePage2ViewModel(serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>()
+
+);
+                });
+                services.AddSingleton<ObservationMachinePage3ViewModel>((IServiceProvider serviceProvider) => {
+                    return
+                    new ObservationMachinePage3ViewModel(serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>()
+
+);
+                });
+                services.AddSingleton<ObservationMachinePage4ViewModel>((IServiceProvider serviceProvider) => {
+                    return
+                    new ObservationMachinePage4ViewModel(serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>()
+
+);
+                });
+                services.AddSingleton<ObservationMachinePage5ViewModel>((IServiceProvider serviceProvider) => {
+                    return
+                    new ObservationMachinePage5ViewModel(serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>()
+
+);
+                });
+                services.AddSingleton<ObservationMachinePage6ViewModel>((IServiceProvider serviceProvider) => {
+                    return
+                    new ObservationMachinePage6ViewModel(serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>()
+
+);
+                });
+                services.AddSingleton<ObservationMachinePage7ViewModel>((IServiceProvider serviceProvider) => {
+                    return
+                    new ObservationMachinePage7ViewModel(serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>(),
+                                                    serviceProvider.GetRequiredService<DetailMachineViewModel>()
+                                                 
+
+);
+                });
+
+
                 services.AddSingleton<ObservationMachineViewModel>((IServiceProvider serviceprovider) =>
                 {
                     return new ObservationMachineViewModel(serviceprovider.GetRequiredService<PageStore>());    

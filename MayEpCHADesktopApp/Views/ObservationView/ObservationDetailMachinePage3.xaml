@@ -34,7 +34,16 @@
                 <materialDesign:Card Margin="10 10 10 5"
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
-                                MachineName="M9"
+                            MachineName="M16"
+                            CycleStandard="{Binding CycleStandard16}"
+                            RealCycle="{Binding Cycle16}"
+                            ProductCode="{Binding ProductId16}"
+                            MoldCode="{Binding MoldId16}"
+                                                    Animation1="{Binding A16}"
+                            Animation2="{Binding B16}"
+                        ContentBt="{Binding Content16}"
+                        CountProduct="{Binding Count16}"
+                        DataContext="{Binding DetailMachineViewModel1}"
                         >
 
                     </components:MachineInformationDetail>
@@ -44,7 +53,17 @@
                 <materialDesign:Card Margin="10 7.5 10 7.5"
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
-                                MachineName="M5">
+                                MachineName="M15"
+                             CycleStandard="{Binding CycleStandard15}"
+                            RealCycle="{Binding Cycle15}"
+                        CountProduct="{Binding Count15}"
+                                                    Animation1="{Binding A15}"
+                            Animation2="{Binding B15}"
+                        
+                            ProductCode="{Binding ProductId15}"
+                        ContentBt="{Binding Content15}"
+                            MoldCode="{Binding MoldId15}"
+                        DataContext="{Binding DetailMachineViewModel2}">
 
                     </components:MachineInformationDetail>
                 </materialDesign:Card>
@@ -59,7 +78,16 @@
                 <materialDesign:Card Margin="10 10 10 5"
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
-                                MachineName="G1">
+                                MachineName="M14"
+                              CycleStandard="{Binding CycleStandard14}"
+                            RealCycle="{Binding Cycle14}"
+                        CountProduct="{Binding Count14}"
+                                                    Animation1="{Binding A14}"
+                            Animation2="{Binding B14}"
+                            ProductCode="{Binding ProductId14}"
+                        ContentBt="{Binding Content14}"
+                            MoldCode="{Binding MoldId14}"
+                        DataContext="{Binding DetailMachineViewModel3}">
 
                     </components:MachineInformationDetail>
                 </materialDesign:Card>
@@ -68,7 +96,16 @@
                 <materialDesign:Card Margin="10 7.5 10 7.5"
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
-                                MachineName="L1">
+                                MachineName="M13"
+                        CountProduct="{Binding Count13}"
+                        CycleStandard="{Binding CycleStandard13}"
+                             RealCycle="{Binding Cycle13}"
+                            ProductCode="{Binding ProductId13}"
+                            MoldCode="{Binding MoldId13}"
+                        ContentBt="{Binding Content13}"
+                                                    Animation1="{Binding A13}"
+                            Animation2="{Binding B13}"
+                        DataContext="{Binding DetailMachineViewModel4}">
 
                     </components:MachineInformationDetail>
                 </materialDesign:Card>
@@ -83,7 +120,18 @@
                 <materialDesign:Card Margin="10 10 10 5"
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
-                                MachineName="M12">
+                                MachineName="M12"
+                        
+                            CycleStandard="{Binding CycleStandard12}"
+                             RealCycle="{Binding Cycle12}"
+                        CountProduct="{Binding Count12}"
+                                                    Animation1="{Binding A12}"
+                            Animation2="{Binding B12}"
+                            ProductCode="{Binding ProductId12}"
+                            MoldCode="{Binding MoldId12}"
+                        ContentBt="{Binding Content12}"
+
+                        DataContext="{Binding DetailMachineViewModel5}">
 
                     </components:MachineInformationDetail>
                 </materialDesign:Card>
@@ -92,7 +140,16 @@
                 <materialDesign:Card Margin="10 7.5 10 7.5"
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
-                                MachineName="L2">
+                                MachineName="M11"
+                            CycleStandard="{Binding CycleStandard11}"
+                             RealCycle="{Binding Cycle11}"
+                            ProductCode="{Binding ProductId11}"
+                            MoldCode="{Binding MoldId11}"
+                            Animation1="{Binding A11}"
+                            Animation2="{Binding B11}"
+                        ContentBt="{Binding Content11}"
+                        CountProduct="{Binding Count11}"
+                        DataContext="{Binding DetailMachineViewModel6}">
 
                     </components:MachineInformationDetail
                                 >

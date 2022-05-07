@@ -1,6 +1,8 @@
-﻿using MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels;
+﻿using MayEpCHADesktopApp.Core.Services.Communication.ModelMQTT;
+using MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -21,37 +23,52 @@ namespace MayEpCHADesktopApp.Resources.Components
     /// <summary>
     /// Interaction logic for MachineInformationDetail.xaml
     /// </summary>
-    public partial class MachineInformationDetail : UserControl, INotifyPropertyChanged {
-      
+    public partial class MachineInformationDetail : UserControl, INotifyPropertyChanged
+    {
 
         public MachineInformationDetail()
         {
             
             InitializeComponent();
-           
-           // this.DataContext = CustomDataContext;
 
         }
-        /// <summary>
-        /// 
-        public object CustomDataContext
+        public string ContentBt
         {
-            get { return (object)GetValue(CustomDataContextProperty); }
-            set { SetValue(CustomDataContextProperty, value); OnPropertyChanged(); }
+            get { return (string)GetValue(ContentProperty); }
+            set { SetValue(ContentProperty, value); OnPropertyChanged(); }
         }
 
-        public static readonly DependencyProperty CustomDataContextProperty =
-            DependencyProperty.Register("CustomDataContext", typeof(object), typeof(MachineInformationDetail),new PropertyMetadata("",OnChangeModel));
-        /// </summary>
-                private static void OnChangeModel(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static readonly DependencyProperty ContentProperty =
+            DependencyProperty.Register("ContentBt", typeof(string), typeof(MachineInformationDetail), new PropertyMetadata("Tạm dừng"));
+
+
+        public bool Animation1
         {
-         //   MachineInformationDetail mc = d as MachineInformationDetail;
-          //  mc.DataContext =(object)e.NewValue;
-            
-             //e.NewValue.ToString()
-
+            get { return (bool)GetValue(Animation1Property); }
+            set { SetValue(Animation1Property, value); OnPropertyChanged(); }
         }
-    public string MachineName
+
+        public static readonly DependencyProperty Animation1Property =
+            DependencyProperty.Register("Animation1", typeof(bool), typeof(MachineInformationDetail), new PropertyMetadata(true));
+        public bool Animation2
+        {
+            get { return (bool)GetValue(Animation2Property); }
+            set { SetValue(Animation2Property, value); OnPropertyChanged(); }
+        }
+
+        public static readonly DependencyProperty Animation2Property =
+            DependencyProperty.Register("Animation2", typeof(bool), typeof(MachineInformationDetail), new PropertyMetadata(false));
+
+
+        public ObservableCollection<EventMachine> ListEvent
+        {
+            get { return (ObservableCollection<EventMachine>)GetValue(listEventProperty); }
+            set { SetValue(listEventProperty, value); OnPropertyChanged(); }
+        }
+
+        public static readonly DependencyProperty listEventProperty =
+            DependencyProperty.Register("ListEvent", typeof(ObservableCollection<EventMachine>), typeof(MachineInformationDetail));
+        public string MachineName
         {
             get { return (string)GetValue(MachineNameProperty); }
             set { SetValue(MachineNameProperty, value); OnPropertyChanged(); }
@@ -60,18 +77,57 @@ namespace MayEpCHADesktopApp.Resources.Components
         public static readonly DependencyProperty MachineNameProperty =
             DependencyProperty.Register("MachineName", typeof(string), typeof(MachineInformationDetail), new PropertyMetadata("M24", OnChangeNameMachine));
 
+        public string MoldCode
+        {
+            get { return (string)GetValue(MoldCodeProperty); }
+            set { SetValue(MoldCodeProperty, value); OnPropertyChanged(); }
+        }
 
-        /// <summary>
-        /// /sử lí Tag
-        /// 
-        /// </summary>
-        
-        
+        public static readonly DependencyProperty MoldCodeProperty =
+            DependencyProperty.Register("MoldCode", typeof(string), typeof(MachineInformationDetail), new PropertyMetadata("Mold"));
+
+
+        public string ProductCode
+        {
+            get { return (string)GetValue(ProductCodeProperty); }
+            set { SetValue(ProductCodeProperty, value); OnPropertyChanged(); }
+        }
+
+        public static readonly DependencyProperty ProductCodeProperty =
+            DependencyProperty.Register("ProductCode", typeof(string), typeof(MachineInformationDetail), new PropertyMetadata("ProductId"));
+
+        public string CycleStandard
+        {
+            get { return (string)GetValue(CycleStandardProperty); }
+            set { SetValue(CycleStandardProperty, value); OnPropertyChanged(); }
+        }
+
+        public static readonly DependencyProperty CycleStandardProperty =
+            DependencyProperty.Register("CycleStandard", typeof(string), typeof(MachineInformationDetail), new PropertyMetadata("50"));
+        public string RealCycle
+        {
+            get { return (string)GetValue(RealCycleProperty); }
+            set { SetValue(RealCycleProperty, value); OnPropertyChanged(); }
+        }
+
+        public static readonly DependencyProperty RealCycleProperty =
+            DependencyProperty.Register("RealCycle", typeof(string), typeof(MachineInformationDetail), new PropertyMetadata("32.5"));
+
+        public string CountProduct
+        {
+            get { return (string)GetValue(CountProductProperty); }
+            set { SetValue(CountProductProperty, value); OnPropertyChanged(); }
+        }
+
+        public static readonly DependencyProperty CountProductProperty =
+            DependencyProperty.Register("CountProduct", typeof(string), typeof(MachineInformationDetail), new PropertyMetadata("3kg"));
+
+
         private static void OnChangeNameMachine(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             MachineInformationDetail mc = d as MachineInformationDetail;
               mc.Tag = e.NewValue.ToString();
-             //e.NewValue.ToString()
+             
 
         }
 

@@ -12,6 +12,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
     public class ObservationMachineViewModel : ViewModels.BaseViewModels.BaseViewModel
     {
         private PageStore _store;
+        
         public ICommand SwitchPage1 { get; set; }
         public ICommand SwitchPage2 { get; set; }
         public ICommand SwitchPage3 { get; set; }
@@ -19,10 +20,13 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
         public ICommand SwitchPage5 { get; set; }
         public ICommand SwitchPage6 { get; set; }
         public ICommand SwitchPage7 { get; set; }
+        private int status1;
+       
         public event Action SwitchPageDetail;
         public ObservationMachineViewModel(PageStore _PageStore)
         {
             _store = _PageStore;
+            
             SwitchPage1 = new RelayCommand(async () => await GoToPage1());
             SwitchPage2 = new RelayCommand(async () => await GoToPage2());
             SwitchPage3 = new RelayCommand(async () => await GoToPage3());

@@ -23,7 +23,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
             }
         }
         private DetailMachineViewModel _detailMachineViewModel3;
-        public DetailMachineViewModel DetailMachineViewMode3
+        public DetailMachineViewModel DetailMachineViewModel3
         {
             get => _detailMachineViewModel3; set
             {
@@ -67,12 +67,11 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
             )
         {
             DetailMachineViewModel1 = detailMachineViewModel1;
-            DetailMachineViewModel1 = detailMachineViewModel2;
-            DetailMachineViewModel1 = detailMachineViewModel3;
-            DetailMachineViewModel1 = detailMachineViewModel4;
-            DetailMachineViewModel1 = detailMachineViewModel5;
-            DetailMachineViewModel1 = detailMachineViewModel6;
-
+            DetailMachineViewModel2 = detailMachineViewModel2;
+            DetailMachineViewModel3 = detailMachineViewModel3;
+            DetailMachineViewModel4 = detailMachineViewModel4;
+            DetailMachineViewModel5 = detailMachineViewModel5;
+            DetailMachineViewModel6 = detailMachineViewModel6;
         }
 
         
