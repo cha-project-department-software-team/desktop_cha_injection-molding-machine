@@ -39,7 +39,7 @@
                             RealCycle="{Binding Cycle16}"
                             ProductCode="{Binding ProductId16}"
                             MoldCode="{Binding MoldId16}"
-                                                    Animation1="{Binding A16}"
+                             Animation1="{Binding A16}"
                             Animation2="{Binding B16}"
                         ContentBt="{Binding Content16}"
                         CountProduct="{Binding Count16}"

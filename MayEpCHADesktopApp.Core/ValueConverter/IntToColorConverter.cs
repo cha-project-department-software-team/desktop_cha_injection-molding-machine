@@ -18,28 +18,34 @@ namespace MayEpCHADesktopApp.Core.ValueConverter
             SolidColorBrush solidColorBrush;
             switch (value)
             {
-                //power off
-                case 1:
-                    solidColorBrush = new SolidColorBrush(Colors.White);
+                // PowerOff
+                case "1":
+                    solidColorBrush = new SolidColorBrush(Colors.Gray);
+                    break;
+                //PowerOn
+                case "2":
+                    solidColorBrush = new SolidColorBrush(Colors.Green);
                     break;
                 //Disconnect
-                case 2:
-                    solidColorBrush = new SolidColorBrush(Colors.Red);
+                case "3":
+                    solidColorBrush = new SolidColorBrush(Colors.Gray);
                     break;
-                //On Production
-                case 3:
-                    solidColorBrush = new SolidColorBrush(Colors.Blue);
+                //OnProduction
+                case "4":
+                    solidColorBrush = new SolidColorBrush(Colors.Green);
                     break;
                 //Idle
-                case 4:
-                    solidColorBrush = new SolidColorBrush(Colors.Purple);
-                    break;
-                //Error
-                case 5:
-                    solidColorBrush = new SolidColorBrush(Colors.White);
-                    break;
-                default:
+                case "5":
                     solidColorBrush = new SolidColorBrush(Colors.Yellow);
+                    break;
+                //ErrorOnGoing
+                case "6":
+                    solidColorBrush = new SolidColorBrush(Colors.Red);
+                    break;
+                //ErrorOutGoing
+   
+                default:
+                    solidColorBrush = new SolidColorBrush(Colors.Gray);
                     break ;
             }
             return solidColorBrush;

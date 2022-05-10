@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
 {
@@ -46,6 +47,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
         public ICommand GoBackDoubleUnitCommand { set; get; }
         public int Page { get => page; set { page = value; OnPropertyChanged(); } }
 
+
         public ObservationDetailMachineViewModel(PageStore _PageStore,
                                                  NavigationStore navigationStore,
                                                  INavigationService _ObservationPage1,
@@ -59,6 +61,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
 
             )
         {
+
             _navigationStore = navigationStore;
             _store = _PageStore;
             _store.CurrentPageChanged += _store_CurrentPageChanged;

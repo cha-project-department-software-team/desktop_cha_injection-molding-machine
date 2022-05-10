@@ -54,7 +54,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="M9"
-                      CycleStandard="{Binding CycleStandar9}"
+                      CycleStandard="{Binding CycleStandard9}"
                              RealCycle="{Binding Cycle9}"
                             ProductCode="{Binding ProductId9}"
                             MoldCode="{Binding MoldId9}"
@@ -77,7 +77,7 @@
                 <materialDesign:Card Margin="10 10 10 5"
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
-                       CycleStandard="{Binding CycleStandar8}"
+                       CycleStandard="{Binding CycleStandard8}"
                              RealCycle="{Binding Cycle8}"
                             ProductCode="{Binding ProductId8}"
                             MoldCode="{Binding MoldId8}"
@@ -95,7 +95,7 @@
                 <materialDesign:Card Margin="10 7.5 10 7.5"
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
-                              CycleStandard="{Binding CycleStandar7}"
+                              CycleStandard="{Binding CycleStandard7}"
                              RealCycle="{Binding Cycle7}"
                             ProductCode="{Binding ProductId7}"
                             MoldCode="{Binding MoldId7}"
@@ -120,7 +120,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="M6"
-                              CycleStandard="{Binding CycleStandar6}"
+                              CycleStandard="{Binding CycleStandard6}"
                              RealCycle="{Binding Cycle6}"
                             ProductCode="{Binding ProductId6}"
                                                     Animation1="{Binding A6}"
@@ -138,7 +138,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="M5"
-                           CycleStandard="{Binding CycleStandar5}"
+                           CycleStandard="{Binding CycleStandard5}"
                              RealCycle="{Binding Cycle5}"
                             ProductCode="{Binding ProductId5}"
                             MoldCode="{Binding MoldId5}"

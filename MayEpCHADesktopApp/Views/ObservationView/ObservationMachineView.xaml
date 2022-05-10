@@ -57,62 +57,104 @@
                         <components:MayNho Margin="5 10"
                                            MachineNames="M28"
                                            CodeMachine="SM50"
-                                           
+                                           StatusBackground="{Binding StatusBackground1}"
+                                           DataContext="{Binding M28}"
                                           >
+
+                        </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
                             <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="LeftMouseDown">
+                                <i:EventTrigger EventName="MouseDoubleClick">
                                     <prism:InvokeCommandAction Command="{Binding SwitchPage1}" />
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
-                        </components:MayNho>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="1">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M26"
-                                           CodeMachine="MA90">
+                                           CodeMachine="MA90"
+                                           StatusBackground="{Binding StatusBackground1}"
+                                           DataContext="{Binding M26}">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
                                     <prism:InvokeCommandAction Command="{Binding SwitchPage1}" />
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage1}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="2">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M24"
-                                           CodeMachine="MA120">
+                                           CodeMachine="MA120"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M24}">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
                                     <prism:InvokeCommandAction Command="{Binding SwitchPage1}" />
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage1}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="3">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M22"
-                                           CodeMachine="MA90">
+                                           CodeMachine="MA90"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M22}">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
                                     <prism:InvokeCommandAction Command="{Binding SwitchPage2}" />
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage2}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="4">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M20"
-                                           CodeMachine="MA160">
+                                           CodeMachine="MA160"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M20}">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
                                     <prism:InvokeCommandAction Command="{Binding SwitchPage1}" />
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage1}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="5">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M18"
+                                           DataContext="{Binding M18}"
+                                           StatusBackground="{Binding StatusBackground}"
                                            CodeMachine="MA160" Loaded="MayNho_Loaded_2">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -120,10 +162,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage2}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="6">
                         <components:MayNho Margin="5 10"
+                                           StatusBackground="{Binding StatusBackground}"
                                            MachineNames="M16"
+                                           DataContext="{Binding M16}"
                                            CodeMachine="MA160">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -131,10 +182,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage3}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="7">
                         <components:MayNho Margin="5 10"
                                            MachineNames="MM14"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M14}"
                                            CodeMachine="MA160">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -142,10 +202,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage3}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="8">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M12"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M12}"
                                            CodeMachine="MA160">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -153,10 +222,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage3}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="9">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M10"
+                                           DataContext="{Binding M10}"
+                                           StatusBackground="{Binding StatusBackground}"
                                            CodeMachine="MA160">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -164,10 +242,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage1}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="10">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M8"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M8}"
                                            CodeMachine="MA160">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -175,11 +262,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage1}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="11">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M6"
-                                           
+                                           StatusBackground="{Binding Status,Converter={Converter:IntToColorConverter}}"
+                                           DataContext="{Binding M6}"
                                            CodeMachine="MA120">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -187,10 +282,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage1}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="12">
                         <components:MayNho Margin="5 10"
+                                           StatusBackground="{Binding StatusBackground}"
                                            MachineNames="M4"
+                                           DataContext="{Binding M4}"
                                            CodeMachine="ZE90">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -198,10 +302,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage5}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="13">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M2"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M2}"
                                            CodeMachine="200ES">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -209,6 +322,13 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage5}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="1">
@@ -233,6 +353,8 @@
                         <components:MayNho Margin="5 10"
                                            MachineNames="M27"
                                            CodeMachine="250ES"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M27}"
                                            NoteMachine="TMC" Loaded="MayNho_Loaded">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -240,10 +362,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage1}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="1">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M25"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M25}"
                                            CodeMachine="MA90">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -251,10 +382,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage1}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="2">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M23"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M23}"
                                            CodeMachine="MA120">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -262,10 +402,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage1}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="3">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M21"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M21}"
                                            CodeMachine="MA160">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -273,10 +422,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage2}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="4">
                         <components:MayNho Margin="5 10"
+                                           StatusBackground="{Binding StatusBackground}"
                                            MachineNames="M19"
+                                           DataContext="{Binding M19}"
                                            CodeMachine="MA160" Loaded="MayNho_Loaded_1">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -284,10 +442,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage2}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="5">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M17"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M17}"
                                            CodeMachine="MA160">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -295,10 +462,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage2}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="6">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M15"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M15}"
                                            CodeMachine="MA250">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -306,10 +482,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage3}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="7">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M13"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M13}"
                                            CodeMachine="MA250">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -317,21 +502,35 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage3}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="8">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M11"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M11}"
                                            CodeMachine="MA250">
+ 
+                        </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
                             <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="LeftMouseDown">
+                                <i:EventTrigger EventName="MouseDoubleClick">
                                     <prism:InvokeCommandAction Command="{Binding SwitchPage3}" />
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
-                        </components:MayNho>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="9">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M9"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M9}"
                                            CodeMachine="MA250">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -339,10 +538,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage4}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="10">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M7"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M7}"
                                            CodeMachine="MA250">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -350,10 +558,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage4}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="11">
                         <components:MayNho Margin="5 10"
+                                           StatusBackground="{Binding StatusBackground}"
                                            MachineNames="M5"
+                                           DataContext="{Binding M5}"
                                            CodeMachine="MA120">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -361,10 +578,19 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage4}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="12">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M3"
+                                           StatusBackground="{Binding StatusBackground}"
+                                           DataContext="{Binding M3}"
                                            CodeMachine="ZE90">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -372,11 +598,20 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage5}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="13">
                         <components:MayNho Margin="5 10"
                                            MachineNames="M1"
+                                           StatusBackground="{Binding StatusBackground}"
                                            CodeMachine="12ST"
+                                           DataContext="{Binding M1}"
                                            NoteMachine="CLF">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -384,6 +619,13 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </components:MayNho>
+                        <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <prism:InvokeCommandAction Command="{Binding SwitchPage5}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </Grid>
                 </Grid>
             </Grid>
@@ -408,6 +650,8 @@
                                   Height="230">
                                 <components:MayNho
                                     MachineNames="L6"
+                                    DataContext="{Binding ML6}"
+                                    StatusBackground="{Binding Status,Converter={Converter:IntToColorConverter}}"
                                     CodeMachine="CF 800T">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="LeftMouseDown">
@@ -416,11 +660,20 @@
                                     </i:Interaction.Triggers>
 
                                 </components:MayNho>
+                                <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <prism:InvokeCommandAction Command="{Binding SwitchPage5}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
                             </Grid>
                             <Grid Grid.Column="1" Margin="50 5 120 5"
                                   Height="230">
                                 <components:MayNho
-                                    MachineNames="LS"
+                                    MachineNames="L5"
+                                    StatusBackground="{Binding StatusBackground}"
+                                    DataContext="{Binding ML5}"
                                     CodeMachine="MALL 1000">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="LeftMouseDown">
@@ -429,6 +682,13 @@
                                     </i:Interaction.Triggers>
 
                                 </components:MayNho>
+                                <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <prism:InvokeCommandAction Command="{Binding SwitchPage5}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
                             </Grid>
                         </Grid>
                         <Grid>
@@ -440,6 +700,8 @@
                                   Height="230">
                                 <components:MayNho
                                     MachineNames="L7"
+                                    StatusBackground="{Binding StatusBackground}"
+                                    DataContext="{Binding ML7}"
                                            CodeMachine="JM 600-C">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="LeftMouseDown">
@@ -448,11 +710,20 @@
                                     </i:Interaction.Triggers>
 
                                 </components:MayNho>
+                                <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <prism:InvokeCommandAction Command="{Binding SwitchPage6}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
                             </Grid>
                             <Grid Grid.Column="1" Margin="50 5 120 5"
                                   Height="230">
                                 <components:MayNho
+                                    StatusBackground="{Binding StatusBackground}"
                                     MachineNames="L4"
+                                    DataContext="{Binding ML4}"
                                            CodeMachine="MALL 800">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="LeftMouseDown">
@@ -461,6 +732,13 @@
                                     </i:Interaction.Triggers>
 
                                 </components:MayNho>
+                                <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <prism:InvokeCommandAction Command="{Binding SwitchPage6}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
                             </Grid>
                         </Grid>
                         <Grid>
@@ -471,7 +749,9 @@
                             <Grid Grid.Column="0" Margin="120 5 50 5"
                                   Height="230">
                                 <components:MayNho
+                                    DataContext="{Binding ML8}"
                                     MachineNames="L8"
+                                    StatusBackground="{Binding StatusBackground}"
                                            CodeMachine="HC 800">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="LeftMouseDown">
@@ -480,11 +760,20 @@
                                     </i:Interaction.Triggers>
 
                                 </components:MayNho>
+                                <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <prism:InvokeCommandAction Command="{Binding SwitchPage6}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
                             </Grid>
                             <Grid Grid.Column="1" Margin="50 5 120 5"
                                   Height="230">
                                 <components:MayNho
                                     MachineNames="L3"
+                                    DataContext="{Binding ML3}"
+                                    StatusBackground="{Binding StatusBackground}"
                                            CodeMachine="MALL 1000">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="LeftMouseDown">
@@ -493,6 +782,13 @@
                                     </i:Interaction.Triggers>
 
                                 </components:MayNho>
+                                <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <prism:InvokeCommandAction Command="{Binding SwitchPage6}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
                             </Grid>
                         </Grid>
                         <Grid>
@@ -504,6 +800,8 @@
                                   Height="230">
                                 <components:MayNho
                                     MachineNames="L9"
+                                    StatusBackground="{Binding StatusBackground}"
+                                    DataContext="{Binding ML9}"
                                            CodeMachine="JSW 850EII">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="LeftMouseDown">
@@ -512,11 +810,20 @@
                                     </i:Interaction.Triggers>
 
                                 </components:MayNho>
+                                <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <prism:InvokeCommandAction Command="{Binding SwitchPage6}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
                             </Grid>
                             <Grid Grid.Column="1" Margin="50 5 120 5"
                                   Height="230">
                                 <components:MayNho
                                     MachineNames="L2"
+                                    DataContext="{Binding ML2}"
+                                    StatusBackground="{Binding StatusBackground}"
                                            CodeMachine="MALL 1000">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="LeftMouseDown">
@@ -525,6 +832,13 @@
                                     </i:Interaction.Triggers>
 
                                 </components:MayNho>
+                                <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <prism:InvokeCommandAction Command="{Binding SwitchPage6}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
                             </Grid>
                         </Grid>
                         <Grid>
@@ -535,6 +849,8 @@
                             <Grid Grid.Column="0" Margin="120 5 50 5"
                                   Height="230">
                                 <components:MayNho
+                                    StatusBackground="{Binding StatusBackground}"
+                                    DataContext="{Binding ML10}"
                                     MachineNames="L10"
                                            CodeMachine="JSW J850E-C5">
                                     <i:Interaction.Triggers>
@@ -544,11 +860,20 @@
                                     </i:Interaction.Triggers>
 
                                 </components:MayNho>
+                                <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <prism:InvokeCommandAction Command="{Binding SwitchPage7}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
                             </Grid>
                             <Grid Grid.Column="1" Margin="50 5 120 5"
                                   Height="230">
                                 <components:MayNho
                                     MachineNames="L1"
+                                    DataContext="{Binding ML1}"
+                                    StatusBackground="{Binding StatusBackground}"
                                            CodeMachine="MALL 800">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="LeftMouseDown">
@@ -557,6 +882,13 @@
                                     </i:Interaction.Triggers>
 
                                 </components:MayNho>
+                                <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <prism:InvokeCommandAction Command="{Binding SwitchPage7}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
                             </Grid>
                         </Grid>
                         <Grid>
@@ -568,6 +900,8 @@
                                   Height="230">
                                 <components:MayNho
                                     MachineNames="L11"
+                                    StatusBackground="{Binding StatusBackground}"
+                                    DataContext="{Binding ML11}"
                                            CodeMachine="JSW 850EII">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="LeftMouseDown">
@@ -576,6 +910,13 @@
                                     </i:Interaction.Triggers>
 
                                 </components:MayNho>
+                                <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <prism:InvokeCommandAction Command="{Binding SwitchPage7}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
                             </Grid>
                          
                         </Grid>
@@ -588,6 +929,8 @@
                                   Height="230">
                                 <components:MayNho
                                     MachineNames="L12"
+                                    StatusBackground="{Binding StatusBackground}"
+                                    DataContext="{Binding ML12}"
                                            CodeMachine="MALL 700">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="LeftMouseDown">
@@ -596,6 +939,13 @@
                                     </i:Interaction.Triggers>
 
                                 </components:MayNho>
+                                <Button Background="#004899EA"  BorderBrush="#004899EA" Foreground="#00F9FEF9" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <prism:InvokeCommandAction Command="{Binding SwitchPage7}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
                             </Grid>
                             <Grid Grid.Column="1" Margin="50 5 120 5"
                                   Height="230">

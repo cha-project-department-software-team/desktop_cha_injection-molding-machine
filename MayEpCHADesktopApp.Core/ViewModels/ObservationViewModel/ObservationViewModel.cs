@@ -14,7 +14,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
     public class ObservationViewModel : ViewModels.BaseViewModels.BaseViewModel
     {
         private readonly NavigationStore _navigationStore;
-        private  INavigationService _navigationService;
+        private INavigationService _navigationService;
 
         public ICommand ObservationDetailMachineCommand { get; set; }
         public ICommand ObservationMachineCommand { get; set; }
@@ -24,14 +24,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
         private bool isDetailMachine;
         public ViewModels.BaseViewModels.BaseViewModel CurrentViewModel => _navigationStore.CurrentViewModel;
 
-       
 
-        public ObservationViewModel(NavigationStore navigationStore, 
-                                    INavigationService _ObservationDetailMachineService, 
+
+        public ObservationViewModel(NavigationStore navigationStore,
+                                    INavigationService _ObservationDetailMachineService,
                                     INavigationService _ObservationMachineService,
                                     ObservationMachineViewModel observationMachineViewModel)
         {
-           
+
             _navigationStore = navigationStore;
             _navigationService = _ObservationDetailMachineService;
             ObservationDetailMachineCommand = new NavigateCommand(_ObservationDetailMachineService);
@@ -41,7 +41,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
             _navigationStore.CurrentViewModelChanged += _navigationStore_CurrentViewModelChanged;
             _navigationStore.CurrentButtonChanged += _navigationStore_CurrentButtonChanged;
             observationMachineViewModel.SwitchPageDetail += ObservationMachineViewModel_SwitchPageDetail;
-                }
+        }
 
         private void ObservationMachineViewModel_SwitchPageDetail()
         {
@@ -79,7 +79,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
             OnPropertyChanged(nameof(CurrentViewModel));
         }
 
-       
+
         public override void Dispose()
         {
             base.Dispose();

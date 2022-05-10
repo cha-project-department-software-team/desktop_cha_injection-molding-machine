@@ -1890,7 +1890,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
             }
             catch
             {
-             CustomMessageBox.Show("Lỗi trong quá trình lấy dữ liệu từ Sever!", "Cảnh bảo", System.Windows.MessageBoxButton.OKCancel, System.Windows.MessageBoxImage.Warning);
+           //  CustomMessageBox.Show("Lỗi trong quá trình lấy dữ liệu từ Sever!", "Cảnh bảo", System.Windows.MessageBoxButton.OKCancel, System.Windows.MessageBoxImage.Warning);
         }
 
             return ListProduct;
@@ -1917,7 +1917,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
             }
             catch
             {
-                CustomMessageBox.Show("Lỗi trong quá trình lấy dữ liệu từ Sever!", "Cảnh bảo", System.Windows.MessageBoxButton.OKCancel, System.Windows.MessageBoxImage.Warning);
+              //  CustomMessageBox.Show("Lỗi trong quá trình lấy dữ liệu từ Sever!", "Cảnh bảo", System.Windows.MessageBoxButton.OKCancel, System.Windows.MessageBoxImage.Warning);
             }
 
             return ListMold;

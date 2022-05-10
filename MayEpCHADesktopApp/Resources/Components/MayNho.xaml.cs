@@ -22,6 +22,9 @@ namespace MayEpCHADesktopApp.Resources.Components
     /// </summary>
     public partial class MayNho : UserControl, INotifyPropertyChanged
     {
+        private SolidColorBrush statusBackground1;
+        public SolidColorBrush StatusBackground1 { get => statusBackground1; set { statusBackground1 = value; OnPropertyChanged(); } }
+        public static SolidColorBrush StatusBackground2 { set; get; }
         public MayNho()
         {
             InitializeComponent();
@@ -33,7 +36,7 @@ namespace MayEpCHADesktopApp.Resources.Components
         }
 
         public static readonly DependencyProperty MachineNameProperty =
-            DependencyProperty.Register("MachineNames", typeof(string), typeof(ButtonMenu), new PropertyMetadata("Content"));
+            DependencyProperty.Register("MachineNames", typeof(string), typeof(MayNho), new PropertyMetadata("Content"));
         public string CodeMachine
         {
             get { return (string)GetValue(CodeMachineProperty); }
@@ -41,7 +44,7 @@ namespace MayEpCHADesktopApp.Resources.Components
         }
 
         public static readonly DependencyProperty CodeMachineProperty =
-            DependencyProperty.Register("CodeMachine", typeof(string), typeof(ButtonMenu), new PropertyMetadata("Content"));
+            DependencyProperty.Register("CodeMachine", typeof(string), typeof(MayNho), new PropertyMetadata("Content"));
        
         public string NoteMachine
         {
@@ -50,7 +53,7 @@ namespace MayEpCHADesktopApp.Resources.Components
         }
 
         public static readonly DependencyProperty NoteMachineProperty =
-            DependencyProperty.Register("NoteMachine", typeof(string), typeof(ButtonMenu), new PropertyMetadata(""));
+            DependencyProperty.Register("NoteMachine", typeof(string), typeof(MayNho), new PropertyMetadata(""));
         //Onpropperty
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -66,21 +69,29 @@ namespace MayEpCHADesktopApp.Resources.Components
             set { SetValue(StatusBackgroundProperty, value); OnPropertyChanged(); }
         }
         public static readonly DependencyProperty StatusBackgroundProperty =
-         DependencyProperty.Register("StatusBackground", typeof(SolidColorBrush), typeof(ButtonMenu), new PropertyMetadata((SolidColorBrush)new BrushConverter().ConvertFrom("#96D6FF")));
+         DependencyProperty.Register("StatusBackground", typeof(SolidColorBrush), typeof(MayNho), new PropertyMetadata(new SolidColorBrush(Colors.Gray),OnChange));
+
+        private static void OnChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            StatusBackground2 = new SolidColorBrush(Colors.White);
+
+
+        }
+
         public SolidColorBrush MachineBackground
         {
             get { return (SolidColorBrush)GetValue(MachineBackgroundProperty); }
             set { SetValue(MachineBackgroundProperty, value); OnPropertyChanged(); }
         }
         public static readonly DependencyProperty MachineBackgroundProperty =
-         DependencyProperty.Register("MachineBackground", typeof(SolidColorBrush), typeof(ButtonMenu), new PropertyMetadata((SolidColorBrush)new BrushConverter().ConvertFrom("#FF00294D")));
+         DependencyProperty.Register("MachineBackground", typeof(SolidColorBrush), typeof(MayNho), new PropertyMetadata((SolidColorBrush)new BrushConverter().ConvertFrom("#FF00294D")));
         public SolidColorBrush NameForeground
         {
             get { return (SolidColorBrush)GetValue(NameForegroundProperty); }
             set { SetValue(NameForegroundProperty, value); OnPropertyChanged(); }
         }
         public static readonly DependencyProperty NameForegroundProperty =
-         DependencyProperty.Register("NameForeground", typeof(SolidColorBrush), typeof(ButtonMenu), new PropertyMetadata(new SolidColorBrush(Colors.White)));
+         DependencyProperty.Register("NameForeground", typeof(SolidColorBrush), typeof(MayNho), new PropertyMetadata(new SolidColorBrush(Colors.White)));
         //màu codemachine
         public SolidColorBrush CodeForeground
         {
@@ -88,7 +99,7 @@ namespace MayEpCHADesktopApp.Resources.Components
             set { SetValue(CodeForegroundProperty, value); OnPropertyChanged(); }
         }
         public static readonly DependencyProperty CodeForegroundProperty =
-         DependencyProperty.Register("CodeForeground", typeof(SolidColorBrush), typeof(ButtonMenu), new PropertyMetadata(new SolidColorBrush(Colors.White)));
+         DependencyProperty.Register("CodeForeground", typeof(SolidColorBrush), typeof(MayNho), new PropertyMetadata(new SolidColorBrush(Colors.White)));
         //màu note
         public SolidColorBrush NoteForeground
         {
@@ -96,7 +107,7 @@ namespace MayEpCHADesktopApp.Resources.Components
             set { SetValue(NoteForegroundProperty, value); OnPropertyChanged(); }
         }
         public static readonly DependencyProperty NoteForegroundProperty =
-         DependencyProperty.Register("NoteForeground", typeof(SolidColorBrush), typeof(ButtonMenu), new PropertyMetadata(new SolidColorBrush(Colors.White)));
+         DependencyProperty.Register("NoteForeground", typeof(SolidColorBrush), typeof(MayNho), new PropertyMetadata(new SolidColorBrush(Colors.White)));
         //tạo sự kiện
         public static readonly RoutedEvent ClickEvent =
       EventManager.RegisterRoutedEvent(nameof(LeftMouseDown), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ButtonMenu));

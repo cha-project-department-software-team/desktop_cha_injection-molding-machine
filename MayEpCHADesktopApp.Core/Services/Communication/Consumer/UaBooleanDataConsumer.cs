@@ -14,7 +14,7 @@ namespace MayEpCHADesktopApp.Core.Services.Communication.Consumer
         {
             var message = context.Message;
 
-            Console.WriteLine("Name: {0}, Value: {1}", message.Name, message.Value);
+      //      Console.WriteLine("Name: {0}, Value: {1}", message.Name, message.Value);
         }
     }
 }

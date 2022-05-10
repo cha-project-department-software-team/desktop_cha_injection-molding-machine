@@ -31,6 +31,8 @@ namespace MayEpCHADesktopApp.HostBuilder
                     x.ReceiveEndpoint("event-listener", e =>
                     {
                         e.Consumer<CycleMessageConsumer>();
+                        e.Consumer<MachineMessageConsumer>();
+                        e.Consumer<FeedbackMessageConsumer>();
                         e.Consumer<UaDoubleDataConsumer>();
                         e.Consumer<UaBooleanDataConsumer>();
                         e.Consumer<UaIntegerDataConsumer>();
