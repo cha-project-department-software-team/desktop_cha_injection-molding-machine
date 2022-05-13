@@ -17,6 +17,10 @@ namespace MayEpCHADesktopApp.HostBuilder
         {
             host.ConfigureServices(services => {
                 services.AddSingleton<MQTTStore>();
+
+                var protocolProvider = services.BuildServiceProvider();
+
+                services.AddSingleton<FeedbackMessageConsumer>();
                // services.AddSingleton<CycleMessageConsumer>((IServiceProvider serviceprovider) => { return new CycleMessageConsumer(serviceprovider.GetRequiredService<MQTTStore>()); });
                 services.AddSingleton<IBusControl>((IServiceProvider serviceprovider) => { return Bus.Factory.CreateUsingGrpc(x =>
                 {
@@ -27,10 +31,11 @@ namespace MayEpCHADesktopApp.HostBuilder
 
                         h.AddServer(new Uri("http://127.0.0.1:8181"));
                     });
-
                     x.ReceiveEndpoint("event-listener", e =>
                     {
-                        e.Consumer<CycleMessageConsumer>();
+                        e.Consumer<CycleMessageConsumer>(() => new CycleMessageConsumer(
+                            protocolProvider.GetRequiredService<MQTTStore>()
+                            ));
                         e.Consumer<MachineMessageConsumer>();
                         e.Consumer<FeedbackMessageConsumer>();
                         e.Consumer<UaDoubleDataConsumer>();

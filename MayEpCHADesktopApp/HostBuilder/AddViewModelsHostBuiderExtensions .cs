@@ -28,8 +28,9 @@ namespace MayEpCHADesktopApp.HostBuilder
             {
             services.AddSingleton<LoginViewModel>();
             services.AddSingleton<DetailMachineViewModel>();
+            services.AddSingleton<CommanDesktop>();
 
-            services.AddSingleton<MainViewModel>((IServiceProvider serviceprovider) => {
+                services.AddSingleton<MainViewModel>((IServiceProvider serviceprovider) => {
                 var Store = serviceprovider.GetRequiredService<NavigationStore>();
                 return new MainViewModel(Store, CreateLoginViewModel(serviceprovider, Store),
                                                 CreateObservationViewmodel(serviceprovider, Store),

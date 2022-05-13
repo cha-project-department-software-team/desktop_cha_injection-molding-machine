@@ -39,9 +39,12 @@
                              RealCycle="{Binding CycleL9}"
                             ProductCode="{Binding ProductIdL9}"
                         ContentBt="{Binding ContentL9}"
+                        StatusBackground="{Binding StatusL9,Converter={Converter:IntToColorConverter}}"
                                                     Animation1="{Binding AL9}"
                             Animation2="{Binding BL9}"
                             MoldCode="{Binding MoldIdL9}"
+                        Status="{Binding StatusL9,Converter={Converter:StringtoStringStatusMachine}}"
+                        Mode="{Binding ModeL9}"
                         CountProduct="{Binding CountL9}"
                         DataContext="{Binding DetailMachineViewModel1}">
 
@@ -58,8 +61,11 @@
                         ContentBt="{Binding ContentL10}"
                             ProductCode="{Binding ProductIdL10}"
                                                     Animation1="{Binding AL10}"
+                        StatusBackground="{Binding StatusL10,Converter={Converter:IntToColorConverter}}"
                             Animation2="{Binding BL10}"
                             MoldCode="{Binding MoldIdL10}"
+                        Mode="{Binding ModeL10}"
+                        Status="{Binding StatusL10,Converter={Converter:StringtoStringStatusMachine}}"
                         CountProduct="{Binding CountL10}"
                         DataContext="{Binding DetailMachineViewModel2}">
 
@@ -81,9 +87,12 @@
                              RealCycle="{Binding CycleL11}"
                         ContentBt="{Binding ContentL11}"
                             ProductCode="{Binding ProductIdL11}"
+                        Status="{Binding StatusL11,Converter={Converter:StringtoStringStatusMachine}}"
+                        StatusBackground="{Binding StatusL11,Converter={Converter:IntToColorConverter}}"
                             MoldCode="{Binding MoldIdL11}"
                              Animation1="{Binding AL11}"
                             Animation2="{Binding BL11}"
+                        Mode="{Binding ModeL11}"
                         CountProduct="{Binding CountL11}"
                         DataContext="{Binding DetailMachineViewModel3}">
 
@@ -108,7 +117,10 @@
                              RealCycle="{Binding CycleL12}"
                              Animation1="{Binding AL12}"
                             Animation2="{Binding BL12}"
+                        Status="{Binding StatusL12,Converter={Converter:StringtoStringStatusMachine}}"
+                        StatusBackground="{Binding StatusL12,Converter={Converter:IntToColorConverter}}"
                         ContentBt="{Binding ContentL12}"
+                        Mode="{Binding ModeL12}"
                             ProductCode="{Binding ProductIdL12}"
                             MoldCode="{Binding MoldIdL12}"
                         CountProduct="{Binding CountL12}"

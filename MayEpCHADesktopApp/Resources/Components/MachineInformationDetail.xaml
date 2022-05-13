@@ -46,14 +46,14 @@
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                       Width="{Binding ElementName=C1, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.4}"
-
-                    >Bán tự  động</Label>
-                    <Rectangle Fill="Red"
+                    Content="{Binding ElementName=infordetail, Path=Mode}"
+                    ></Label>
+                    <Rectangle Fill="{Binding ElementName=infordetail, Path=StatusBackground}"
                        Width="{Binding ElementName=C1, Path=ActualHeight, ConverterParameter=0.7, Converter={Converter:SizeConverter}}"
                        Height="{Binding ElementName=C1, Path=ActualHeight, ConverterParameter=0.7, Converter={Converter:SizeConverter}}"
                        
                     ></Rectangle>
-                    <Label Content="Không hoạt động"
+                    <Label Content="{Binding ElementName=infordetail, Path=Status}"
                    FontWeight="Bold"
                    Padding="10 0 0 0"
                    Width="{Binding ElementName=C1, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.4}"

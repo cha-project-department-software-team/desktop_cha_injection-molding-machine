@@ -32,6 +32,31 @@ namespace MayEpCHADesktopApp.Resources.Components
             InitializeComponent();
 
         }
+        public string Status
+        {
+            get { return (string)GetValue(StatusProperty); }
+            set { SetValue(StatusProperty, value); OnPropertyChanged(); }
+        }
+
+        public static readonly DependencyProperty StatusProperty =
+            DependencyProperty.Register("Status", typeof(string), typeof(MachineInformationDetail), new PropertyMetadata("Không hoạt động"));
+
+        public SolidColorBrush StatusBackground
+        {
+            get { return (SolidColorBrush)GetValue(StatusBackgroundProperty); }
+            set { SetValue(StatusBackgroundProperty, value); OnPropertyChanged(); }
+        }
+        public static readonly DependencyProperty StatusBackgroundProperty =
+         DependencyProperty.Register("StatusBackground", typeof(SolidColorBrush), typeof(MachineInformationDetail), new PropertyMetadata(new SolidColorBrush(Colors.Gray)));
+
+        public string Mode
+        {
+            get { return (string)GetValue(ModeProperty); }
+            set { SetValue(ModeProperty, value); OnPropertyChanged(); }
+        }
+
+        public static readonly DependencyProperty ModeProperty =
+            DependencyProperty.Register("Mode", typeof(string), typeof(MachineInformationDetail), new PropertyMetadata("Bán tự động"));
         public string ContentBt
         {
             get { return (string)GetValue(ContentProperty); }

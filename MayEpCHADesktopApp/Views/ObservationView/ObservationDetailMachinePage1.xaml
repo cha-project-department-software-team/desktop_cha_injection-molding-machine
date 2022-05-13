@@ -44,6 +44,9 @@
                             Animation1="{Binding A28}"
                             Animation2="{Binding B28}"
                             ContentBt="{Binding Content28}"
+                            Mode="{Binding Mode28}"
+                            StatusBackground="{Binding Status28,Converter={Converter:IntToColorConverter}}"
+                            Status="{Binding Status28,Converter={Converter:StringtoStringStatusMachine}}"
                             DataContext="{Binding DetailMachineViewModel1}"
                             >
 
@@ -62,7 +65,10 @@
                         CountProduct="{Binding Count27}"
                             Animation1="{Binding A27}"
                             Animation2="{Binding B27}"
+                        Status="{Binding Status27,Converter={Converter:StringtoStringStatusMachine}}"
+                        Mode="{Binding Mode27}"
                             ContentBt="{Binding Content27}"
+                        StatusBackground="{Binding Status27,Converter={Converter:IntToColorConverter}}"
                      
                         
                         DataContext="{Binding DetailMachineViewModel2}">
@@ -85,9 +91,12 @@
                             RealCycle="{Binding Cycle26}"
                             ProductCode="{Binding ProductId26}"
                         CountProduct="{Binding Count26}"
+                        Status="{Binding Status26,Converter={Converter:StringtoStringStatusMachine}}"
                             MoldCode="{Binding MoldId26}"
                             Animation1="{Binding A26}"
+                        Mode="{Binding Mode26}"
                             Animation2="{Binding B26}"
+                        StatusBackground="{Binding Status26,Converter={Converter:IntToColorConverter}}"
                         ContentBt="{Binding Content26}"
                         DataContext="{Binding DetailMachineViewModel3}">
 
@@ -104,7 +113,10 @@
                             RealCycle="{Binding Cycle25}"
                             ProductCode="{Binding ProductId25}"
                             MoldCode="{Binding MoldId25}"
+                        Status="{Binding Status25,Converter={Converter:StringtoStringStatusMachine}}"
                             Animation1="{Binding A25}"
+                        StatusBackground="{Binding Status25,Converter={Converter:IntToColorConverter}}"
+                        Mode="{Binding Mode25}"
                         ContentBt="{Binding Content25}"
                             Animation2="{Binding B25}"
                         DataContext="{Binding DetailMachineViewModel4}">
@@ -130,7 +142,10 @@
                         CountProduct="{Binding Count25}"
                             MoldCode="{Binding MoldId24}"
                              Animation1="{Binding A24}"
+                        Status="{Binding Status24,Converter={Converter:StringtoStringStatusMachine}}"
                         ContentBt="{Binding Content24}"
+                            Mode="{Binding Mode24}"
+                        StatusBackground="{Binding Status24,Converter={Converter:IntToColorConverter}}"
                             Animation2="{Binding B24}"
                         
                         DataContext="{Binding DetailMachineViewModel5}">
@@ -147,11 +162,14 @@
                             CycleStandard="{Binding CycleStandard23}"
                             RealCycle="{Binding Cycle23}"
                             CountProduct="{Binding Count23}"
+                        Status="{Binding Status23,Converter={Converter:StringtoStringStatusMachine}}"
                             ProductCode="{Binding ProductId23}"
                             MoldCode="{Binding MoldId23}"
+                            Mode="{Binding Mode23}"
                             Animation1="{Binding A23}"
                             ContentBt="{Binding Content23}"
                             Animation2="{Binding B23}"
+                        StatusBackground="{Binding Status23,Converter={Converter:IntToColorConverter}}"
                             
                             >
 

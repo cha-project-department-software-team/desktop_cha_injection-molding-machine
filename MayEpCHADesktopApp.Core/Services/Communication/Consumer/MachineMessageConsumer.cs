@@ -57,6 +57,7 @@ namespace MayEpCHADesktopApp.Core.Services.Communication.Consumer
         {
             var message = context.Message;
              MachineViewModel.Sender(message);
+            DetailMachineViewModel.MachineMessage(message);
             
             //switch (message.MachineStatus)
             //{

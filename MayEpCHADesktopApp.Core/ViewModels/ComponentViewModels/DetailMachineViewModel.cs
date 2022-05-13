@@ -41,7 +41,11 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
         public  delegate void ReceiveCycleMessage(CycleMessage Message);
         public static ReceiveCycleMessage Sender;
         private CycleMessageConsumer cycleMessageConsumer;
-        
+
+        public delegate void ReceiveMachineMessage(MachineMessage Message);
+        public static ReceiveMachineMessage MachineMessage;
+  
+
         private  string content { get; set; }
         public  string Content { get => content; set { content = value; OnPropertyChanged(); } }
         private string tag { get; set; }
@@ -546,88 +550,89 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
         private string listEventL12 { get; set; }
         public string ListEventL12 { get => listEventL12; set { listEventL12 = value; OnPropertyChanged(); } }
         //
-        private bool mode1;
-        public bool Mode1 { get => mode1; set { mode1 = value; OnPropertyChanged(); } }
-        private bool mode2;
-        public bool Mode2 { get => mode2; set { mode2 = value; OnPropertyChanged(); } }
-        private bool mode3;
-        public bool Mode3 { get => mode3; set { mode3 = value; OnPropertyChanged(); } }
-        private bool mode4;
-        public bool Mode4 { get => mode4; set { mode4 = value; OnPropertyChanged(); } }
-        private bool mode5;
-        public bool Mode5 { get => mode5; set { mode5 = value; OnPropertyChanged(); } }
-        private bool mode6;
-        public bool Mode6 { get => mode6; set { mode6 = value; OnPropertyChanged(); } }
-        private bool mode7;
-        public bool Mode7 { get => mode7; set { mode7 = value; OnPropertyChanged(); } }
-        private bool mode8;
-        public bool Mode8 { get => mode8; set { mode8 = value; OnPropertyChanged(); } }
-        private bool mode9;
-        public bool Mode9 { get => mode9; set { mode9 = value; OnPropertyChanged(); } }
-        private bool mode10;
-        public bool Mode10 { get => mode10; set { mode10 = value; OnPropertyChanged(); } }
-        private bool mode11;
-        public bool Mode11 { get => mode11; set { mode11 = value; OnPropertyChanged(); } }
-        private bool mode12;
-        public bool Mode12 { get => mode12; set { mode12 = value; OnPropertyChanged(); } }
-        private bool mode13;
-        public bool Mode13 { get => mode13; set { mode13 = value; OnPropertyChanged(); } }
-        private bool mode17;
-        public bool Mode14 { get => mode14; set { mode14 = value; OnPropertyChanged(); } }
-        private bool mode14;
-        public bool Mode15 { get => mode15; set { mode15 = value; OnPropertyChanged(); } }
-        private bool mode15;
-        public bool Mode16 { get => mode16; set { mode16 = value; OnPropertyChanged(); } }
-        private bool mode16;
-        public bool Mod17 { get => mode17; set { mode17 = value; OnPropertyChanged(); } }
-        private bool mode18;
-        public bool Mode18 { get => mode18; set { mode18 = value; OnPropertyChanged(); } }
+      
+        
+        private string mode1;
+        private string mode2;
+        private string mode3;
+        private string mode4;
+        private string mode5;
+        private string mode6;
+        private string mode7;
+        private string mode8;
+        private string mode9;
+        private string mode10;
+        private string mode11;
+        private string mode12;
+        private string mode13;
+        private string mode14;
+        private string mode15;
+        private string mode16;
+        private string mode17;
+        private string mode18;
+        private string mode19;
+        private string mode20;
+        private string mode21;
+        private string mode22;
+        private string mode23;
+        private string mode24;
+        private string mode25;
+        private string mode26;
+        private string mode27;
+        private string mode28;
+        private string modeL1;
+        private string modeL2;
+        private string modeL3;
+        private string modeL4;
+        private string modeL5;
+        private string modeL6;
+        private string modeL7;
+        private string modeL8;
+        private string modeL9;
+        private string modeL10;
+        private string modeL11;
+        private string modeL12;
+        public string ModeL1 { get => modeL1; set { modeL1 = value; OnPropertyChanged(); } }
+        public string ModeL2 { get => modeL2; set { modeL2 = value; OnPropertyChanged(); } }
+        public string ModeL3 { get => modeL3; set { modeL3 = value; OnPropertyChanged(); } }
+        public string ModeL4 { get => modeL4; set { modeL4 = value; OnPropertyChanged(); } }
+        public string ModeL5 { get => modeL5; set { modeL5 = value; OnPropertyChanged(); } }
+        public string ModeL6 { get => modeL6; set { modeL6 = value; OnPropertyChanged(); } }
+        public string ModeL7 { get => modeL7; set { modeL7 = value; OnPropertyChanged(); } }
+        public string ModeL8 { get => modeL8; set { modeL8 = value; OnPropertyChanged(); } }
+        public string ModeL9 { get => modeL9; set { modeL9 = value; OnPropertyChanged(); } }
+        public string ModeL10 { get => modeL10; set { modeL10 = value; OnPropertyChanged(); } }
+        public string ModeL11 { get => modeL11; set { modeL11 = value; OnPropertyChanged(); } }
+        public string ModeL12 { get => modeL12; set { modeL12 = value; OnPropertyChanged(); } }
+        public string Mode1 { get => mode1; set { mode1 = value; OnPropertyChanged(); } }
+        public string Mode2 { get => mode2; set { mode2 = value; OnPropertyChanged(); } }
+        public string Mode3 { get => mode3; set { mode3 = value; OnPropertyChanged(); } }
+        public string Mode4 { get => mode4; set { mode4 = value; OnPropertyChanged(); } }
+        public string Mode5 { get => mode5; set { mode5 = value; OnPropertyChanged(); } }
+        public string Mode6 { get => mode6; set { mode6 = value; OnPropertyChanged(); } }
+        public string Mode7 { get => mode7; set { mode7 = value; OnPropertyChanged(); } }
+        public string Mode8 { get => mode8; set { mode8 = value; OnPropertyChanged(); } }
+        public string Mode9 { get => mode9; set { mode9 = value; OnPropertyChanged(); } }
+        public string Mode10 { get => mode10; set { mode10 = value; OnPropertyChanged(); } }
+        public string Mode11 { get => mode11; set { mode11 = value; OnPropertyChanged(); } }
+        public string Mode12 { get => mode12; set { mode12 = value; OnPropertyChanged(); } }
+        public string Mode13 { get => mode13; set { mode13 = value; OnPropertyChanged(); } }
+        public string Mode14 { get => mode14; set { mode14 = value; OnPropertyChanged(); } }
+        public string Mode15 { get => mode15; set { mode15 = value; OnPropertyChanged(); } }
+        public string Mode16 { get => mode16; set { mode16 = value; OnPropertyChanged(); } }
+        public string Mode17 { get => mode17; set { mode17 = value; OnPropertyChanged(); } }
+        public string Mode18 { get => mode18; set { mode18 = value; OnPropertyChanged(); } }
+        public string Mode19 { get => mode19; set { mode19 = value; OnPropertyChanged(); } }
+        public string Mode20 { get => mode20; set { mode20 = value; OnPropertyChanged(); } }
+        public string Mode21 { get => mode21; set { mode21 = value; OnPropertyChanged(); } }
+        public string Mode22 { get => mode22; set { mode22 = value; OnPropertyChanged(); } }
+        public string Mode23 { get => mode23; set { mode23 = value; OnPropertyChanged(); } }
+        public string Mode24 { get => mode24; set { mode24 = value; OnPropertyChanged(); } }
+        public string Mode25 { get => mode25; set { mode25 = value; OnPropertyChanged(); } }
+        public string Mode26 { get => mode26; set { mode26 = value; OnPropertyChanged(); } }
+        public string Mode27 { get => mode27; set { mode27 = value; OnPropertyChanged(); } }
+        public string Mode28 { get => mode28; set { mode28 = value; OnPropertyChanged(); } }
 
-        private bool mode19;
-        public bool Mode19 { get => mode19; set { mode19 = value; OnPropertyChanged(); } }
-        private bool mode20;
-        public bool Mode20 { get => mode20; set { mode20 = value; OnPropertyChanged(); } }
-        private bool mode21;
-        public bool Mode21 { get => mode21; set { mode21 = value; OnPropertyChanged(); } }
-
-        private bool mode22;
-        public bool Mod22 { get => mode22; set { mode22 = value; OnPropertyChanged(); } }
-        private bool mode23;
-        public bool Mode23 { get => mode23; set { mode23 = value; OnPropertyChanged(); } }
-        private bool mode24;
-        public bool Mode24 { get => mode24; set { mode24 = value; OnPropertyChanged(); } }
-        private bool mode25;
-        public bool Mode25 { get => mode25; set { mode25 = value; OnPropertyChanged(); } }
-        private bool mode26;
-        public bool Mode26 { get => mode26; set { mode26 = value; OnPropertyChanged(); } }
-        private bool mode27;
-        public bool Mode27 { get => mode27; set { mode27 = value; OnPropertyChanged(); } }
-        private bool mode28;
-        public bool Mode28 { get => mode28; set { mode28 = value; OnPropertyChanged(); } }
-        private bool modeL2;
-        public bool ModeL2 { get => modeL2; set { modeL2 = value; OnPropertyChanged(); } }
-        private bool modeL3;
-        public bool ModeL3 { get => modeL3; set { modeL3 = value; OnPropertyChanged(); } }
-        private bool modeL1;
-        public bool ModeL1 { get => modeL1; set { modeL1 = value; OnPropertyChanged(); } }
-        private bool modeL5;
-        public bool ModeL4 { get => modeL4; set { modeL4 = value; OnPropertyChanged(); } }
-        private bool modeL4;
-        public bool ModeL5 { get => modeL5; set { modeL5 = value; OnPropertyChanged(); } }
-        private bool modeL6;
-        public bool ModeL6 { get => modeL6; set { modeL6 = value; OnPropertyChanged(); } }
-        private bool modeL7;
-        public bool ModeL7 { get => modeL7; set { modeL7 = value; OnPropertyChanged(); } }
-        private bool modeL8;
-        public bool ModeL8 { get => modeL8; set { modeL8 = value; OnPropertyChanged(); } }
-        private bool modeL9;
-        public bool ModeL9 { get => modeL9; set { modeL9 = value; OnPropertyChanged(); } }
-        private bool modeL10;
-        public bool ModeL10 { get => modeL10; set { modeL10 = value; OnPropertyChanged(); } }
-        private bool modeL11;
-        public bool ModeL11 { get => modeL11; set { modeL11 = value; OnPropertyChanged(); } }
-        private bool modeL12;
-        public bool ModeL12 { get => modeL12; set { modeL12 = value; OnPropertyChanged(); } }
         //
         private bool a1;
         public bool A1 { get => a1; set { a1 = value; OnPropertyChanged(); } }
@@ -872,8 +877,88 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
         public string ContentL11 { get => contentL11; set { contentL11 = value; OnPropertyChanged(); } }
         private string contentL12;
         public string ContentL12 { get => contentL12; set { contentL12 = value; OnPropertyChanged(); } }
-
-
+        //
+        private string statusL1;
+        public string StatusL1 { get => statusL1; set { statusL1 = value; OnPropertyChanged(); } }
+        private string statusL2;
+        public string StatusL2 { get => statusL2; set { statusL2 = value; OnPropertyChanged(); } }
+        private string statusL3;
+        public string StatusL3 { get => statusL3; set { statusL3 = value; OnPropertyChanged(); } }
+        private string statusL4;
+        public string StatusL4 { get => statusL4; set { statusL4 = value; OnPropertyChanged(); } }
+        private string statusL5;
+        public string StatusL5 { get => statusL5; set { statusL5 = value; OnPropertyChanged(); } }
+        private string statusL6;
+        public string StatusL6 { get => statusL6; set { statusL6 = value; OnPropertyChanged(); } }
+        private string statusL7;
+        public string StatusL7 { get => statusL7; set { statusL7 = value; OnPropertyChanged(); } }
+        private string statusL8;
+        public string StatusL8 { get => statusL8; set { statusL8 = value; OnPropertyChanged(); } }
+        private string statusL9;
+        public string StatusL9 { get => statusL9; set { statusL9 = value; OnPropertyChanged(); } }
+        private string statusL10;
+        public string StatusL10 { get => statusL10; set { statusL10 = value; OnPropertyChanged(); } }
+        private string statusL11;
+        public string StatusL11 { get => statusL11; set { statusL11 = value; OnPropertyChanged(); } }
+        private string statusL12;
+        public string StatusL12 { get => statusL12; set { statusL12 = value; OnPropertyChanged(); } }
+        //
+        private string status1;
+        public string Status1 { get => status1; set { status1 = value; OnPropertyChanged(); } }
+        private string status2;
+        public string Status2 { get => status2; set { status2 = value; OnPropertyChanged(); } }
+        private string status3;
+        public string Status3 { get => status3; set { status3 = value; OnPropertyChanged(); } }
+        private string status4;
+        public string Status4 { get => status4; set { status4 = value; OnPropertyChanged(); } }
+        private string status5;
+        public string Status5 { get => status5; set { status5 = value; OnPropertyChanged(); } }
+        private string status6;
+        public string Status6 { get => status6; set { status6 = value; OnPropertyChanged(); } }
+        private string status7;
+        public string Status7 { get => status7; set { status7 = value; OnPropertyChanged(); } }
+        private string status8;
+        public string Status8 { get => status8; set { status8 = value; OnPropertyChanged(); } }
+        private string status9;
+        public string Status9 { get => status9; set { status9 = value; OnPropertyChanged(); } }
+        private string status10;
+        public string Status10 { get => status10; set { status10 = value; OnPropertyChanged(); } }
+        private string status11;
+        public string Status11 { get => status11; set { status11 = value; OnPropertyChanged(); } }
+        private string status12;
+        public string Status12 { get => status12; set { status12 = value; OnPropertyChanged(); } }
+        private string status13;
+        public string Status13 { get => status13; set { status13 = value; OnPropertyChanged(); } }
+        private string status14;
+        public string Status14 { get => status14; set { status14 = value; OnPropertyChanged(); } }
+        private string status15;
+        public string Status15 { get => status15; set { status15 = value; OnPropertyChanged(); } }
+        private string status16;
+        public string Status16 { get => status16; set { status16 = value; OnPropertyChanged(); } }
+        private string status17;
+        public string Status17 { get => status17; set { status17 = value; OnPropertyChanged(); } }
+        private string status18;
+        public string Status18 { get => status18; set { status18 = value; OnPropertyChanged(); } }
+        private string status19;
+        public string Status19 { get => status19; set { status19 = value; OnPropertyChanged(); } }
+        private string status20;
+        public string Status20 { get => status20; set { status20 = value; OnPropertyChanged(); } }
+        private string status21;
+        public string Status21 { get => status21; set { status21 = value; OnPropertyChanged(); } }
+        private string status22;
+        public string Status22 { get => status22; set { status22 = value; OnPropertyChanged(); } }
+        private string status23;
+        public string Status23 { get => status23; set { status23 = value; OnPropertyChanged(); } }
+        private string status24;
+        public string Status24 { get => status24; set { status24 = value; OnPropertyChanged(); } }
+        private string status25;
+        public string Status25 { get => status25; set { status25 = value; OnPropertyChanged(); } }
+        private string status26;
+        public string Status26 { get => status26; set { status26 = value; OnPropertyChanged(); } }
+        private string status27;
+        public string Status27 { get => status27; set { status27 = value; OnPropertyChanged(); } }
+        private string status28;
+        public string Status28 { get => status28; set { status28 = value; OnPropertyChanged(); } }
         /// <summary>
         ///
         /// </summary>
@@ -905,15 +990,17 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
         public string Cycle { get => cycle; set { cycle = value; OnPropertyChanged(); } }
         private HttpClient httpClient;
         private HttpRequestMessage httpRequest;
-       
+        private IBusControl _bus;
         public ICommand PauseCommand { get; set; }
 
+        //IBusControl bus
         public DetailMachineViewModel() {
-
+            //_bus = bus;
             Content = "Tạm dừng";
             Animation1 = true;
             Animation2 = false;
             Sender = new ReceiveCycleMessage(GetCycleMessage);
+            MachineMessage = new ReceiveMachineMessage(GetMachineStatus);
             ListMold = new ObservableCollection<Mold>();
             ListMachine = new ObservableCollection<Machine>();
             ListEmployee = new ObservableCollection<Employee>();
@@ -1091,10 +1178,1127 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
 
             // _apiServices = apiServices;
             PauseCommand = new RelayObjectCommand<object>((p) => { return p == null ? false : true; }, async (p) => Pause(p));
-            cycleMessageConsumer = new CycleMessageConsumer();
+          
 
         }
-        private  void GetCycleMessage(CycleMessage Message)
+        public async  void Command(CommandMessage commandMessage)
+        {
+            var endpoint = await _bus.GetSendEndpoint(new Uri("http://127.0.0.1:8181/send-config"));
+            await endpoint.Send<CommandMessage>(commandMessage);
+        }
+        public async  void ConfigCommand(ConfigurationMessage configMessage)
+        {
+            var endpoint = await _bus.GetSendEndpoint(new Uri("http://127.0.0.1:8181/send-config"));
+            await endpoint.Send<ConfigurationMessage>(configMessage);
+        }
+        private void GetMachineStatus(MachineMessage Message)
+        {
+
+            switch (Message.MachineId)
+            {
+                case "M1":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status1 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status1 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status1 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status1 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status1 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status1 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status1 = "7";
+                            break;
+
+                    }
+
+                    break;
+                case "M2":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status2 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status2 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status2 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status2 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status2 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status2 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status2 = "7";
+                            break;
+
+                    }
+
+                    break;
+                case "M3":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status3 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status3 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status3 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status3 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status3 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status3 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status3 = "7";
+                            break;
+
+                    }
+
+                    break;
+                case "M4":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status4 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status4 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status4 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status4 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status4 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status4 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status4 = "7";
+                            break;
+
+                    }
+
+                    break;
+                case "M5":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status5 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status5 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status5 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status5 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status5 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status5 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status5 = "7";
+                            break;
+
+                    }
+
+                    break;
+                case "M6":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status6 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status6 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status6 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status6 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status6 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status6 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status6 = "7";
+                            break;
+
+                    }
+
+                    break;
+                case "M7":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status7 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status7 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status7 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status7 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status7 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status7 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status7 = "7";
+                            break;
+
+                    }
+
+                    break;
+                case "M8":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status8 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status8 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status8 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status8 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status8 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status8 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status8 = "7";
+                            break;
+
+                    }
+
+                    break;
+                case "M9":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status9 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status9 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status9 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status9 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status9 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status9 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status9 = "7";
+                            break;
+
+                    }
+
+                    break;
+                case "M10":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status10 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status10 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status10 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status10 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status10 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status10 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status10 = "7";
+                            break;
+
+                    }
+
+                    break;
+                case "M11":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status11 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status11 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status11 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status11 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status11 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status11 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status11 = "7";
+                            break;
+
+                    }
+
+                    break;
+                case "M12":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status12 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status12 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status12 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status12 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status12 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status12 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status12 = "7";
+                            break;
+
+                    }
+
+                    break;
+                case "M13":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status13 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status13 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status13 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status13 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status13 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status13 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status13 = "7";
+                            break;
+
+                    }
+
+                    break;
+                case "M14":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status14 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status14 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status14 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status14 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status14 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status14 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status14 = "7";
+                            break;
+
+                    }
+
+                    break;
+                case "M15":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status15 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status15 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status15 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status15 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status15 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status15 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status15 = "7";
+                            break;
+
+                    }
+                    break;
+                case "M16":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status16 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status16 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status16 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status16 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status16 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status16 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status16 = "7";
+                            break;
+
+                    }
+                    break;
+                case "M17":
+
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status17 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status17 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status17 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status17 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status17 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status17 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status17 = "7";
+                            break;
+
+                    }
+                    break;
+                case "M18":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status18 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status18 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status18 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status18 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status18 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status18 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status18 = "7";
+                            break;
+
+                    }
+                    break;
+                case "M19":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status19 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status19 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status19 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status19 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status19 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status19 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status19 = "7";
+                            break;
+
+                    }
+                    break;
+                case "M20":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status20 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status20 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status20 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status20 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status20 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status20 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status20 = "7";
+                            break;
+
+                    }
+                    break;
+                case "M21":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status21 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status21 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status21 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status21 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status21 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status21 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status21 = "7";
+                            break;
+
+                    }
+                    break;
+                case "M22":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status22 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status22 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status22 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status22 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status22 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status22 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status22 = "7";
+                            break;
+
+                    }
+                    break;
+                case "M23":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status23 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status23 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status23 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status23 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status23 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status23 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status23 = "7";
+                            break;
+
+                    }
+                    break;
+                case "M24":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status24 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status24 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status24 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status24 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status24 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status24 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status24 = "7";
+                            break;
+
+                    }
+                    break;
+                case "M25":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status25 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status25 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status25 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status25 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status25 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status25 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status25 = "7";
+                            break;
+
+                    }
+                    break;
+                case "M26":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status26 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status26 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status26 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status26 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status26 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status26 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status26 = "7";
+                            break;
+
+                    }
+                    break;
+                case "M27":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status27 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status27 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status27 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status27 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status27 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status27 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status27 = "7";
+                            break;
+
+                    }
+                    break;
+                case "M28":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            Status28 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status28 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            Status28 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            Status28 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            Status28 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status28 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            Status28 = "7";
+                            break;
+
+                    }
+                    break;
+                case "L1":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            StatusL1 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            StatusL1 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            StatusL1 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            StatusL1 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            StatusL1 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            StatusL1 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            StatusL1 = "7";
+                            break;
+
+                    }
+                    break;
+                case "L2":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            StatusL2 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            StatusL2 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            StatusL2 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            StatusL2 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            StatusL2 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            StatusL2 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            StatusL2 = "7";
+                            break;
+
+                    }
+                    break;
+                case "L3":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            StatusL3 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            StatusL3 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            StatusL3 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            StatusL3 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            StatusL3 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            Status1 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            StatusL3 = "7";
+                            break;
+
+                    }
+                    break;
+                case "L4":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            StatusL4 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            StatusL4 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            StatusL4 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            StatusL4 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            StatusL4 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            StatusL4 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            StatusL4 = "7";
+                            break;
+
+                    }
+                    break;
+                case "L5":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            StatusL5 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            StatusL5 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            StatusL5 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            StatusL5 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            StatusL5 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            StatusL5 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            StatusL5 = "7";
+                            break;
+
+                    }
+                    break;
+                case "L6":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            StatusL6 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            StatusL6 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            StatusL6 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            StatusL6 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            StatusL6 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            StatusL6 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            StatusL6 = "7";
+                            break;
+
+                    }
+                    break;
+                case "L7":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            StatusL7 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            StatusL7 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            StatusL7 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            StatusL7 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            StatusL7 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            StatusL7 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            StatusL7 = "7";
+                            break;
+
+                    }
+                    break;
+                case "L8":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            StatusL8 = "1";
+                            break;
+                        //case EMachineStatus.PowerOn:
+                        //    StatusL8 = "2";
+                           
+                        case EMachineStatus.Disconnect:
+                            StatusL8 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            StatusL8 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            StatusL8 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            StatusL8 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            StatusL8 = "7";
+                            break;
+
+                    }
+                    break;
+                case "L9":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            StatusL9 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            Status1 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            StatusL9 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            StatusL9 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            StatusL9 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            StatusL9 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            StatusL9 = "7";
+                            break;
+
+                    }
+                    break;
+                case "L10":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            StatusL10 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            StatusL10 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            StatusL10 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            StatusL10 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            StatusL10 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            StatusL10 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            StatusL10 = "7";
+                            break;
+
+                    }
+                    break;
+                case "L11":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            StatusL11 = "1";
+                            break;
+                        case EMachineStatus.PowerOn:
+                            StatusL11 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            StatusL11 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            StatusL11 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            StatusL11 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            StatusL11 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            StatusL11 = "7";
+                            break;
+
+                    }
+                    break;
+                case "L12":
+                    switch (Message.MachineStatus)
+                    {
+                        case EMachineStatus.PowerOff:
+                            StatusL12 = "1";
+                            break;
+
+                        case EMachineStatus.PowerOn:
+                            StatusL12 = "2";
+                            break;
+                        case EMachineStatus.Disconnect:
+                            StatusL12 = "3";
+                            break;
+                        case EMachineStatus.OnProduction:
+                            StatusL12 = "4";
+                            break;
+                        case EMachineStatus.Idle:
+                            StatusL12 = "5";
+                            break;
+                        case EMachineStatus.ErrorOnGoing:
+                            StatusL12 = "6";
+                            break;
+                        case EMachineStatus.ErrorOutGoing:
+                            StatusL12 = "7";
+                            break;
+
+                    }
+                    break;
+                default:
+                    break;
+
+            }
+
+        }   
+         private  void GetCycleMessage(CycleMessage Message)
         {
             string name ="M18";
            
@@ -1106,6 +2310,15 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard1 = Message.SetCycle.ToString();
                     Cycle1 = Message.CycleTime.ToString();  
                     MoldId1 = Message.MoldId.ToString();
+                    if(Message.Mode == 1)
+                    {
+                        Mode1 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode1 = "Bán Tự động";
+                    }
+
                     break;
                 case "M2":
                     Count2 = Message.CounterShot.ToString();
@@ -1113,6 +2326,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard2 = Message.SetCycle.ToString();
                     Cycle2 = Message.CycleTime.ToString();
                     MoldId2 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode2 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode2 = "Bán Tự động";
+                    }
                     break;
                 case "M3":
                     Count3 = Message.CounterShot.ToString();
@@ -1121,6 +2342,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard3 = Message.SetCycle.ToString();
                     Cycle3 = Message.CycleTime.ToString();
                     MoldId3 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode3 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode3 = "Bán Tự động";
+                    }
                     break;
                 case "M4":
                     Count4 = Message.CounterShot.ToString();
@@ -1128,6 +2357,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard4 = Message.SetCycle.ToString();
                     Cycle4= Message.CycleTime.ToString();
                     MoldId4 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode4 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode4 = "Bán Tự động";
+                    }
                     break;
                 case "M5":
                     Count5 = Message.CounterShot.ToString();
@@ -1135,6 +2372,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard5 = Message.SetCycle.ToString();
                     Cycle5 = Message.CycleTime.ToString();
                     MoldId6 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode5 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode5 = "Bán Tự động";
+                    }
                     break;
                 case "M6":
                     Count6= Message.CounterShot.ToString();
@@ -1142,6 +2387,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard6 = Message.SetCycle.ToString();
                     Cycle6 = Message.CycleTime.ToString();
                     MoldId6 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode6 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode6 = "Bán Tự động";
+                    }
                     break;
                 case "M7":
                     Count7 = Message.CounterShot.ToString();
@@ -1149,6 +2402,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard7 = Message.SetCycle.ToString();
                     Cycle7 = Message.CycleTime.ToString();
                     MoldId7 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode7 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode7 = "Bán Tự động";
+                    }
                     break;
                 case "M8":
                     Count8 = Message.CounterShot.ToString();
@@ -1156,6 +2417,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard8 = Message.SetCycle.ToString();
                     Cycle8 = Message.CycleTime.ToString();
                     MoldId8 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode8 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode8 = "Bán Tự động";
+                    }
                     break;
                 case "M9":
                     Count9 = Message.CounterShot.ToString();
@@ -1163,6 +2432,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard9 = Message.SetCycle.ToString();
                     Cycle9 = Message.CycleTime.ToString();
                     MoldId9 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode9 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode9 = "Bán Tự động";
+                    }
                     break;
                 case "M10":
                     Count10 = Message.CounterShot.ToString();
@@ -1170,6 +2447,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard10 = Message.SetCycle.ToString();
                     Cycle10 = Message.CycleTime.ToString();
                     MoldId10 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode10 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode10 = "Bán Tự động";
+                    }
                     break;
                 case "M11":
                     Count11 = Message.CounterShot.ToString();
@@ -1177,6 +2462,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard11 = Message.SetCycle.ToString();
                     Cycle11 = Message.CycleTime.ToString();
                     MoldId11 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode11 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode11 = "Bán Tự động";
+                    }
                     break;
                 case "M12":
                     Count12 = Message.CounterShot.ToString();
@@ -1184,6 +2477,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard12 = Message.SetCycle.ToString();
                     Cycle12 = Message.CycleTime.ToString();
                     MoldId12 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode12 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode12 = "Bán Tự động";
+                    }
                     break;
                 case "M13":
                     Count13 = Message.CounterShot.ToString();
@@ -1191,6 +2492,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard13 = Message.SetCycle.ToString();
                     Cycle13 = Message.CycleTime.ToString();
                     MoldId13 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode13 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode13 = "Bán Tự động";
+                    }
                     break;
                 case "M14":
                     Count14 = Message.CounterShot.ToString();
@@ -1198,6 +2507,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard14 = Message.SetCycle.ToString();
                     Cycle14 = Message.CycleTime.ToString();
                     MoldId14 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode14 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode14 = "Bán Tự động";
+                    }
                     break;
                 case "M15":
                     Count15 = Message.CounterShot.ToString();
@@ -1205,6 +2522,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard15 = Message.SetCycle.ToString();
                     Cycle15 = Message.CycleTime.ToString();
                     MoldId15 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode15 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode15 = "Bán Tự động";
+                    }
                     break;
                 case "M16":
                     Count16 = Message.CounterShot.ToString();
@@ -1212,6 +2537,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard16 = Message.SetCycle.ToString();
                     Cycle16 = Message.CycleTime.ToString();
                     MoldId16 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode16 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode16 = "Bán Tự động";
+                    }
                     break;
                 case "M17":
                     Count17 = Message.CounterShot.ToString();
@@ -1219,6 +2552,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard17 = Message.SetCycle.ToString();
                     Cycle17 = Message.CycleTime.ToString();
                     MoldId17 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode17 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode17 = "Bán Tự động";
+                    }
                     break;
                 case "M18":
                     Count18 = Message.CounterShot.ToString();
@@ -1226,6 +2567,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard18 = Message.SetCycle.ToString();
                     Cycle18 = Message.CycleTime.ToString();
                     MoldId18 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode18 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode18 = "Bán Tự động";
+                    }
                     break;
                 case "M19":
                     Count19 = Message.CounterShot.ToString();
@@ -1233,6 +2582,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard19 = Message.SetCycle.ToString();
                     Cycle19 = Message.CycleTime.ToString();
                     MoldId19 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode19 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode19 = "Bán Tự động";
+                    }
                     break;
                 case "M20":
                     Count20 = Message.CounterShot.ToString();
@@ -1240,6 +2597,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard20 = Message.SetCycle.ToString();
                     Cycle20 = Message.CycleTime.ToString();
                     MoldId20 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode20 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode20 = "Bán Tự động";
+                    }
                     break;
                 case "M21":
                     Count21= Message.CounterShot.ToString();
@@ -1247,6 +2612,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard21 = Message.SetCycle.ToString();
                     Cycle21 = Message.CycleTime.ToString();
                     MoldId21 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode21 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode21 = "Bán Tự động";
+                    }
                     break;
                 case "M22":
                     Count22 = Message.CounterShot.ToString();
@@ -1254,6 +2627,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard22 = Message.SetCycle.ToString();
                     Cycle22 = Message.CycleTime.ToString();
                     MoldId22 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode22 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode22 = "Bán Tự động";
+                    }
                     break;
                 case "M23":
                     Count23 = Message.CounterShot.ToString();
@@ -1261,6 +2642,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard23 = Message.SetCycle.ToString();
                     Cycle23 = Message.CycleTime.ToString();
                     MoldId23 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode23 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode23 = "Bán Tự động";
+                    }
                     break;
                 case "M24":
                     Count24 = Message.CounterShot.ToString();
@@ -1268,6 +2657,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard24 = Message.SetCycle.ToString();
                     Cycle24= Message.CycleTime.ToString();
                     MoldId24 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode24 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode24 = "Bán Tự động";
+                    }
                     break;
                 case "M25":
                     Count25 = Message.CounterShot.ToString();
@@ -1275,6 +2672,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard25 = Message.SetCycle.ToString();
                     Cycle25 = Message.CycleTime.ToString();
                     MoldId25 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode25 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode25 = "Bán Tự động";
+                    }
                     break;
                 case "M26":
                     Count26 = Message.CounterShot.ToString();
@@ -1282,6 +2687,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard26 = Message.SetCycle.ToString();
                     Cycle26 = Message.CycleTime.ToString();
                     MoldId26= Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode26 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode26 = "Bán Tự động";
+                    }
                     break;
                 case "M27":
                     Count27= Message.CounterShot.ToString();
@@ -1289,6 +2702,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard27 = Message.SetCycle.ToString();
                     Cycle27 = Message.CycleTime.ToString();
                     MoldId27 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode27 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode27 = "Bán Tự động";
+                    }
                     break;
                 case "M28":
                     Count28 = Message.CounterShot.ToString();
@@ -1296,6 +2717,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard28 = Message.SetCycle.ToString();
                     Cycle28 = Message.CycleTime.ToString();
                     MoldId28 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        Mode28 = "Tự động";
+                    }
+                    else
+                    {
+                        Mode28 = "Bán Tự động";
+                    }
                     break;
                 case "L1":
                     CountL1 = Message.CounterShot.ToString();
@@ -1303,6 +2732,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandardL1 = Message.SetCycle.ToString();
                     CycleL1 = Message.CycleTime.ToString();
                     MoldIdL1 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        ModeL1 = "Tự động";
+                    }
+                    else
+                    {
+                        ModeL1 = "Bán Tự động";
+                    }
                     break;
                 case "L2":
                     CountL2 = Message.CounterShot.ToString();
@@ -1310,6 +2747,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandardL2 = Message.SetCycle.ToString();
                     CycleL2 = Message.CycleTime.ToString();
                     MoldIdL2 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        ModeL2 = "Tự động";
+                    }
+                    else
+                    {
+                        ModeL2 = "Bán Tự động";
+                    }
                     break;
                 case "L3":
                     CountL3 = Message.CounterShot.ToString();
@@ -1317,6 +2762,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandardL3 = Message.SetCycle.ToString();
                     CycleL3 = Message.CycleTime.ToString();
                     MoldIdL3 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        ModeL3 = "Tự động";
+                    }
+                    else
+                    {
+                        ModeL3 = "Bán Tự động";
+                    }
                     break;
                 case "L4":
                     CountL4 = Message.CounterShot.ToString();
@@ -1324,6 +2777,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandardL4 = Message.SetCycle.ToString();
                     CycleL4 = Message.CycleTime.ToString();
                     MoldIdL4 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        ModeL4 = "Tự động";
+                    }
+                    else
+                    {
+                        ModeL4 = "Bán Tự động";
+                    }
                     break;
                 case "L5":
                     CountL5 = Message.CounterShot.ToString();
@@ -1331,6 +2792,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandardL5 = Message.SetCycle.ToString();
                     CycleL5 = Message.CycleTime.ToString();
                     MoldIdL5 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        ModeL5 = "Tự động";
+                    }
+                    else
+                    {
+                        ModeL5 = "Bán Tự động";
+                    }
                     break;
                 case "L6":
                     CountL6= Message.CounterShot.ToString();
@@ -1338,6 +2807,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandardL6 = Message.SetCycle.ToString();
                     CycleL6 = Message.CycleTime.ToString();
                     MoldId6 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        ModeL6 = "Tự động";
+                    }
+                    else
+                    {
+                        ModeL6 = "Bán Tự động";
+                    }
                     break;
                 case "L7":
                     CountL7 = Message.CounterShot.ToString();
@@ -1345,6 +2822,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandardL7 = Message.SetCycle.ToString();
                     CycleL7 = Message.CycleTime.ToString();
                     MoldIdL7 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        ModeL7 = "Tự động";
+                    }
+                    else
+                    {
+                        ModeL7 = "Bán Tự động";
+                    }
                     break;
                 case "L8":
                     CountL8 = Message.CounterShot.ToString();
@@ -1352,6 +2837,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandardL8 = Message.SetCycle.ToString();
                     CycleL8 = Message.CycleTime.ToString();
                     MoldIdL9 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        ModeL8 = "Tự động";
+                    }
+                    else
+                    {
+                        ModeL8 = "Bán Tự động";
+                    }
                     break;
                 case "L9":
                     CountL9 = Message.CounterShot.ToString();
@@ -1359,6 +2852,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandardL9 = Message.SetCycle.ToString();
                     CycleL9 = Message.CycleTime.ToString();
                     MoldIdL9 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        ModeL9 = "Tự động";
+                    }
+                    else
+                    {
+                        ModeL9 = "Bán Tự động";
+                    }
                     break;
                 case "L10":
                     CountL10 = Message.CounterShot.ToString();
@@ -1366,6 +2867,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard10 = Message.SetCycle.ToString();
                     CycleL10 = Message.CycleTime.ToString();
                     MoldIdL10 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        ModeL10 = "Tự động";
+                    }
+                    else
+                    {
+                        ModeL10 = "Bán Tự động";
+                    }
                     break;
                 case "L11":
                     Count11 = Message.CounterShot.ToString();
@@ -1373,6 +2882,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     CycleStandard11 = Message.SetCycle.ToString();
                     CycleL11 = Message.CycleTime.ToString();
                     MoldIdL11 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        ModeL11 = "Tự động";
+                    }
+                    else
+                    {
+                        ModeL11 = "Bán Tự động";
+                    }
                     break;
                 case "L12":
                     Count12 = Message.CounterShot.ToString();
@@ -1380,6 +2897,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     cycleStandard12 = Message.SetCycle.ToString();
                     cycle12 = Message.CycleTime.ToString();
                     MoldId12 = Message.MoldId.ToString();
+                    if (Message.Mode == 1)
+                    {
+                        ModeL12 = "Tự động";
+                    }
+                    else
+                    {
+                        ModeL12 = "Bán Tự động";
+                    }
                     break;
                 default:
                     break;
@@ -1409,7 +2934,13 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     if (result == MessageBoxResult.OK)
                     {
                         Content = "Tiếp tục";
+                        //Command(new CommandMessage
+                        //{
+                        //    MachineId = "L6",
+                        //    Timestamp = DateTime.UtcNow,
+                        //    Command = ECommand.ChangeMoldDone,
 
+                        //});
 
                         switch (Namemachine)
                         {
@@ -1633,6 +3164,23 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     MessageBoxResult result = CustomMessageBox.Show("Bạn muốn máy hoạt động với thông số đã nhập??", "Cảnh báo", MessageBoxButton.OKCancel, MessageBoxImage.Information);
                     if (result == MessageBoxResult.OK)
                     {
+                        //Command(new CommandMessage
+                        //{
+                        //    MachineId = "L6",
+                        //    Timestamp = DateTime.UtcNow,
+                        //    Command = ECommand.ChangeMoldDone,
+
+                        //});
+                        ConfigCommand(new ConfigurationMessage
+                        {
+                            MachineId = "L6",
+                            Timestamp = DateTime.UtcNow,
+                            MoldId = "HA35",
+                            CycleTime = 200,
+                            ProductId = "tcp"
+
+                        }); ;
+
                         Content = "Tạm dừng";
                         switch (Namemachine)
                         {
