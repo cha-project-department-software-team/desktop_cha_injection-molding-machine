@@ -35,7 +35,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="L3"
-                             CycleStandard="{Binding CycleStandarL3}"
+                             CycleStandard="{Binding CycleStandardL3}"
                              RealCycle="{Binding CycleL3}"
                             ProductCode="{Binding ProductIdL3}"
                             MoldCode="{Binding MoldIdL3}"
@@ -56,7 +56,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="L4"
-                          CycleStandard="{Binding CycleStandarL4}"
+                          CycleStandard="{Binding CycleStandardL4}"
                              RealCycle="{Binding CycleL4}"
                             ProductCode="{Binding ProductIdL4}"
                             MoldCode="{Binding MoldIdL4}"
@@ -83,7 +83,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="L5"
-                            CycleStandard="{Binding CycleStandarL5}"
+                            CycleStandard="{Binding CycleStandardL5}"
                              RealCycle="{Binding CycleL5}"
                             ProductCode="{Binding ProductIdL5}"
                             MoldCode="{Binding MoldIdL5}"
@@ -104,7 +104,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="L6"
-                                 CycleStandard="{Binding CycleStandarL6}"
+                                 CycleStandard="{Binding CycleStandardL6}"
                                 RealCycle="{Binding CycleL6}"
                                  Status="{Binding StatusL6,Converter={Converter:StringtoStringStatusMachine}}"
                                  ProductCode="{Binding ProductIdL6}"
@@ -131,7 +131,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="L7"
-                            CycleStandard="{Binding CycleStandarL7}"
+                            CycleStandard="{Binding CycleStandardL7}"
                             RealCycle="{Binding CycleL7}"
                         StatusBackground="{Binding StatusL7,Converter={Converter:IntToColorConverter}}"
                             ProductCode="{Binding ProductIdL7}"
@@ -152,7 +152,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="L8"
-                              CycleStandard="{Binding CycleStandarL8}"
+                              CycleStandard="{Binding CycleStandardL8}"
                              RealCycle="{Binding CycleL8}"
                         Status="{Binding StatusL8,Converter={Converter:StringtoStringStatusMachine}}"
                         StatusBackground="{Binding StatusL8,Converter={Converter:IntToColorConverter}}"

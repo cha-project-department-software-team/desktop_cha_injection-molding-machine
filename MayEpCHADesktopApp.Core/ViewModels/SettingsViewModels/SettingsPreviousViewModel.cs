@@ -23,7 +23,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
             ListConfigurationShift2 = new ObservableCollection<Configuration>();
             _databaseServices = databaseServices;
             //xóa hết config
-          //  databaseServices.ClearConfig();
+            databaseServices.ClearConfig();
             SettingsNewViewModel.ActionChangeDatabase += Load;
             Load();
         }
@@ -40,7 +40,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
 
                 foreach (var configuration in _databaseServices.LoadConfiguration())
                 {
-                    if (configuration.DateTime.Date == DateTime.Now.Date && configuration.DateTime.Hour >17 && configuration.DateTime.Hour <21)
+                    if (configuration.DateTime.Day == DateTime.Now.Day && configuration.DateTime.Hour >17 && configuration.DateTime.Hour <21)
                     {
                         ListConfigurationShift2.Add(configuration);
                     }

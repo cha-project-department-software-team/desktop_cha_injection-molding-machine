@@ -35,7 +35,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="L9"
-                             CycleStandard="{Binding CycleStandarL9}"
+                             CycleStandard="{Binding CycleStandardL9}"
                              RealCycle="{Binding CycleL9}"
                             ProductCode="{Binding ProductIdL9}"
                         ContentBt="{Binding ContentL9}"
@@ -56,7 +56,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="L10"
-                          CycleStandard="{Binding CycleStandarL10}"
+                          CycleStandard="{Binding CycleStandardL10}"
                              RealCycle="{Binding CycleL10}"
                         ContentBt="{Binding ContentL10}"
                             ProductCode="{Binding ProductIdL10}"
@@ -83,7 +83,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="L11"
-                            CycleStandard="{Binding CycleStandarL11}"
+                            CycleStandard="{Binding CycleStandardL11}"
                              RealCycle="{Binding CycleL11}"
                         ContentBt="{Binding ContentL11}"
                             ProductCode="{Binding ProductIdL11}"
@@ -113,7 +113,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="L12"
-                              CycleStandard="{Binding CycleStandarL12}"
+                              CycleStandard="{Binding CycleStandardL12}"
                              RealCycle="{Binding CycleL12}"
                              Animation1="{Binding AL12}"
                             Animation2="{Binding BL12}"

@@ -16,8 +16,8 @@ namespace MayEpCHADesktopApp.Core.Services
     {
         private HttpClient httpClient;
         private  HttpRequestMessage httpRequest;
-       // private string Address = "https://localhost:7202/";
-        private string Address = "http://192.168.1.80:8082/";
+        private string Address = "https://localhost:7202/";
+        //private string Address = "http://192.168.1.80:8082/";
         public ObservableCollection<Employee> ListEmployee = new ObservableCollection<Employee>();
         public  ObservableCollection<Mold> ListMold = new ObservableCollection<Mold>();
         public ObservableCollection<Product> ListProduct = new ObservableCollection<Product>();

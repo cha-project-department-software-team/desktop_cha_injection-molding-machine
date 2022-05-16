@@ -99,13 +99,13 @@
                                         Width="184" 
                                        FontSize="{Binding ElementName=Root, Path=ActualHeight, Converter={Converter:SizeConverter},ConverterParameter=0.4}"
                                        Background="Transparent" 
-                                       Foreground="{Binding Path=ForegroundText, ElementName=Root}"
+                                       Foreground="White"
                                        HorizontalContentAlignment="Center"
                                        VerticalContentAlignment="Center"
                                        ></Label>
                             <materialDesign:PackIcon   Height="{Binding ElementName=Root, Path=ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.8}" 
                                                            Width="{Binding ElementName=Root, Path=ActualWidth , Converter={Converter:SizeConverter}, ConverterParameter=0.3}"
-                                                           Foreground="{ Binding Path=ForegroundPackicon, ElementName=Root}"
+                                                           Foreground="White"
                                                            Margin="0 0 0 0"
                                                            Kind="{Binding  Path=NamePackIcon, ElementName=Root}">
 

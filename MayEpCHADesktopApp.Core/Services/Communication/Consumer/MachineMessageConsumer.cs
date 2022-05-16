@@ -56,35 +56,10 @@ namespace MayEpCHADesktopApp.Core.Services.Communication.Consumer
         public async Task Consume(ConsumeContext<MachineMessage> context)
         {
             var message = context.Message;
-             MachineViewModel.Sender(message);
+            MachineViewModel.Sender(message);
             DetailMachineViewModel.MachineMessage(message);
             
-            //switch (message.MachineStatus)
-            //{
-            //    case EMachineStatus.Disconnect:
-            //        MachineViewModel.Trangthai = "1";
 
-            //        break;
-            //    case EMachineStatus.OnProduction:
-            //        MachineViewModel.Trangthai = "2";
-            //        break;
-            //    case EMachineStatus.Idle:
-            //        MachineViewModel.Trangthai = "3";
-            //        break;
-            //    case EMachineStatus.PowerOn:
-            //        MachineViewModel.Trangthai = "4";
-            //        break;
-            //    case EMachineStatus.ErrorOutGoing:
-            //        MachineViewModel.Trangthai = "5";
-            //        break;
-            //    case EMachineStatus.ErrorOnGoing:
-            //        MachineViewModel.Trangthai = "6";
-            //        break;
-            //    case EMachineStatus.PowerOff:
-            //        MachineViewModel.Trangthai = "7";
-            //        break;
-
-            //}
             Display(message);
             
 

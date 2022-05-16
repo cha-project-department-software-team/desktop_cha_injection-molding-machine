@@ -22,28 +22,9 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
 {
     public class DetailMachineViewModel : ViewModels.BaseViewModels.BaseViewModel
     {
-        
 
-        private ObservableCollection<Product> listProduct;
-        public ObservableCollection<Product> ListProduct
-        {
-            get => listProduct; set
-            {
-                listProduct = value; OnPropertyChanged();
-            }
-        }
-        private ObservableCollection<Mold> listMold;
-        public ObservableCollection<Mold> ListMold { get => listMold; set { listMold = value; } }
-        private ObservableCollection<Employee> listEmployee;
-        public ObservableCollection<Employee> ListEmployee { get => listEmployee; set { listEmployee = value; OnPropertyChanged(); } }
-        private ObservableCollection<Machine> listMachine;
-        public ObservableCollection<Machine> ListMachine { get => listMachine; set { listMachine = value; OnPropertyChanged(); } }
-        public  delegate void ReceiveCycleMessage(CycleMessage Message);
-        public static ReceiveCycleMessage Sender;
-        private CycleMessageConsumer cycleMessageConsumer;
+        #region var
 
-        public delegate void ReceiveMachineMessage(MachineMessage Message);
-        public static ReceiveMachineMessage MachineMessage;
   
 
         private  string content { get; set; }
@@ -135,6 +116,8 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
         public string CountL10 { get => countL10; set { countL10 = value; OnPropertyChanged(); } }
         private string countL12 { get; set; }
         public string CountL12 { get => countL12; set { countL12 = value; OnPropertyChanged(); } }
+        private string countL11 { get; set; }
+        public string CountL11 { get => countL12; set { countL12 = value; OnPropertyChanged(); } }
 
 
         //
@@ -962,6 +945,27 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
         /// <summary>
         ///
         /// </summary>
+        #endregion var
+        private ObservableCollection<Product> listProduct;
+        public ObservableCollection<Product> ListProduct
+        {
+            get => listProduct; set
+            {
+                listProduct = value; OnPropertyChanged();
+            }
+        }
+        private ObservableCollection<Mold> listMold;
+        public ObservableCollection<Mold> ListMold { get => listMold; set { listMold = value; } }
+        private ObservableCollection<Employee> listEmployee;
+        public ObservableCollection<Employee> ListEmployee { get => listEmployee; set { listEmployee = value; OnPropertyChanged(); } }
+        private ObservableCollection<Machine> listMachine;
+        public ObservableCollection<Machine> ListMachine { get => listMachine; set { listMachine = value; OnPropertyChanged(); } }
+        public delegate void ReceiveCycleMessage(CycleMessage Message);
+        public static ReceiveCycleMessage Sender;
+
+
+        public delegate void ReceiveMachineMessage(MachineMessage Message);
+        public static ReceiveMachineMessage MachineMessage;
         private Product product;
         public Product Product { get => product; set { product = value; OnPropertyChanged();
                 try {
@@ -996,9 +1000,10 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
         public ICommand PauseCommand { get; set; }
 
         //IBusControl bus
-        public DetailMachineViewModel(IBusControl bus, IDatabaseServices databaseServices) {
-            _bus = bus;
-            _databaseServices = databaseServices;
+        //IDatabaseServices databaseServices)
+        public DetailMachineViewModel() {
+            //_bus = bus;
+            //_databaseServices = databaseServices;
             Content = "Tạm dừng";
             Animation1 = true;
             Animation2 = false;
@@ -1010,8 +1015,48 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
             GetProductTotal("");
             GetMoldTotal("");
 
-
-                    A1 = true;
+            #region int
+            StatusL1 = "1";
+            StatusL2 = "1";
+            StatusL3 = "1";
+            StatusL4 = "1";
+            StatusL5 = "1";
+            StatusL6 = "1";
+            StatusL7 = "1";
+            StatusL8 = "1";
+            StatusL9 = "1";
+            StatusL10 = "1";
+            StatusL11 = "1";
+            StatusL12 = "1";
+            Status1 = "1";
+            Status2 = "1";
+            Status3 = "1";
+            Status4 = "1";
+            Status5 = "1";
+            Status6 = "1";
+            Status7 = "1";
+            Status8 = "1";
+            Status9 = "1";
+            Status10 = "1";
+            Status11 = "1";
+            Status12 = "1";
+            Status13 = "1";
+            Status14 = "1";
+            Status15 = "1";
+            Status16 = "1";
+            Status17 = "1";
+            Status18 = "1";
+            Status19 = "1";
+            Status20 = "1";
+            Status21 = "1";
+            Status22 = "1";
+            Status23 = "1";
+            Status24 = "1";
+            Status25 = "1";
+            Status26 = "1";
+            Status27 = "1";
+            Status28 = "1";
+            A1 = true;
                     B1 = false;
                     Content1 = "Tạm dừng";
 
@@ -1175,9 +1220,9 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     AL12 = true;
                     BL12 = false;
                     ContentL12 = "Tạm dừng";
-       
 
 
+            #endregion int
 
             // _apiServices = apiServices;
             PauseCommand = new RelayObjectCommand<object>((p) => { return p == null ? false : true; }, async (p) => Pause(p));
@@ -2880,7 +2925,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     }
                     break;
                 case "L11":
-                    Count11 = Message.CounterShot.ToString();
+                    CountL11 = Message.CounterShot.ToString();
                     ProductIdL11 = Message.ProductId.ToString();
                     CycleStandard11 = Message.SetCycle.ToString();
                     CycleL11 = Message.CycleTime.ToString();

@@ -36,7 +36,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="M4"
-                             CycleStandard="{Binding CycleStandar4}"
+                             CycleStandard="{Binding CycleStandard4}"
                              RealCycle="{Binding Cycle4}"
                         CountProduct="{Binding Count4}"
                         ContentBt="{Binding Content4}"
@@ -57,7 +57,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="M3"
-                      CycleStandard="{Binding CycleStandar3}"
+                      CycleStandard="{Binding CycleStandard3}"
                              RealCycle="{Binding Cycle3}"
                             ProductCode="{Binding ProductId3}"
                             MoldCode="{Binding MoldId3}"
@@ -84,7 +84,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="M2"
-                          CycleStandard="{Binding CycleStandar2}"
+                          CycleStandard="{Binding CycleStandard2}"
                              RealCycle="{Binding Cycle2}"
                             ProductCode="{Binding ProductId2}"
                             MoldCode="{Binding MoldId2}"
@@ -105,7 +105,7 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="M1"
-                          CycleStandard="{Binding CycleStandar1}"
+                          CycleStandard="{Binding CycleStandard1}"
                              RealCycle="{Binding Cycle1}"
                                                     Animation1="{Binding A1}"
                             Animation2="{Binding B1}"
@@ -132,16 +132,17 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="L1"
-                             CycleStandard="{Binding CycleStandarL1}"
+                             CycleStandard="{Binding CycleStandardL1}"
                              RealCycle="{Binding CycleL1}"
                             ProductCode="{Binding ProductIdL1}"
                                Animation1="{Binding AL1}"
                         StatusBackground="{Binding StatusL1,Converter={Converter:IntToColorConverter}}"
                             Animation2="{Binding BL1}"
-                            MoldCode="{Binding MoldL1}"
+                            MoldCode="{Binding MoldIdL1}"
                         Status="{Binding StatusL1,Converter={Converter:StringtoStringStatusMachine}}"
                         Mode="{Binding ModeL1}"
                         ContentBt="{Binding ContentL1}"
+                        CountProduct="{Binding CountL1}"
                         DataContext="{Binding DetailMachineViewModel5}">
 
                     </components:MachineInformationDetail>
@@ -152,15 +153,16 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="L2"
-                              CycleStandard="{Binding CycleStandarL2}"
+                              CycleStandard="{Binding CycleStandardL2}"
                              RealCycle="{Binding CycleL2}"
                         ContentBt="{Binding ContentL2}"
                         Mode="{Binding ModeL2}"
+                        CountProduct="{Binding CountL2}"
                                                     Animation1="{Binding AL2}"
                             Animation2="{Binding BL2}"
                         Status="{Binding StatusL2,Converter={Converter:StringtoStringStatusMachine}}"
                             ProductCode="{Binding ProductIdL2}"
-                            MoldCode="{Binding MoldL2}"
+                            MoldCode="{Binding MoldIdL2}"
                         StatusBackground="{Binding StatusL2,Converter={Converter:IntToColorConverter}}"
                         DataContext="{Binding DetailMachineViewModel6}">
 

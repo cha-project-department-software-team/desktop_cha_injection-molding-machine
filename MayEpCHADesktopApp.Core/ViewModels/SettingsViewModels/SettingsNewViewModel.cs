@@ -1,5 +1,6 @@
 ﻿using ImmServiceContainers;
 using MassTransit;
+using MayEpCHADesktopApp.Core.Components;
 using MayEpCHADesktopApp.Core.Database.ModelDatabase;
 using MayEpCHADesktopApp.Core.Model;
 using MayEpCHADesktopApp.Core.Services.Interfaces;
@@ -17,6 +18,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
 {
     public class SettingsNewViewModel : ViewModels.BaseViewModels.BaseViewModel
     {
+        #region var
         public bool IsShift1 { get => isShift1; set { isShift1 = value; OnPropertyChanged(); } }
         private bool isShift1;
         public bool IsShift2 { get => isShift2; set { isShift2 = value; OnPropertyChanged(); } }
@@ -72,11 +74,11 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
         private ObservableCollection<Configuration> listConfigurationShift2;
         public ObservableCollection<Configuration> ListConfigurationShift2 { get => listConfigurationShift2; set { listConfigurationShift2 = value; OnPropertyChanged(); } }
         public static Action ActionChangeDatabase { get; set; }
+        #endregion var
         public ICommand Shift1 { set; get; }
         public ICommand Shift2 { set; get; }
         public ICommand AddCommandShift2 { set; get; }
         public ICommand TextChangedCommand { set; get; }
-  //      public ICommand DeleteCommandShift1 { set; get; }
         public ICommand DeleteCommandShift2 { set; get; }
         public ICommand ClearCommandShift2 { set; get; }
         
@@ -90,6 +92,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
             _databaseServices = databaseServices;
             _apiServices = apiServices;
             _busControl = busControl;
+            _databaseServices.ClearConfig();
             ListConfigurationShift2 = new ObservableCollection<Configuration>();
             AddCommandShift2 = new RelayCommand(async () => await Add());
             DeleteCommandShift2 = new RelayCommand(async () => await Delete());
@@ -100,12 +103,43 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
             GetTotalMold();
             GetTotalProduct();
             Load();
-            Send();
-           // DeleteConfig();
-            StartTimer();
+            // SendTest();
+            //  Send();
+            //xóa sạch database
+            
+            //xóa database 2 ngày trước
+            DeleteConfig();
+            //chạy thực tế
+            // StartTimer();
+            //chạy mô phỏng
+            StartTimerTest();
 
         }
-        //chạy timer
+        //chạy timer mô phỏng
+        public void StartTimerTest()
+        {
+            int time;
+            //set thời gian gửi xuống esp
+            int SetPointHourTime = 14;
+            int SetPointMinuteTime = 0;
+            if ((SetPointMinuteTime - DateTime.Now.Minute ) < 0)
+            {
+                time = (SetPointHourTime - DateTime.Now.Hour - 1) * 3600 + (SetPointMinuteTime - DateTime.Now.Minute + 60) * 60 ;
+                TSendConfigShift1.Interval = TimeSpan.FromSeconds(time);
+                TSendConfigShift1.Start();
+
+            }
+            else
+            {
+                time = (SetPointHourTime - DateTime.Now.Hour ) * 3600 + (SetPointMinuteTime - DateTime.Now.Minute) * 60;
+                TSendConfigShift1.Interval = TimeSpan.FromSeconds(60);
+
+                TSendConfigShift1.Start();
+
+            }
+
+        }
+        //chạy timer 
         public void StartTimer()
         {
 
@@ -140,7 +174,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
                 {
                     time = (7 - DateTime.Now.Hour) * 3600;
                     TSendConfigShift1.Interval = TimeSpan.FromSeconds(time);
-                    TSendConfigShift1.Tick += ActionTimer;
+                    
                     TSendConfigShift1.Start(); 
 
                 }
@@ -152,15 +186,17 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
         {
             foreach( var configuration in _databaseServices.LoadConfiguration())
             {
-                if((Convert.ToInt32(configuration.DateTime.Date) < (Convert.ToInt32(DateTime.Now.Date.ToString()) - 2)))
-                    {
+                if ((Convert.ToInt32(configuration.DateTime.Day) < (Convert.ToInt32(DateTime.Now.Day.ToString()) - 2)))
+                {
                     _databaseServices.DeleteConfigAsync(configuration);
 
                 }
+                
+
             }
             foreach( var item in _databaseServices.LoadEventMachine())
             {
-                if ((Convert.ToInt32(item.DateTime.Date) < (Convert.ToInt32(DateTime.Now.Date.ToString()) - 2)))
+                if ((Convert.ToInt32(item.DateTime.Day) < (Convert.ToInt32(DateTime.Now.Day.ToString()) - 2)))
                 {
                     _databaseServices.DeleteEventAsync(item);
 
@@ -175,22 +211,22 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
                 ListConfigurationShift2.Clear();
             }
 
-            if (DateTime.Now.Hour > 19 || DateTime.Now.Hour < 24)
+            if (DateTime.Now.Hour > 19 && DateTime.Now.Hour < 24)
             {
                 foreach (var configuration in _databaseServices.LoadConfiguration())
                 {
-                    if (configuration.DateTime.Date == DateTime.Now.Date && configuration.DateTime.Hour > 17 && configuration.DateTime.Hour < 19)
+                    if (configuration.DateTime.Day == DateTime.Now.Day && configuration.DateTime.Hour > 17 && configuration.DateTime.Hour < 19)
                     {
                         ListConfigurationShift2.Add(configuration);
                     }
                 }
 
             }
-            else if (DateTime.Now.Hour > 0 || DateTime.Now.Hour < 7)
+            else if (DateTime.Now.Hour > 0 && DateTime.Now.Hour < 7)
             {
                 foreach (var configuration in _databaseServices.LoadConfiguration())
                 {
-                    if (configuration.DateTime.Date < DateTime.Now.Date && configuration.DateTime.Date == DateTime.Now.Date)
+                    if (configuration.DateTime.Day < DateTime.Now.Day && configuration.DateTime.Day == DateTime.Now.Day)
                     {
                         ListConfigurationShift2.Add(configuration);
                     }
@@ -200,11 +236,11 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
             {
                 foreach (var configuration in _databaseServices.LoadConfiguration())
                 {
-                    if (configuration.DateTime.Date < DateTime.Now.Date)
+                    if (configuration.DateTime.Day < DateTime.Now.Day)
                     {
                         ListConfigurationShift2.Add(configuration);
                     }
-                    else if (configuration.DateTime.Date == DateTime.Now.Date && configuration.DateTime.Hour > 0 && configuration.DateTime.Hour < 7)
+                    else if (configuration.DateTime.Day == DateTime.Now.Day && configuration.DateTime.Hour > 7 && configuration.DateTime.Hour < 12)
                     {
                         ListConfigurationShift2.Add(configuration);
                     }
@@ -219,7 +255,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
             
             foreach(var configuration in _databaseServices.LoadConfiguration())
             {
-                if(configuration.DateTime.Date == DateTime.Now.Date && configuration.DateTime.Hour > 17 && configuration.DateTime.Hour < 19)
+                if(configuration.DateTime.Day == DateTime.Now.Day && configuration.DateTime.Hour > 17 && configuration.DateTime.Hour < 19)
                 {
                     var endpoint = await _busControl.GetSendEndpoint(new Uri("http://127.0.0.1:8181/send-config"));
                     await endpoint.Send<ConfigurationMessage>(new ConfigurationMessage
@@ -263,7 +299,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
                     });
                     ShiftReport shiftReport = new ShiftReport();
                     shiftReport.MachineId = configuration.MachineId;
-                    shiftReport.Date = configuration.DateTime.Date;
+                    shiftReport.Date = configuration.DateTime;
                     shiftReport.TotalQuantity = configuration.Quantity;
                     shiftReport.ProductId = configuration.ProductId;
                     shiftReport.ShiftNumber = EShift.Day;
@@ -276,7 +312,39 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
         //Xú lí khi 19h không mở áp
         public void ActionTimer(object? sender, EventArgs e)
         {
-            Send();
+           // Send();
+            SendTest();
+        }
+        public async void SendTest()
+        {
+            foreach (var configuration in _databaseServices.LoadConfiguration())
+            {
+                if (configuration.DateTime.Day == DateTime.Now.Day )
+                {
+                    var endpoint = await _busControl.GetSendEndpoint(new Uri("http://127.0.0.1:8181/send-config"));
+                    await endpoint.Send<ConfigurationMessage>(new ConfigurationMessage
+                    {
+                        MachineId = configuration.MachineId,
+                        Timestamp = DateTime.UtcNow,
+                        MoldId = configuration.MoldId,
+                        CycleTime = configuration.CycleInjection,
+                        ProductId = configuration.ProductId
+
+                    });
+                    // post
+                    //ShiftReport shiftReport = new ShiftReport();
+                    //shiftReport.MachineId = configuration.MachineId;
+                    //shiftReport.Date = configuration.DateTime.Date;
+                    //shiftReport.TotalQuantity = configuration.Quantity;
+                    //shiftReport.ProductId = configuration.ProductId;
+                    //shiftReport.ShiftNumber = EShift.Night;
+                    //_apiServices.PostShiftReportSingle("", shiftReport);
+
+
+
+                }
+
+            }
         }
         public void Send()
         {
@@ -300,7 +368,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
                 bool check = false;
                 foreach (var item in _databaseServices.LoadEventMachine())
                 {
-                    if (item.DateTime.Date == DateTime.Now && item.NameEvent == "ca1")
+                    if (item.DateTime.Day == DateTime.Now.Day && item.NameEvent == "ca1")
                     {
                         check = true;
                     }
@@ -337,16 +405,23 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
         }
         public void AddDataGrid()
         {
-            Configuration configuration = new Configuration();
-            configuration.Quantity = Quantity;
-            configuration.Shift = 2;
-            configuration.MoldId = Mold.Id;
-            configuration.MachineId = Machine.Id;
-            configuration.ProductId = Product.Id;
-            configuration.CycleInjection = CycleInjection;
-            configuration.DateTime = DateTime.Now;
-            ListConfigurationShift2.Add(configuration);
-            AddDatabase(configuration);
+            try
+            {
+                Configuration configuration = new Configuration();
+                configuration.Quantity = Quantity;
+                configuration.Shift = 2;
+                configuration.MoldId = Mold.Id;
+                configuration.MachineId = Machine.Id;
+                configuration.ProductId = Product.Id;
+                configuration.CycleInjection = CycleInjection;
+                configuration.DateTime = DateTime.UtcNow;
+                ListConfigurationShift2.Add(configuration);
+                AddDatabase(configuration);
+            }
+            catch  {
+                CustomMessageBox.Show("Vui lòng nhập đầy đủ thông tin", " Cảnh báo", System.Windows.MessageBoxButton.OKCancel);
+            }
+
         }
         public void AddDatabase(Configuration configuration)
         {
