@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:components="clr-namespace:MayEpCHADesktopApp.Resources.Components"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:prism="http://prismlibrary.com/" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:Converter="clr-namespace:MayEpCHADesktopApp.Core.ValueConverter;assembly=MayEpCHADesktopApp.Core"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -26,68 +27,18 @@
              >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.55*"/>
+            <RowDefinition Height="0*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <materialDesign:Card Grid.Row="0"
                              x:Name="gr"
                              Margin="5 5 5 5 ">
-            <StackPanel Orientation="Horizontal">
-                <Grid>
-                    <Button Style="{DynamicResource MaterialDesignRaisedButton}"
-                        Background="#FF00294D"                                           
-                        FontSize="25"
-                        Margin="10 3 10 5 "
-                        Content="Ca 7:00 đến 19:00"
-                        Command="{Binding Shift1}"
-                        Width="{Binding ElementName=gr , Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.2}"
-                        Height="{Binding ElementName=gr, Path= ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.85}"
-                                  >
-                    </Button>
-                    <Button Style="{DynamicResource MaterialDesignRaisedButton}"
-                        Background="DeepSkyBlue"                                           
-                        FontSize="25"
-                        Margin="10 3 10 5 "
-                        Content="Ca 7:00 đến 19:00"
-                        Visibility="{Binding IsShift1, Converter={StaticResource BooleanToVisibilityConverter}}"
-                        Width="{Binding ElementName=gr , Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.20}"
-                        Height="{Binding ElementName=gr, Path= ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.85}"
-                                  >
-                    </Button>
-                </Grid>
-                <Grid>
-                    <Button Style="{DynamicResource MaterialDesignRaisedButton}"
-                        Background="#FF00294D"                                           
-                        FontSize="25"
-                        Margin="10 3 10 3 "
-                        Content="Ca 19:00 đến 7:00"
-                        Command="{Binding Shift2}"
-                        Width="{Binding ElementName=gr , Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.2}"
-                        Height="{Binding ElementName=gr, Path= ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.85}"
-                        
-                                  >
-                        
-                    </Button>
-                    <Button Style="{DynamicResource MaterialDesignRaisedButton}"
-                        Background="DeepSkyBlue"                                           
-                        FontSize="25"
-                        Margin="10 3 10 3 "
-                        Content="Ca 19:00 đến 7:00"
-                        Visibility="{Binding IsShift2, Converter={StaticResource BooleanToVisibilityConverter}}"
-                        Width="{Binding ElementName=gr , Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.2}"
-                        Height="{Binding ElementName=gr, Path= ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.85}"
-                        
-                                  >
-                    </Button>
-                </Grid>
-              
-               
-            </StackPanel>
+         
         </materialDesign:Card>
         <materialDesign:Card Grid.Row="1"
                              Margin="5 10 5 5">
             <Grid>
-                <Grid Visibility="{Binding IsShift1, Converter={StaticResource BooleanToVisibilityConverter}}" >
+                <!--<Grid Visibility="{Binding IsShift1, Converter={StaticResource BooleanToVisibilityConverter}}" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1.5*"/>
                         <RowDefinition Height="0.08*"/>
@@ -277,7 +228,7 @@
                 HorizontalAlignment="Center"
                  Height="{Binding ElementName=Griddata, Path=ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.95}"
                   >
-                            <!-- Font Color/ Type of Column Headings -->
+                            --><!-- Font Color/ Type of Column Headings --><!--
                             <DataGrid.Resources>
 
                                 <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -430,13 +381,13 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </materialDesign:Card>
-                </Grid>
-                <Grid Visibility="{Binding IsShift2, Converter={StaticResource BooleanToVisibilityConverter}}" >
+                </Grid>-->
+                <Grid Visibility="Visible" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1.5*"/>
                         <RowDefinition Height="0.08*"/>
-                        <RowDefinition Height="4*"/>
-                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="11*"/>
                     </Grid.RowDefinitions>
                     <materialDesign:Card Grid.Row="0" Margin="0 2 0 2">
                         <Grid>
@@ -509,8 +460,11 @@
                                   materialDesign:HintAssist.Hint="Chọn máy"
                                   FontSize="25"
                               HorizontalAlignment="Right"
+                              ItemsSource="{Binding ListMachine}"
+                               DisplayMemberPath="Id"
+                                 SelectedItem="{Binding Machine}"
                               Height="{Binding ElementName=Gr2, Path=ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.65}">
-
+                                
                                     </ComboBox>
                                 </Grid>
                                 <Grid Grid.Row="2" >
@@ -524,11 +478,14 @@
                            ></Label>
                                     <ComboBox Padding="20 4 5 6"
                               Width="250"
+                                 ItemsSource="{Binding ListProduct}"
+                                 SelectedItem="{Binding Product}"
+                                 DisplayMemberPath="Id"
                                   materialDesign:HintAssist.Hint="Chọn mã"
                                   FontSize="25"
                               HorizontalAlignment="Right"
                               Height="{Binding ElementName=Gr3, Path=ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.65}">
-
+                                    
                                     </ComboBox>
                                 </Grid>
                             </Grid>
@@ -552,6 +509,9 @@
                               Width="250"
                                   materialDesign:HintAssist.Hint="Chọn mã"
                                   FontSize="25"
+                                   DisplayMemberPath="Id"
+                                  ItemsSource="{Binding ListMold}"
+                                  SelectedItem="{Binding Mold}"
                               HorizontalAlignment="Right"
                               Height="{Binding ElementName=Gr1, Path=ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.65}">
 
@@ -566,14 +526,20 @@
                            HorizontalAlignment="Left"
                            VerticalContentAlignment="Center"
                            ></Label>
-                                    <ComboBox Padding="20 4 5 6"
+                                    <TextBox Padding="20 4 5 6"
                                   FontSize="25"
                               Width="250"
+                               Text="{Binding CycleInjection, UpdateSourceTrigger=PropertyChanged}"
                               HorizontalAlignment="Right"
                               materialDesign:HintAssist.Hint="Chu kì ép"
                               Height="{Binding ElementName=Gr2, Path=ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.65}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <prism:InvokeCommandAction Command="{Binding TextChangedCommand}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
 
-                                    </ComboBox>
+                                    </TextBox>
                                 </Grid>
                                 <Grid Grid.Row="2">
                                     <Label Content="Số lượng:"
@@ -585,8 +551,9 @@
                            VerticalContentAlignment="Center"
                            ></Label>
                                     <TextBox Style="{x:Null}"
-                                             Text="55"
+                                             Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}"
                                              Padding="20 10 5 -5"
+                                             FontSize="25"
                               Width="250"
                               BorderThickness="1"
                               HorizontalAlignment="Right"
@@ -598,21 +565,35 @@
                             <StackPanel  Grid.Column="2">
                                 <Button
                     Style="{StaticResource MaterialDesignRaisedButton}"
-                    Margin="30 10"
+                    Margin="30 0 30 10"
                     Height="60"
                     Width="200"
+                    Command="{Binding ClearCommandShift2}"
                     Background="#FF00294D"
                     FontSize="25">
-                                    Xác Nhận
+                                    Reset
                                 </Button>
                                 <Button
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     Margin="30 0"
                     Height="60"
+                    Command="{Binding DeleteCommandShift2}"
                     Width="200"
+                                    
                     Background="#FF00294D"
                     FontSize="25">
-                                    Chỉnh Sửa
+                                    Xóa
+                                </Button>
+                                <Button
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Margin="30 10"
+                    Height="60"
+                    Command="{Binding AddCommandShift2}"
+                    Width="200"
+                                    
+                    Background="#FF00294D"
+                    FontSize="25">
+                                    Xác nhận
                                 </Button>
                             </StackPanel>
                         </Grid>
@@ -621,8 +602,13 @@
 
                         <DataGrid 
                  Style="{StaticResource DataGrid}" 
-                 Width="{Binding ElementName=Griddata, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.98}"
+                 Width="{Binding ElementName =gr , Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.99}"
                 HorizontalAlignment="Center"
+                                RowBackground="#FFBAD3E0"
+                                AlternatingRowBackground="#E4F0FF"
+                                IsReadOnly="True"
+                            SelectedItem="{Binding ConfigurationSelect}"
+                            ItemsSource="{Binding ListConfigurationShift2}"
                  Height="{Binding ElementName=Griddata, Path=ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.95}"
                   >
                             <!-- Font Color/ Type of Column Headings -->
@@ -658,7 +644,7 @@
 
                             </DataGrid.CellStyle>
                             <DataGrid.Columns>
-                                <DataGridTextColumn  Width="200" Binding="{Binding employeeID}">
+                                <!--<DataGridTextColumn  Width="200" Binding="{Binding Shift}">
 
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
@@ -678,8 +664,8 @@
                                             <Setter Property="IsEnabled" Value="False"></Setter>
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="Employee Name" Width="200" Binding="{Binding employeeName}">
+                                </DataGridTextColumn>-->
+                                <DataGridTextColumn Header="Employee Name" Width="240" Binding="{Binding MachineId}">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <StackPanel Margin="2 4 2 2" Orientation="Horizontal">
@@ -694,12 +680,15 @@
                                     </DataGridTextColumn.Foreground>
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
+                                            <Setter Property="FontSize" Value="22"></Setter>
+                                            <Setter Property="Height" Value="25"/>
                                             <Setter Property="HorizontalAlignment" Value="Center" />
                                             <Setter Property="Background" Value="Transparent"></Setter>
+                                            <Setter Property="IsEnabled" Value="False"></Setter>
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="Employee Adress" Width="200" Binding="{Binding employeeAdress}">
+                                <DataGridTextColumn Header="Employee Adress" Width="240" Binding="{Binding MoldId}">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <StackPanel Margin="2 4 2 2" Orientation="Horizontal">
@@ -713,12 +702,15 @@
                                     </DataGridTextColumn.Foreground>
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
+                                            <Setter Property="FontSize" Value="22"></Setter>
+                                            <Setter Property="Height" Value="25"/>
                                             <Setter Property="HorizontalAlignment" Value="Center" />
                                             <Setter Property="Background" Value="Transparent"></Setter>
+                                            <Setter Property="IsEnabled" Value="False"></Setter>
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="Employee City" Width="200" Binding="{Binding employeeCity}">
+                                <DataGridTextColumn Header="Employee City" Width="240" Binding="{Binding CycleInjection}">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <StackPanel Margin="2 4 2 2" Orientation="Horizontal">
@@ -732,12 +724,15 @@
                                     </DataGridTextColumn.Foreground>
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
+                                            <Setter Property="FontSize" Value="22"></Setter>
+                                            <Setter Property="Height" Value="25"/>
                                             <Setter Property="HorizontalAlignment" Value="Center" />
                                             <Setter Property="Background" Value="Transparent"></Setter>
+                                            <Setter Property="IsEnabled" Value="False"></Setter>
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="Employee State" Width="200" Binding="{Binding employeeState}">
+                                <DataGridTextColumn Header="Employee State" Width="240" Binding="{Binding ProductId}">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <StackPanel Margin="2 4 2 2" Orientation="Horizontal">
@@ -751,12 +746,15 @@
                                     </DataGridTextColumn.Foreground>
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
+                                            <Setter Property="FontSize" Value="22"></Setter>
+                                            <Setter Property="Height" Value="25"/>
                                             <Setter Property="HorizontalAlignment" Value="Center" />
                                             <Setter Property="Background" Value="Transparent"></Setter>
+                                            <Setter Property="IsEnabled" Value="False"></Setter>
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="Employee State" Width="200" Binding="{Binding employeeState}">
+                                <DataGridTextColumn Header="Employee State" Width="240" Binding="{Binding Quantity}">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <StackPanel Margin="2 4 2 2" Orientation="Horizontal">
@@ -770,8 +768,11 @@
                                     </DataGridTextColumn.Foreground>
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
+                                            <Setter Property="FontSize" Value="22"></Setter>
+                                            <Setter Property="Height" Value="25"/>
                                             <Setter Property="HorizontalAlignment" Value="Center" />
                                             <Setter Property="Background" Value="Transparent"></Setter>
+                                            <Setter Property="IsEnabled" Value="False"></Setter>
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>

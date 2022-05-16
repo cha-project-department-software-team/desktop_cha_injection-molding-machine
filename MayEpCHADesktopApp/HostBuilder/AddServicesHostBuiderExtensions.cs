@@ -18,6 +18,7 @@ namespace MayEpCHADesktopApp.HostBuilder
 
             {
                 services.AddSingleton<IApiServices,ApiServices>();
+                services.AddSingleton<IDatabaseServices, DatabaseService>();
 
             });
 

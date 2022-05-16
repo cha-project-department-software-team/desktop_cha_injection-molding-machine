@@ -16,6 +16,7 @@ namespace MayEpCHADesktopApp.Core.Services.Interfaces
          Task<ObservableCollection<Machine>> GetMachineTotal(string auth);
          Task<ObservableCollection<ShiftReport>> GetShiftReportTotal(string auth);
          Task PostShiftReport(string auth, ObservableCollection<ShiftReport> ListShiftReport);
+        Task PostShiftReportSingle(string auth, ShiftReport shiftReport );
 
     }
 }

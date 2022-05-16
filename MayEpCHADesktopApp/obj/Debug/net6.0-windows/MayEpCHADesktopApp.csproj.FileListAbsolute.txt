@@ -182,3 +182,5 @@ D:\SISTRAIN\WPF\App SISTRAIN\Offical\MayEpCHADesktopApp\obj\Debug\net6.0-windows
 D:\SISTRAIN\WPF\App SISTRAIN\Offical\MayEpCHADesktopApp\obj\Debug\net6.0-windows\MayEpCHADesktopApp.pdb
 D:\SISTRAIN\WPF\App SISTRAIN\Offical\MayEpCHADesktopApp\obj\Debug\net6.0-windows\MayEpCHADesktopApp.genruntimeconfig.cache
 D:\SISTRAIN\WPF\App SISTRAIN\Offical\MayEpCHADesktopApp\obj\Debug\net6.0-windows\ref\MayEpCHADesktopApp.dll
+D:\SISTRAIN\WPF\App SISTRAIN\Offical\MayEpCHADesktopApp\bin\Debug\net6.0-windows\Humanizer.dll
+D:\SISTRAIN\WPF\App SISTRAIN\Offical\MayEpCHADesktopApp\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Design.dll

@@ -57,20 +57,63 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
                 OnPropertyChanged();
                if (SelectShiftReport != null)
                 {
+                    if(SelectShiftReport.Date != null)
+                    {
+                        Date = SelectShiftReport.Date;
+                    }
+                    if (SelectShiftReport.ShiftNumber != null)
+                    {
+                        Shift = (SelectShiftReport.ShiftNumber == EShift.Night) ? 0 : 1;
+                    }
+                    if (SelectShiftReport.Employee != null)
+                    {
+                        Employee = SelectShiftReport.Employee;
+                    }
+                    if (SelectShiftReport.Machine != null)
+                    {
+                        Machine = SelectShiftReport.Machine;
+                    }
+                    if (SelectShiftReport.Product.Mold != null)
+                    {
+                        Mold = SelectShiftReport.Product.Mold;
+                    }
+                    if (SelectShiftReport.Product != null)
+                    {
+                        Product = SelectShiftReport.Product;
+                    }
+                    if (SelectShiftReport.Product.Unit != null)
+                    {
+                        Unit = (SelectShiftReport.Product.Unit == EUnit.Kilogram) ? 0 : 1;
+                    }
+
+
+                    if (SelectShiftReport.TotalQuantity != null)
+                    {
+                        TotalQuantity = SelectShiftReport.TotalQuantity;
+                    }
+                    if (SelectShiftReport.StartTime!= null)
+                    {
+                        StartTime = SelectShiftReport.StartTime;
+                    }
+                    if ( SelectShiftReport.StopTime != null)
+                    {
+                        StopTime = SelectShiftReport.StopTime;
+                    }
+                    if (SelectShiftReport.WorkTime != null)
+                    {
+                        WorkTime = SelectShiftReport.WorkTime;
+                    }
+
+                    if (SelectShiftReport.PauseTime != null)
+                    {
+                        PauseTime = SelectShiftReport.PauseTime;
+                    }
+                    if (SelectShiftReport.Note != null)
+                    {
+                        Note = SelectShiftReport.Note;
+                    }
+
                     
-                    Date = SelectShiftReport.Date;
-                    Shift = (SelectShiftReport.ShiftNumber == EShift.Night) ? 0 : 1;
-                    Employee = SelectShiftReport.Employee;
-                    Machine = SelectShiftReport.Machine;
-                    Mold = SelectShiftReport.Product.Mold;
-                    Product = SelectShiftReport.Product;
-                    Unit = (SelectShiftReport.Product.Unit == EUnit.Kilogram) ? 0 : 1;
-                    TotalQuantity = SelectShiftReport.TotalQuantity;
-                    StartTime = SelectShiftReport.StartTime;
-                    StopTime = SelectShiftReport.StopTime;
-                    WorkTime = SelectShiftReport.WorkTime;
-                    PauseTime = SelectShiftReport.PauseTime;
-                    Note = SelectShiftReport.Note;
                 }
                
 
@@ -99,11 +142,13 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
         public ICommand SaveDatagridCommand { get; set; }
         public ICommand ChangeCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
+        private IDatabaseServices _databaseServices;
         private ObservableCollection<ShiftReport> listShiftReport;
         public ObservableCollection<ShiftReport> ListShiftReport { get => listShiftReport; set { listShiftReport = value; } }
-        public ReportShiftViewModel( IApiServices apiServices)
+        public ReportShiftViewModel( IApiServices apiServices, IDatabaseServices databaseServices)
         {
             _apiServices = apiServices;
+            _databaseServices = databaseServices;
             SaveExcelCommand = new RelayCommand(async () => SaveExcel());
             SaveDatagridCommand = new RelayCommand(async () => SaveDatagrid());
             ChangeCommand = new RelayCommand(async () => ChangeShiftReport());
@@ -116,7 +161,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
             GetTotalMold();
             GetTotalProduct();
             GetTotalMachinne();
-
+            Load();
         }
         private async void DeleteShiftReport()
         {
@@ -131,6 +176,65 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
                    // }
                     
                 
+            
+        }
+        private async void Load()
+        {
+            if(ListMachine != null)
+            {
+                ListMachine.Clear();
+            }
+            ListProduct = await _apiServices.GetProductTotal("");
+            ListMachine = await _apiServices.GetMachineTotal("");
+            ListMold = await _apiServices.GetMoldTotal("");
+            //  ListShiftReport.Clear();
+            try {
+                foreach (var item in _databaseServices.LoadConfiguration())
+                {
+                    ShiftReport shiftReport = new ShiftReport();
+                    shiftReport.Date = item.DateTime;
+                    shiftReport.ShiftNumber = (DateTime.Now.Hour > 7 && DateTime.Now.Hour < 11) ? EShift.Day : EShift.Night;
+                    //  shiftReport.EmployeeId = Employee.Id;
+                    //  shiftReport.Employee = Employee;
+                    shiftReport.ProductId = item.ProductId;
+                    foreach (var item1 in ListProduct)
+                    {
+                        if (item1.Id == item.ProductId)
+                        {
+                            shiftReport.Product = item1;
+                        }
+                    }
+
+                    //shiftReport.Product.Mold = Mold;
+                    shiftReport.TotalQuantity = item.Quantity;
+                    // shiftReport.StartTime = StartTime;
+                    // shiftReport.StopTime = StopTime;
+                    // shiftReport.WorkTime = WorkTime;
+                    ///  shiftReport.PauseTime = PauseTime;
+                    //   shiftReport.Note = Note;
+                    //   shiftReport.Shots = ListShot;
+                    foreach (var item1 in ListMachine)
+                    {
+                        if (item1.Id == item.MachineId)
+                        {
+                            shiftReport.Machine = item1;
+                            shiftReport.MachineId = item1.Id;
+                        }
+                    }
+
+
+                    try
+                    {
+                        ListShiftReport.Add(shiftReport);
+                        //   CustomMessageBox.Show("Thêm thành công", "Thông báo", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Asterisk);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
+            } catch ( Exception ex )
+            { }
             
         }
         private async void ChangeShiftReport()
@@ -156,6 +260,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
             CustomMessageBox.Show("Chỉnh sửa thành công", "Thông báo", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Asterisk);
 
         }
+
         private async void SaveDatagrid()
         {
             ShiftReport shiftReport = new ShiftReport();
@@ -280,6 +385,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
         public async void GetTotalMachinne()
         {
             ListMachine = await _apiServices.GetMachineTotal("");
+            
         }
     }
 

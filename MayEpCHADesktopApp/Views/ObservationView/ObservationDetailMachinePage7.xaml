@@ -60,7 +60,7 @@
                              RealCycle="{Binding CycleL10}"
                         ContentBt="{Binding ContentL10}"
                             ProductCode="{Binding ProductIdL10}"
-                                                    Animation1="{Binding AL10}"
+                           Animation1="{Binding AL10}"
                         StatusBackground="{Binding StatusL10,Converter={Converter:IntToColorConverter}}"
                             Animation2="{Binding BL10}"
                             MoldCode="{Binding MoldIdL10}"

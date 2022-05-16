@@ -57,7 +57,7 @@
                         <components:MayNho Margin="5 10"
                                            MachineNames="M28"
                                            CodeMachine="SM50"
-                                           StatusBackground="{Binding StatusBackground1}"
+                                           StatusBackground="{Binding StatusBackground}"
                                            DataContext="{Binding M28}"
                                           >
 
@@ -74,7 +74,7 @@
                         <components:MayNho Margin="5 10"
                                            MachineNames="M26"
                                            CodeMachine="MA90"
-                                           StatusBackground="{Binding StatusBackground1}"
+                                           StatusBackground="{Binding StatusBackground}"
                                            DataContext="{Binding M26}">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="LeftMouseDown">
@@ -849,7 +849,8 @@
                             <Grid Grid.Column="0" Margin="120 5 50 5"
                                   Height="230">
                                 <components:MayNho
-                                    StatusBackground="{Binding StatusBackground}"
+                                 
+                                    StatusBackground="{Binding Status,Converter={Converter:IntToColorConverter}}"
                                     DataContext="{Binding ML10}"
                                     MachineNames="L10"
                                            CodeMachine="JSW J850E-C5">
@@ -994,7 +995,7 @@
                         <ColumnDefinition Width="7*"/>
                         <ColumnDefinition Width="19*"/>
                     </Grid.ColumnDefinitions>
-                    <Rectangle Fill="Red" Height="35"
+                    <Rectangle Fill="Gray" Height="35"
                                Width="35"
                                HorizontalAlignment="Left"
                                Margin="40,0,0,0"></Rectangle>
@@ -1020,7 +1021,7 @@
                 <Grid  Width="{Binding ElementName=UObservation, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.39}"
                        Height="35"
                        Margin="0 10 0 0">
-                    <Rectangle Fill="#FFDF8010" Height="35"
+                    <Rectangle Fill="Gray" Height="35"
                                Width="35"
                                HorizontalAlignment="Left"
                                Margin="40 0"></Rectangle>
@@ -1033,7 +1034,7 @@
                 <Grid  Width="{Binding ElementName=UObservation, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.39}"
                        Height="35"
                        Margin="0 10 0 0">
-                    <Rectangle Fill="#FFBB3BDA" Height="35"
+                    <Rectangle Fill="Red" Height="35"
                                Width="35"
                                HorizontalAlignment="Left"
                                Margin="40 0"></Rectangle>

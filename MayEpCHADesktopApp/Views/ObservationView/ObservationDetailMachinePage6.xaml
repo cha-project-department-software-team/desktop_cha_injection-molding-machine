@@ -104,18 +104,18 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="L6"
-                              CycleStandard="{Binding CycleStandarL6}"
-                             RealCycle="{Binding CycleL6}"
-                        Status="{Binding StatusL6,Converter={Converter:StringtoStringStatusMachine}}"
-                            ProductCode="{Binding ProductIdL6}"
-                        Mode="{Binding ModeL6}"
-                            MoldCode="{Binding MoldIdL6}"
-                        StatusBackground="{Binding StatusL6,Converter={Converter:IntToColorConverter}}"
-                        ContentBt="{Binding ContentL6}"
-                        CountProduct="{Binding CountL6}"
-                                                    Animation1="{Binding AL6}"
-                            Animation2="{Binding BL6}"
-                        DataContext="{Binding DetailMachineViewModel3}">
+                                 CycleStandard="{Binding CycleStandarL6}"
+                                RealCycle="{Binding CycleL6}"
+                                 Status="{Binding StatusL6,Converter={Converter:StringtoStringStatusMachine}}"
+                                 ProductCode="{Binding ProductIdL6}"
+                                  Mode="{Binding ModeL6}"
+                                    MoldCode="{Binding MoldIdL6}"
+                                    StatusBackground="{Binding StatusL6,Converter={Converter:IntToColorConverter}}"
+                                    ContentBt="{Binding ContentL6}"
+                                     CountProduct="{Binding CountL6}"
+                                     Animation1="{Binding AL6}"
+                                     Animation2="{Binding BL6}"
+                                 DataContext="{Binding DetailMachineViewModel3}">
 
                     </components:MachineInformationDetail>
                 </materialDesign:Card>

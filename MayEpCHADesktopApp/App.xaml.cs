@@ -38,6 +38,7 @@ namespace MayEpCHADesktopApp
                         .AddManageViewModel()   
                         .AddReportViewModel()
                         .AddObservationViewModel()
+                        .AddDBContext()
                         .AddGRPCRead();
 
 

@@ -16,8 +16,9 @@ namespace MayEpCHADesktopApp.Core.Services
     {
         private HttpClient httpClient;
         private  HttpRequestMessage httpRequest;
-        private string token = "";
-        public  ObservableCollection<Employee> ListEmployee = new ObservableCollection<Employee>();
+       // private string Address = "https://localhost:7202/";
+        private string Address = "http://192.168.1.80:8082/";
+        public ObservableCollection<Employee> ListEmployee = new ObservableCollection<Employee>();
         public  ObservableCollection<Mold> ListMold = new ObservableCollection<Mold>();
         public ObservableCollection<Product> ListProduct = new ObservableCollection<Product>();
         public ObservableCollection<Machine> ListMachine = new ObservableCollection<Machine>();
@@ -38,7 +39,7 @@ namespace MayEpCHADesktopApp.Core.Services
                     using (httpRequest = new HttpRequestMessage())
                     {
                         httpRequest.Headers.Add("User-Agent", "Mozilla/5.0");
-                        string Url = "http://192.168.1.80:8082/api/machines";
+                        string Url = Address +"api/machines";
                         httpRequest.Method = System.Net.Http.HttpMethod.Get;
                         httpRequest.RequestUri = new Uri(Url);
                         HttpResponseMessage httpResponse = await httpClient.SendAsync(httpRequest);
@@ -65,7 +66,7 @@ namespace MayEpCHADesktopApp.Core.Services
                     using( httpRequest = new HttpRequestMessage())
                     {
                         httpRequest.Headers.Add("User-Agent", "Mozilla/5.0");
-                        string Url = "http://192.168.1.80:8082/api/employees";
+                        string Url = Address+"api/employees";
                         httpRequest.Method = System.Net.Http.HttpMethod.Get;
                         httpRequest.RequestUri = new Uri(Url);
                         HttpResponseMessage httpResponse = await httpClient.SendAsync(httpRequest);
@@ -92,7 +93,7 @@ namespace MayEpCHADesktopApp.Core.Services
                 {
                     using (httpRequest = new HttpRequestMessage())
                     {
-                        string Url = "http://192.168.1.80:8082/api/molds";
+                        string Url = Address+"api/molds";
                         httpRequest.Method = System.Net.Http.HttpMethod.Get;
                         httpRequest.RequestUri = new Uri(Url);
                         HttpResponseMessage httpResponse = await httpClient.SendAsync(httpRequest);
@@ -119,7 +120,7 @@ namespace MayEpCHADesktopApp.Core.Services
                 {
                     using (httpRequest = new HttpRequestMessage())
                     {
-                        string Url = "http://192.168.1.80:8082/api/products";
+                        string Url = Address+"api/products";
                         httpRequest.Method = System.Net.Http.HttpMethod.Get;
                         httpRequest.RequestUri = new Uri(Url);
                         HttpResponseMessage httpResponse = await httpClient.SendAsync(httpRequest);
@@ -147,7 +148,7 @@ namespace MayEpCHADesktopApp.Core.Services
                 {
                     using (httpRequest = new HttpRequestMessage())
                     {
-                        string Url = "http://192.168.1.80:8082/api/shiftreports";
+                        string Url = Address+"api/shiftreports";
                         httpRequest.Method = System.Net.Http.HttpMethod.Get;
                         httpRequest.RequestUri = new Uri(Url);
                         HttpResponseMessage httpResponse = await httpClient.SendAsync(httpRequest);
@@ -181,7 +182,7 @@ namespace MayEpCHADesktopApp.Core.Services
                 {
                     using (httpRequest = new HttpRequestMessage())
                     {
-                        string Url = "http://192.168.1.80:8082/api/shiftreports";
+                        string Url = Address+"api/shiftreports";
                         httpRequest.Method = System.Net.Http.HttpMethod.Post;
                         httpRequest.RequestUri = new Uri(Url);
                         httpRequest.Content = content;
@@ -206,6 +207,43 @@ namespace MayEpCHADesktopApp.Core.Services
             }
 
             
+        }
+        public async Task PostShiftReportSingle(string auth, ShiftReport shiftReport)
+        {
+
+            try
+            {
+                string data = JsonConvert.SerializeObject(shiftReport);
+                var content = new StringContent(data, Encoding.UTF8, "application/json");
+                using (httpClient = new HttpClient())
+                {
+                    using (httpRequest = new HttpRequestMessage())
+                    {
+                        string Url = Address + "api/shiftreports/single";
+                        httpRequest.Method = System.Net.Http.HttpMethod.Post;
+                        httpRequest.RequestUri = new Uri(Url);
+                        httpRequest.Content = content;
+                        HttpResponseMessage httpResponse = await httpClient.SendAsync(httpRequest);
+                        if (httpResponse.StatusCode == System.Net.HttpStatusCode.OK)
+                        {
+                            CustomMessageBox.Show("Gửi dữ liệu thành công", "Thông báo", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Asterisk);
+                        }
+                        else
+                        {
+                            //     CustomMessageBox.Show("Gửi dữ liệu không thành công.", "Lỗi", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Error);
+                        }
+
+                    }
+
+                }
+
+            }
+            catch
+            {
+                //   CustomMessageBox.Show("Lỗi trong quá trình gửi dữ liệu lên server!", "Cảnh bảo", System.Windows.MessageBoxButton.OKCancel, System.Windows.MessageBoxImage.Warning);
+            }
+
+
         }
     }
 }
