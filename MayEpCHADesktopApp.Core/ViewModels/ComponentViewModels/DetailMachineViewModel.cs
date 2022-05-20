@@ -1000,7 +1000,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
         public ICommand PauseCommand { get; set; }
 
         //IBusControl bus
-        //IDatabaseServices databaseServices)
+        //IDatabaseServices databaseServices
         public DetailMachineViewModel() {
             //_bus = bus;
             //_databaseServices = databaseServices;
@@ -2983,7 +2983,13 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     {
                         Content = "Tiếp tục";
 
+                        Command(new CommandMessage
+                        {
+                            MachineId = Namemachine,
+                            Timestamp = DateTime.UtcNow,
+                            Command = ECommand.ChangeMold,
 
+                        });
                         switch (Namemachine)
                         {
                             case "M1":
@@ -3160,13 +3166,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                             case "L6":
                                 AL6 = false;
                                 BL6 = true;
-                                Command(new CommandMessage
-                                {
-                                    MachineId = "L6",
-                                    Timestamp = DateTime.UtcNow,
-                                    Command = ECommand.ChangeMold,
 
-                                });
                                 ContentL6 = "Tiếp tục";
                                 break;
                             case "L7":
@@ -3185,13 +3185,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                                 ContentL9 = "Tiếp tục";
                                 break;
                             case "L10":
-                                Command(new CommandMessage
-                                {
-                                    MachineId = "L10",
-                                    Timestamp = DateTime.UtcNow,
-                                    Command = ECommand.ChangeMold,
 
-                                });
                                 AL10 = false;
                                 BL10 = true;
                                 ContentL10 = "Tiếp tục";
@@ -3221,17 +3215,33 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     if (result == MessageBoxResult.OK)
                     {
 
-                        ShiftReport shiftReport = new ShiftReport();
-                        shiftReport.MachineId = Namemachine;
-                        shiftReport.Date = DateTime.Now;
-                        if(DateTime.Now.Hour >7 && DateTime.Now.Minute < 19)
+                        //ShiftReport shiftReport = new ShiftReport();
+                        //shiftReport.MachineId = Namemachine;
+                        //shiftReport.Date = DateTime.Now;
+                        //if(DateTime.Now.Hour >7 && DateTime.Now.Minute < 19)
+                        //{
+                        //    shiftReport.TotalQuantity = (19 * 3600 - DateTime.Now.Hour * 60*60-DateTime.Now.Minute*60)/ Convert.ToInt32( Cycle );
+                        //}
+
+                        //shiftReport.ProductId = Product.Id;
+                        //shiftReport.ShiftNumber = EShift.Night;
+                        //_apiServices.PostShiftReportSingle("", shiftReport);
+                        ConfigCommand(new ConfigurationMessage
                         {
-                            shiftReport.TotalQuantity = (19 * 3600 - DateTime.Now.Hour * 60*60-DateTime.Now.Minute*60)/ Convert.ToInt32( Cycle );
-                        }
-                        
-                        shiftReport.ProductId = Product.Id;
-                        shiftReport.ShiftNumber = EShift.Night;
-                        _apiServices.PostShiftReportSingle("", shiftReport);
+                            MachineId = Namemachine,
+                            Timestamp = DateTime.UtcNow,
+                            MoldId = Mold.Id,
+                            CycleTime = Convert.ToInt32(Cycle),
+                            ProductId = Product.Id
+
+                        }); ;
+                        Command(new CommandMessage
+                        {
+                            MachineId = Namemachine,
+                            Timestamp = DateTime.UtcNow,
+                            Command = ECommand.ChangeMoldDone,
+
+                        });
 
                         Content = "Tạm dừng";
                         switch (Namemachine)
@@ -3408,23 +3418,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                                 ContentL5 = "Tạm dừng";
                                 break;
                             case "L6":
- 
-                                ConfigCommand(new ConfigurationMessage
-                                {
-                                    MachineId = "L6",
-                                    Timestamp = DateTime.UtcNow,
-                                    MoldId = Mold.Id,
-                                    CycleTime = Convert.ToInt32( Cycle ),
-                                    ProductId = Product.Id
 
-                                }); ;
-                                Command(new CommandMessage
-                                {
-                                    MachineId = "L6",
-                                    Timestamp = DateTime.UtcNow,
-                                    Command = ECommand.ChangeMoldDone,
-
-                                });
                                 AL6 = true;
                                 BL6 = false;
                                 ContentL6 = "Tạm dừng";

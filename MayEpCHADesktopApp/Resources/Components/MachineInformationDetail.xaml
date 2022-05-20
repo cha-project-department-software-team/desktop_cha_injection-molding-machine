@@ -123,8 +123,8 @@
 
             <Label Content="{Binding ElementName=infordetail, Path=MoldCode}"
                     Visibility="{Binding ElementName=infordetail, Path=Animation1, Converter={StaticResource BooleanToVisibilityConverter}}"      
-                   Padding=" 0 0 20 0"
-                   HorizontalContentAlignment="Right"
+                   Padding=" 250 0 0 0"
+                   HorizontalContentAlignment="Center"
                     FontWeight="SemiBold"
                    VerticalContentAlignment="Center"></Label>
             <ComboBox 
@@ -163,7 +163,7 @@
 
 
             <Label Content="Số lượng:"
-                   Padding=" 0 0 123 0"
+                   Padding=" 0 0 126 0"
                    
                    HorizontalContentAlignment="Right"
                    VerticalContentAlignment="Center"
@@ -299,7 +299,7 @@
                                     <StackPanel                                         
                                             Orientation="Horizontal"
                                             HorizontalAlignment="Center">
-                                        <TextBlock Margin="0 0 0 0 " Padding="0 5 2 5" Text="Nội dung " FontSize="11" ></TextBlock>
+                                        <TextBlock Margin="0 0 0 0 " Padding="0 5 2 5" Text="Thời gian " FontSize="11" ></TextBlock>
                                         <fa:FontAwesome Margin="0 4 0 0" Height="12" Width="12" Foreground="#FF68EB48" Icon="ArrowDown" ></fa:FontAwesome>
                                     </StackPanel>
                                 </DataTemplate>

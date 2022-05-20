@@ -1015,6 +1015,7 @@
       "MayEpCHADesktopApp.Core/1.0.0": {
         "dependencies": {
           "EPPlus": "6.0.3",
+          "LiveCharts.Wpf": "0.9.7",
           "MassTransit.Grpc": "8.0.1",
           "Microsoft.Data.Sqlite.Core": "6.0.5",
           "Microsoft.EntityFrameworkCore": "6.0.5",

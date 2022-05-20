@@ -700,7 +700,7 @@
                                   Height="230">
                                 <components:MayNho
                                     MachineNames="L7"
-                                    StatusBackground="{Binding StatusBackground}"
+                                    StatusBackground="Green"
                                     DataContext="{Binding ML7}"
                                            CodeMachine="JM 600-C">
                                     <i:Interaction.Triggers>
@@ -850,7 +850,7 @@
                                   Height="230">
                                 <components:MayNho
                                  
-                                    StatusBackground="{Binding Status,Converter={Converter:IntToColorConverter}}"
+                                    StatusBackground="Green"
                                     DataContext="{Binding ML10}"
                                     MachineNames="L10"
                                            CodeMachine="JSW J850E-C5">

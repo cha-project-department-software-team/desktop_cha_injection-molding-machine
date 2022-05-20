@@ -22,12 +22,12 @@ namespace MayEpCHADesktopApp.Core.Services
 
         public void ClearConfig()
         {
-            _configurationRepository.Clear();
+          //  _configurationRepository.Clear();
         }
 
         public void ClearEvent()
         {
-            _eventMachineRepository.Clear();
+            //_eventMachineRepository.Clear();
         }
 
         public void DeleteConfigAsync(Configuration configution)

@@ -12,6 +12,7 @@
       }
     ],
     "additionalProbingPaths": [
+      "C:\\Users\\Quoc Vuong\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\Quoc Vuong\\.nuget\\packages"
     ],
     "configProperties": {

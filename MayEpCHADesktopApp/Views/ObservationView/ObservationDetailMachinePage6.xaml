@@ -65,7 +65,7 @@
                         StatusBackground="{Binding StatusL4,Converter={Converter:IntToColorConverter}}"
                         CountProduct="{Binding CountL4}"
                         ContentBt="{Binding ContentL4}"
-                                                    Animation1="{Binding AL4}"
+                            Animation1="{Binding AL4}"
                             Animation2="{Binding BL4}"
                         DataContext="{Binding DetailMachineViewModel1}">
 
@@ -91,7 +91,7 @@
                         Mode="{Binding ModeL5}"
                         ContentBt="{Binding ContentL5}"
                         StatusBackground="{Binding StatusL5,Converter={Converter:IntToColorConverter}}"
-                                                    Animation1="{Binding AL5}"
+                          Animation1="{Binding AL5}"
                             Animation2="{Binding BL5}"
                         CountProduct="{Binding CountL5}"
                         DataContext="{Binding DetailMachineViewModel2}">
@@ -130,19 +130,20 @@
                 <materialDesign:Card Margin="10 10 10 5"
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
-                                MachineName="L7"
+                           MachineName="L7"
                             CycleStandard="{Binding CycleStandardL7}"
                             RealCycle="{Binding CycleL7}"
                         StatusBackground="{Binding StatusL7,Converter={Converter:IntToColorConverter}}"
                             ProductCode="{Binding ProductIdL7}"
                             MoldCode="{Binding MoldIdL7}"
                         Status="{Binding StatusL7,Converter={Converter:StringtoStringStatusMachine}}"
-                                                    Animation1="{Binding AL7}"
+                           Animation1="{Binding AL7}"
                             Animation2="{Binding BL7}"
                         ContentBt="{Binding ContentL7}"
                         Mode="{Binding ModeL7}"
                         CountProduct="{Binding CountL7}"
-                        DataContext="{Binding DetailMachineViewModel4}">
+                        DataContext="{Binding DetailMachineViewModel4}"
+                        >
 
                     </components:MachineInformationDetail>
                 </materialDesign:Card>

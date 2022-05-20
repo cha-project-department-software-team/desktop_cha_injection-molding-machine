@@ -55,7 +55,7 @@
                 <materialDesign:Card Margin="10 7.5 10 7.5"
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
-                                MachineName="L10"
+                        MachineName="L10"
                           CycleStandard="{Binding CycleStandardL10}"
                              RealCycle="{Binding CycleL10}"
                         ContentBt="{Binding ContentL10}"
@@ -67,12 +67,14 @@
                         Mode="{Binding ModeL10}"
                         Status="{Binding StatusL10,Converter={Converter:StringtoStringStatusMachine}}"
                         CountProduct="{Binding CountL10}"
-                        DataContext="{Binding DetailMachineViewModel2}">
+                        DataContext="{Binding DetailMachineViewModel2}"
+                        >
 
                     </components:MachineInformationDetail>
                 </materialDesign:Card>
             </Grid>
         </Grid>
+
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>

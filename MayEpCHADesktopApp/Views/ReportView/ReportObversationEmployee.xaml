@@ -64,6 +64,7 @@
         <Grid Grid.Row="1">
             <materialDesign:Card Margin="0 5">
                 <StackPanel Orientation="Horizontal"
+                            
                             >
                     <Button Style="{DynamicResource MaterialDesignRaisedButton}"
                                                 Background="#FF00294D"
@@ -72,6 +73,8 @@
                                                 Height="60"
                                                 FontSize="28"
                             Margin="20 0 0 0"
+                            Command="{Binding LoadChartCommand}"
+                            CommandParameter="{Binding ElementName=st1}"
                                                 >
                         Truy Xuất
                     </Button>
@@ -102,33 +105,20 @@
                              Margin="0 5 0 10">
             <ScrollViewer>
                 <Grid>
-                    <StackPanel Width="{Binding ElementName=ob, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.495}"
+                    <StackPanel Name="st1" Width="{Binding ElementName=ob, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.495}"
                         HorizontalAlignment="Left"
                         Margin="5 3 0 10">
                         <components:ChartObservate>
-
+                            
                         </components:ChartObservate>
-                        <components:ChartObservate>
 
-                        </components:ChartObservate>
-                        <components:ChartObservate>
-
-                        </components:ChartObservate>
 
 
                     </StackPanel>
-                    <StackPanel Width="{Binding ElementName=ob, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.495}"
+                    <StackPanel Name="st2"  Width="{Binding ElementName=ob, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.495}"
                         HorizontalAlignment="Right"
                         Margin="5 3 0 10">
-                        <components:ChartObservate>
 
-                        </components:ChartObservate>
-                        <components:ChartObservate>
-
-                        </components:ChartObservate>
-                        <components:ChartObservate>
-
-                        </components:ChartObservate>
 
 
                     </StackPanel>

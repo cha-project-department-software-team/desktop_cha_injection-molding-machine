@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[6.0.3, )"
             },
+            "LiveCharts.Wpf": {
+              "target": "Package",
+              "version": "[0.9.7, )"
+            },
             "MassTransit.Grpc": {
               "target": "Package",
               "version": "[8.0.1, )"

@@ -23,7 +23,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
             ListConfigurationShift2 = new ObservableCollection<Configuration>();
             _databaseServices = databaseServices;
             //xóa hết config
-            databaseServices.ClearConfig();
+            //databaseServices.ClearConfig();
             SettingsNewViewModel.ActionChangeDatabase += Load;
             Load();
         }
@@ -46,37 +46,24 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
                     }
                 }
                
-            }else if (DateTime.Now.Hour > 0 || DateTime.Now.Hour < 7) {
+            }else if (DateTime.Now.Hour > 0 || DateTime.Now.Hour < 19) {
                 foreach (var configuration in _databaseServices.LoadConfiguration())
                 {
-                  //  if ((Convert.ToInt32(configuration.DateTime.Date) == (Convert.ToInt32(DateTime.Now.Date.ToString()) - 1) && configuration.DateTime.Hour > 17 && configuration.DateTime.Hour < 19))
+                    if ((Convert.ToInt32(configuration.DateTime.Day) == (Convert.ToInt32(DateTime.Now.Day.ToString()) - 1) && configuration.DateTime.Hour > 17 && configuration.DateTime.Hour < 19)|| configuration.DateTime.Day == DateTime.Now.Day)
                     {
                         ListConfigurationShift2.Add(configuration);
                     }
                 }
             }
-            else
-            {
-                foreach (var configuration in _databaseServices.LoadConfiguration())
-                {
-                        //if((Convert.ToInt32(configuration.DateTime.Date) == (Convert.ToInt32(DateTime.Now.Date.ToString()) - 1) && configuration.DateTime.Hour > 17 && configuration.DateTime.Hour < 19) )
-                        //{
-                        //    ListConfigurationShift2.Add(configuration);
-                        //}else if(configuration.DateTime.Date == DateTime.Now.Date && configuration.DateTime.Hour >0 && configuration.DateTime.Hour < 7)
-                        //{
-                        //    ListConfigurationShift2.Add(configuration);
-                        //}
-                        ListConfigurationShift2.Add(configuration);
-                    }
-            }
-            //test neen cho hieenr thi heets
-            ListConfigurationShift2.Clear();
-            foreach (var configuration in _databaseServices.LoadConfiguration())
-            {
+
+            ////test neen cho hieenr thi heets
+            //ListConfigurationShift2.Clear();
+            //foreach (var configuration in _databaseServices.LoadConfiguration())
+            //{
                     
-                    ListConfigurationShift2.Add(configuration);
+            //        ListConfigurationShift2.Add(configuration);
                 
-            }
+            //}
 
 
         }

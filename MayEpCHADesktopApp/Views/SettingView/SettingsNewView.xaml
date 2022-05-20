@@ -459,6 +459,7 @@
                               Width="250"
                                   materialDesign:HintAssist.Hint="Chọn máy"
                                   FontSize="25"
+                             IsEditable="True"
                               HorizontalAlignment="Right"
                               ItemsSource="{Binding ListMachine}"
                                DisplayMemberPath="Id"
@@ -478,6 +479,7 @@
                            ></Label>
                                     <ComboBox Padding="20 4 5 6"
                               Width="250"
+                                IsEditable="True"
                                  ItemsSource="{Binding ListProduct}"
                                  SelectedItem="{Binding Product}"
                                  DisplayMemberPath="Id"
@@ -507,6 +509,7 @@
                            ></Label>
                                     <ComboBox Padding="20 4 5 6"
                               Width="250"
+                                  IsEditable="True"
                                   materialDesign:HintAssist.Hint="Chọn mã"
                                   FontSize="25"
                                    DisplayMemberPath="Id"
@@ -529,6 +532,7 @@
                                     <TextBox Padding="20 4 5 6"
                                   FontSize="25"
                               Width="250"
+                                             
                                Text="{Binding CycleInjection, UpdateSourceTrigger=PropertyChanged}"
                               HorizontalAlignment="Right"
                               materialDesign:HintAssist.Hint="Chu kì ép"

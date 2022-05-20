@@ -22,7 +22,7 @@
                     <chart:CartesianChart Series="{Binding ElementName=Root, Path=SeriesCollection}"
                                       LegendLocation="Right">
                         <chart:CartesianChart.AxisX>
-                            <chart:Axis Title="Real Time, Seconds" Labels="{ Binding ElementName=Root, Path=Lables}"></chart:Axis>
+                            <chart:Axis Title="Time(h)" Labels="{ Binding ElementName=Root, Path=Lables}"></chart:Axis>
                         </chart:CartesianChart.AxisX>
                         <chart:CartesianChart.AxisY>
                             <chart:Axis Title="Injection Time"  LabelFormatter="{Binding ElementName=Root, Path=yformatter}"

@@ -41,7 +41,7 @@ namespace MayEpCHADesktopApp.Resources.Components
         LineSeries LineSpeed =
         new LineSeries()
         {
-            Title = "SpeedRef",
+            Title = "Cycle Standard",
 
             PointGeometry = DefaultGeometries.Circle,
             PointForeground = Brushes.SkyBlue,
@@ -51,7 +51,7 @@ namespace MayEpCHADesktopApp.Resources.Components
         LineSeries LineData =
         new LineSeries()
         {
-            Title = "Speed Real time",
+            Title = "Cycle Injection",
 
             PointGeometry = DefaultGeometries.Circle,
             PointForeground = Brushes.SkyBlue,
@@ -61,29 +61,52 @@ namespace MayEpCHADesktopApp.Resources.Components
         public ChartObservate()
         {
             InitializeComponent();
-            Title = "Công nhân A ngày 14 tháng 4 năm 2020";
+            Title = "Nhân viên Lê Thanh Đạt ngày 18 tháng 6 năm 2022";
             SeriesCollection = new SeriesCollection();
             Data = new ChartValues<double>();
             Speed = new ChartValues<double>();
-            Lables = new[] { "0.1", "0.2", "0.3", "0.4", "0.5" };
-            yformatter = value => value.ToString();
+          Lables = new string[10] ;
+            
+        //    yformatter = value => value.ToString();
             chart();
         }
         public void chart()
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 19; i++)
             {
-                Speed.Add(20);
+                Speed.Add(30);
             }
-            Data.Add(21);
-            Data.Add(19); 
-            Data.Add(22);
-            Data.Add(21);
-            Data.Add(22);
+            Data.Add(31);
+            Data.Add(29.5); 
+            Data.Add(30);
+            Data.Add(30);
+            Data.Add(29.9);
+            Data.Add(29.9);
+            Data.Add(29.9);
+            Data.Add(30);
+            Data.Add(30);
+            Data.Add(29.8);
+            Data.Add(29.9);
+            Data.Add(29.7);
+            Data.Add(30);
+            Data.Add(30);
+            Data.Add(30);
+            Data.Add(30.2);
+            Data.Add(29.9);
+            Data.Add(30);
+            Data.Add(30);
+
+
+
             LineSpeed.Values = Data;
             LineData.Values = Speed;
             SeriesCollection.Add(LineData);
             SeriesCollection.Add(LineSpeed);
+            Lables[0] = "5";
+            Lables[1] = "5";
+            Lables[2] = "5";
+            Lables[3] = "5";
+            Lables[4] = "5";
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
