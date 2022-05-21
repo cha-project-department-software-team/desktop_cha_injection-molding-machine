@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
               xmlns:components="clr-namespace:MayEpCHADesktopApp.Resources.Components"
 
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+                 xmlns:prism="http://prismlibrary.com/" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:Converter="clr-namespace:MayEpCHADesktopApp.Core.ValueConverter;assembly=MayEpCHADesktopApp.Core"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -35,19 +36,25 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                             MachineName="M16"
-                            CycleStandard="{Binding CycleStandard16}"
-                            RealCycle="{Binding Cycle16}"
-                            ProductCode="{Binding ProductId16}"
-                            MoldCode="{Binding MoldId16}"
-                        Mode="{Binding Mode16}"
-                        Status="{Binding Status16,Converter={Converter:StringtoStringStatusMachine}}"
-                             Animation1="{Binding A16}"
-                            Animation2="{Binding B16}"
-                        ContentBt="{Binding Content16}"
-                        StatusBackground="{Binding Status16,Converter={Converter:IntToColorConverter}}"
-                        CountProduct="{Binding Count16}"
-                        DataContext="{Binding DetailMachineViewModel1}"
+                            CycleStandard="{Binding CycleStandard}"
+                            RealCycle="{Binding Cycle}"
+                            ProductCode="{Binding ProductId}"
+                            MoldCode="{Binding MoldId}"
+                            CountProduct="{Binding Count}"
+                            Animation1="{Binding A}"
+                            Animation2="{Binding B}"
+                            ContentBt="{Binding Content}"
+                            Mode="{Binding Mode}"
+                            StatusBackground="{Binding Status,Converter={Converter:IntToColorConverter}}"
+                            Status="{Binding Status,Converter={Converter:StringtoStringStatusMachine}}"
+                            DataContext="{Binding DetailMachineViewModel16}"
                         >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="ClickChangeMold">
+                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
 
                     </components:MachineInformationDetail>
                 </materialDesign:Card>
@@ -57,18 +64,25 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="M15"
-                             CycleStandard="{Binding CycleStandard15}"
-                            RealCycle="{Binding Cycle15}"
-                        CountProduct="{Binding Count15}"
-                                                    Animation1="{Binding A15}"
-                            Animation2="{Binding B15}"
-                        Mode="{Binding Mode15}"
-                        Status="{Binding Status15,Converter={Converter:StringtoStringStatusMachine}}"
-                            ProductCode="{Binding ProductId15}"
-                        StatusBackground="{Binding Status15,Converter={Converter:IntToColorConverter}}"
-                        ContentBt="{Binding Content15}"
-                            MoldCode="{Binding MoldId15}"
-                        DataContext="{Binding DetailMachineViewModel2}">
+                            CycleStandard="{Binding CycleStandard}"
+                            RealCycle="{Binding Cycle}"
+                            ProductCode="{Binding ProductId}"
+                            MoldCode="{Binding MoldId}"
+                            CountProduct="{Binding Count}"
+                            Animation1="{Binding A}"
+                            Animation2="{Binding B}"
+                            ContentBt="{Binding Content}"
+                            Mode="{Binding Mode}"
+                            StatusBackground="{Binding Status,Converter={Converter:IntToColorConverter}}"
+                            Status="{Binding Status,Converter={Converter:StringtoStringStatusMachine}}"
+                            DataContext="{Binding DetailMachineViewModel15}"
+                        >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="ClickChangeMold">
+                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
 
                     </components:MachineInformationDetail>
                 </materialDesign:Card>
@@ -84,18 +98,26 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="M14"
-                              CycleStandard="{Binding CycleStandard14}"
-                            RealCycle="{Binding Cycle14}"
-                        Status="{Binding Status14,Converter={Converter:StringtoStringStatusMachine}}"
-                        Mode="{Binding Mode14}"
-                        StatusBackground="{Binding Status14,Converter={Converter:IntToColorConverter}}"
-                        CountProduct="{Binding Count14}"
-                                                    Animation1="{Binding A14}"
-                            Animation2="{Binding B14}"
-                            ProductCode="{Binding ProductId14}"
-                        ContentBt="{Binding Content14}"
-                            MoldCode="{Binding MoldId14}"
-                        DataContext="{Binding DetailMachineViewModel3}">
+                            CycleStandard="{Binding CycleStandard}"
+                            RealCycle="{Binding Cycle}"
+                            ProductCode="{Binding ProductId}"
+                            MoldCode="{Binding MoldId}"
+                            CountProduct="{Binding Count}"
+                            Animation1="{Binding A}"
+                            Animation2="{Binding B}"
+                            ContentBt="{Binding Content}"
+                            Mode="{Binding Mode}"
+                            StatusBackground="{Binding Status,Converter={Converter:IntToColorConverter}}"
+                            Status="{Binding Status,Converter={Converter:StringtoStringStatusMachine}}"
+                            DataContext="{Binding DetailMachineViewModel14}"
+                        >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="ClickChangeMold">
+                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+
 
                     </components:MachineInformationDetail>
                 </materialDesign:Card>
@@ -105,18 +127,25 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="M13"
-                        CountProduct="{Binding Count13}"
-                        CycleStandard="{Binding CycleStandard13}"
-                        Status="{Binding Status13,Converter={Converter:StringtoStringStatusMachine}}"
-                             RealCycle="{Binding Cycle13}"
-                        Mode="{Binding Mode13}"
-                        StatusBackground="{Binding Status13,Converter={Converter:IntToColorConverter}}"
-                            ProductCode="{Binding ProductId13}"
-                            MoldCode="{Binding MoldId13}"
-                        ContentBt="{Binding Content13}"
-                                                    Animation1="{Binding A13}"
-                            Animation2="{Binding B13}"
-                        DataContext="{Binding DetailMachineViewModel4}">
+                            CycleStandard="{Binding CycleStandard}"
+                            RealCycle="{Binding Cycle}"
+                            ProductCode="{Binding ProductId}"
+                            MoldCode="{Binding MoldId}"
+                            CountProduct="{Binding Count}"
+                            Animation1="{Binding A}"
+                            Animation2="{Binding B}"
+                            ContentBt="{Binding Content}"
+                            Mode="{Binding Mode}"
+                            StatusBackground="{Binding Status,Converter={Converter:IntToColorConverter}}"
+                            Status="{Binding Status,Converter={Converter:StringtoStringStatusMachine}}"
+                            DataContext="{Binding DetailMachineViewModel13}"
+                        >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="ClickChangeMold">
+                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
 
                     </components:MachineInformationDetail>
                 </materialDesign:Card>
@@ -133,19 +162,25 @@
                     <components:MachineInformationDetail
                                 MachineName="M12"
                         
-                            CycleStandard="{Binding CycleStandard12}"
-                        Status="{Binding Status12,Converter={Converter:StringtoStringStatusMachine}}"
-                             RealCycle="{Binding Cycle12}"
-                        StatusBackground="{Binding Status12,Converter={Converter:IntToColorConverter}}"
-                        CountProduct="{Binding Count12}"
-                        Mode="{Binding Mode12}"
-                                                    Animation1="{Binding A12}"
-                            Animation2="{Binding B12}"
-                            ProductCode="{Binding ProductId12}"
-                            MoldCode="{Binding MoldId12}"
-                        ContentBt="{Binding Content12}"
+                            CycleStandard="{Binding CycleStandard}"
+                            RealCycle="{Binding Cycle}"
+                            ProductCode="{Binding ProductId}"
+                            MoldCode="{Binding MoldId}"
+                            CountProduct="{Binding Count}"
+                            Animation1="{Binding A}"
+                            Animation2="{Binding B}"
+                            ContentBt="{Binding Content}"
+                            Mode="{Binding Mode}"
+                            StatusBackground="{Binding Status,Converter={Converter:IntToColorConverter}}"
+                            Status="{Binding Status,Converter={Converter:StringtoStringStatusMachine}}"
+                            DataContext="{Binding DetailMachineViewModel12}"
+                        >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="ClickChangeMold">
+                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
 
-                        DataContext="{Binding DetailMachineViewModel5}">
 
                     </components:MachineInformationDetail>
                 </materialDesign:Card>
@@ -155,18 +190,25 @@
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
                                 MachineName="M11"
-                            CycleStandard="{Binding CycleStandard11}"
-                             RealCycle="{Binding Cycle11}"
-                            ProductCode="{Binding ProductId11}"
-                        Status="{Binding Status11,Converter={Converter:StringtoStringStatusMachine}}"
-                            MoldCode="{Binding MoldId11}"
-                            Animation1="{Binding A11}"
-                        Mode="{Binding Mode11}"
-                            Animation2="{Binding B11}"
-                        StatusBackground="{Binding Status11,Converter={Converter:IntToColorConverter}}"
-                        ContentBt="{Binding Content11}"
-                        CountProduct="{Binding Count11}"
-                        DataContext="{Binding DetailMachineViewModel6}">
+                            CycleStandard="{Binding CycleStandard}"
+                            RealCycle="{Binding Cycle}"
+                            ProductCode="{Binding ProductId}"
+                            MoldCode="{Binding MoldId}"
+                            CountProduct="{Binding Count}"
+                            Animation1="{Binding A}"
+                            Animation2="{Binding B}"
+                            ContentBt="{Binding Content}"
+                            Mode="{Binding Mode}"
+                            StatusBackground="{Binding Status,Converter={Converter:IntToColorConverter}}"
+                            Status="{Binding Status,Converter={Converter:StringtoStringStatusMachine}}"
+                            DataContext="{Binding DetailMachineViewModel11}"
+                        >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="ClickChangeMold">
+                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
 
                     </components:MachineInformationDetail
                                 >

@@ -107,10 +107,8 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
         public ICommand SwitchPage5 { get; set; }
         public ICommand SwitchPage6 { get; set; }
         public ICommand SwitchPage7 { get; set; }
-        private SolidColorBrush statusBackground;
-        public SolidColorBrush StatusBackground { get => statusBackground; set { statusBackground = value; OnPropertyChanged(); } }
-        public string Status { get => status; set { status = value; OnPropertyChanged(); } }
-        private string status { get; set; }
+
+
 
         public event Action SwitchPageDetail;
         public ObservationMachineViewModel(PageStore _PageStore)

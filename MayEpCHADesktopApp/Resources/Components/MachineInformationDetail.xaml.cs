@@ -182,18 +182,18 @@ namespace MayEpCHADesktopApp.Resources.Components
         /// <summary>
         /// /////
         /// </summary>
-        public static readonly RoutedEvent ClickEventContinue =
-            EventManager.RegisterRoutedEvent(nameof(ClickContinue), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MachineInformationDetail));
+        public static readonly RoutedEvent ClickEventChangeMold =
+            EventManager.RegisterRoutedEvent(nameof(ClickChangeMold), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MachineInformationDetail));
 
-        public event RoutedEventHandler ClickContinue
+        public event RoutedEventHandler ClickChangeMold
         {
-            add { AddHandler(ClickEventContinue, value); }
-            remove { RemoveHandler(ClickEventContinue, value); }
+            add { AddHandler(ClickEventChangeMold, value); }
+            remove { RemoveHandler(ClickEventChangeMold, value); }
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
       
-                        RaiseEvent(new RoutedEventArgs(ClickEventContinue));           
+                        RaiseEvent(new RoutedEventArgs(ClickEventChangeMold));           
             
 
         }

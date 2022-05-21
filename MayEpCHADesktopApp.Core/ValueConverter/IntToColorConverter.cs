@@ -30,16 +30,20 @@ namespace MayEpCHADesktopApp.Core.ValueConverter
                 case "3":
                     solidColorBrush = new SolidColorBrush(Colors.Gray);
                     break;
-                //OnProduction
+                //connected
                 case "4":
                     solidColorBrush = new SolidColorBrush(Colors.Green);
                     break;
-                //Idle
+                //OnProduction
                 case "5":
+                    solidColorBrush = new SolidColorBrush(Colors.Green);
+                    break;
+                //Idle
+                case "6":
                     solidColorBrush = new SolidColorBrush(Colors.Yellow);
                     break;
                 //ErrorOnGoing
-                case "6":
+                case "7":
                     solidColorBrush = new SolidColorBrush(Colors.Red);
                     break;
                 //ErrorOutGoing

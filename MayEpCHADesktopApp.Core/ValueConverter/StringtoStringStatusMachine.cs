@@ -34,16 +34,19 @@ namespace MayEpCHADesktopApp.Core.ValueConverter
                 case "3":
                     Status = "Không kết nối";
                     break;
-                //OnProduction
                 case "4":
+                    Status = "Connected";
+                    break;
+                //OnProduction
+                case "5":
                     Status = "Đang sản xuất";
                     break;
                 //Idle
-                case "5":
+                case "6":
                     Status = "Trạng thái Idle";
                     break;
                 //ErrorOnGoing
-                case "6":
+                case "7":
                     Status = "ErrorOnGoing";
                     break;
                 //ErrorOutGoing

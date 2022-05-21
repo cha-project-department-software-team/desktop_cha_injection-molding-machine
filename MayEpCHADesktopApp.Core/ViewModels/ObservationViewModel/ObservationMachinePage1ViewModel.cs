@@ -4,60 +4,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MayEpCHADesktopApp.Core.Services.Communication.Consumer;
 
 namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
 {
     public class ObservationMachinePage1ViewModel : ViewModels.BaseViewModels.BaseViewModel
     {
-        private DetailMachineViewModel _detailMachineViewModel1;
-        public DetailMachineViewModel DetailMachineViewModel1 { get => _detailMachineViewModel1; set {  _detailMachineViewModel1 = value;
-                OnPropertyChanged();
-            } }
-        private DetailMachineViewModel _detailMachineViewModel2;
-        public DetailMachineViewModel DetailMachineViewModel2
-        {
-            get => _detailMachineViewModel2; set
-            {
-                _detailMachineViewModel2 = value;
-                OnPropertyChanged();
-            }
-        }
-        private DetailMachineViewModel _detailMachineViewModel3;
-        public DetailMachineViewModel DetailMachineViewModel3
-        {
-            get => _detailMachineViewModel3; set
-            {
-                _detailMachineViewModel3 = value;
-                OnPropertyChanged();
-            }
-        }
-        private DetailMachineViewModel _detailMachineViewModel4;
-        public DetailMachineViewModel DetailMachineViewModel4
-        {
-            get => _detailMachineViewModel4; set
-            {
-                _detailMachineViewModel4 = value;
-                OnPropertyChanged();
-            }
-        }
-        private DetailMachineViewModel _detailMachineViewModel5;
-        public DetailMachineViewModel DetailMachineViewModel5
-        {
-            get => _detailMachineViewModel5; set
-            {
-                _detailMachineViewModel5 = value;
-                OnPropertyChanged();
-            }
-        }
-        private DetailMachineViewModel _detailMachineViewModel6;
-        public DetailMachineViewModel DetailMachineViewModel6
-        {
-            get => _detailMachineViewModel6; set
-            {
-                _detailMachineViewModel6 = value;
-                OnPropertyChanged();
-            }
-        }
+        private DetailMachineViewModel _detailMachineViewModel28;
+        public DetailMachineViewModel DetailMachineViewModel28 { get => _detailMachineViewModel28; set { _detailMachineViewModel28 = value; OnPropertyChanged(); } }
+        private DetailMachineViewModel _detailMachineViewModel27;
+        public DetailMachineViewModel DetailMachineViewModel27 { get => _detailMachineViewModel27; set { _detailMachineViewModel27 = value; OnPropertyChanged(); } }
+        private DetailMachineViewModel _detailMachineViewModel26;
+        public DetailMachineViewModel DetailMachineViewModel26 { get => _detailMachineViewModel26; set { _detailMachineViewModel26 = value; OnPropertyChanged(); } }
+        private DetailMachineViewModel _detailMachineViewModel25;
+        public DetailMachineViewModel DetailMachineViewModel25 { get => _detailMachineViewModel25; set { _detailMachineViewModel25 = value; OnPropertyChanged(); } }
+        private DetailMachineViewModel _detailMachineViewModel24;
+        public DetailMachineViewModel DetailMachineViewModel24 { get => _detailMachineViewModel24; set { _detailMachineViewModel24 = value; OnPropertyChanged(); } }
+        private DetailMachineViewModel _detailMachineViewModel23;
+        public DetailMachineViewModel DetailMachineViewModel23 { get => _detailMachineViewModel23; set { _detailMachineViewModel23 = value; OnPropertyChanged(); } }
         public ObservationMachinePage1ViewModel(DetailMachineViewModel detailMachineViewModel1,
                                                 DetailMachineViewModel detailMachineViewModel2,
                                                 DetailMachineViewModel detailMachineViewModel3,
@@ -66,12 +30,24 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
                                                 DetailMachineViewModel detailMachineViewModel6
             )
         {
-            DetailMachineViewModel1 = detailMachineViewModel1;
-            DetailMachineViewModel2 = detailMachineViewModel2;
-            DetailMachineViewModel3 = detailMachineViewModel3;
-            DetailMachineViewModel4 = detailMachineViewModel4;
-            DetailMachineViewModel5 = detailMachineViewModel5;
-            DetailMachineViewModel6 = detailMachineViewModel6;
+            DetailMachineViewModel28 = detailMachineViewModel1;
+            DetailMachineViewModel27 = detailMachineViewModel2;
+            DetailMachineViewModel26 = detailMachineViewModel3;
+            DetailMachineViewModel24 = detailMachineViewModel4;
+            DetailMachineViewModel23 = detailMachineViewModel5;
+            DetailMachineViewModel25 = detailMachineViewModel6;
+            CycleMessageConsumer.M28 += DetailMachineViewModel28.GetCycleMessage;
+            CycleMessageConsumer.M27 += DetailMachineViewModel27.GetCycleMessage;
+            CycleMessageConsumer.M26 += DetailMachineViewModel26.GetCycleMessage;
+            CycleMessageConsumer.M25 += DetailMachineViewModel25.GetCycleMessage;
+            CycleMessageConsumer.M24 += DetailMachineViewModel24.GetCycleMessage;
+            CycleMessageConsumer.M23 += DetailMachineViewModel23.GetCycleMessage;
+            MachineMessageConsumer.M23 += DetailMachineViewModel23.GetMachineStatus;
+            MachineMessageConsumer.M24 += DetailMachineViewModel24.GetMachineStatus;
+            MachineMessageConsumer.M25 += DetailMachineViewModel25.GetMachineStatus;
+            MachineMessageConsumer.M26 += DetailMachineViewModel26.GetMachineStatus;
+            MachineMessageConsumer.M27 += DetailMachineViewModel27.GetMachineStatus;
+            MachineMessageConsumer.M28 += DetailMachineViewModel28.GetMachineStatus;
         }
 
         
