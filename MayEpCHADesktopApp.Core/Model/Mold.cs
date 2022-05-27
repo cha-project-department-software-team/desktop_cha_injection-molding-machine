@@ -19,7 +19,7 @@ namespace MayEpCHADesktopApp.Core.Model
             ProductsPerShot = productsPerShot;
         }
 
-        private Mold()
+        public Mold()
         {
 
         }

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MayEpCHADesktopApp.Resources.Components"
              mc:Ignorable="d" 
               xmlns:chart="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-              Height="400"
+              Height="600"
              Width="600.2"
              x:Name="Root"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -19,13 +19,13 @@
                FontSize="25"
                        HorizontalAlignment="Center"></Label>
                 <Grid Margin="0 50 0 10">
-                    <chart:CartesianChart Series="{Binding ElementName=Root, Path=SeriesCollection}"
+                    <chart:CartesianChart Series="{Binding SeriesCollection}"
                                       LegendLocation="Right">
-                        <chart:CartesianChart.AxisX>
-                            <chart:Axis Title="Time(h)" Labels="{ Binding ElementName=Root, Path=Lables}"></chart:Axis>
+                        <chart:CartesianChart.AxisX >
+                            <chart:Axis Title="Time(h)" Labels="{ Binding Labels}"></chart:Axis>
                         </chart:CartesianChart.AxisX>
-                        <chart:CartesianChart.AxisY>
-                            <chart:Axis Title="Injection Time"  LabelFormatter="{Binding ElementName=Root, Path=yformatter}"
+                        <chart:CartesianChart.AxisY >
+                            <chart:Axis MaxValue="50" MinValue="10" Title="Injection Time"  LabelFormatter="{Binding yFormatter}"
                                     ></chart:Axis>
                         </chart:CartesianChart.AxisY>
                     </chart:CartesianChart>

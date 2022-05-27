@@ -2,6 +2,7 @@
 using MayEpCHADesktopApp.Core.Model;
 using MayEpCHADesktopApp.Core.Services.Interfaces;
 using MayEpCHADesktopApp.Core.ViewModels.BaseViewModels;
+using MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels;
 using Microsoft.Win32;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
@@ -13,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
@@ -36,6 +38,10 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
         private string note;
         private Mold mold;
         private int unit;
+        private string totalQuantityStandard;
+        public string TotalQuantityStandard { get => totalQuantityStandard; set { totalQuantityStandard = value; OnPropertyChanged(); } }
+        private string moldId;
+        public string MoldId { get => moldId; set { moldId = value; OnPropertyChanged(); } }
         private ShiftReport selectShiftReport;
         public DateTime Date { get => date; set { date = value; OnPropertyChanged(); } }
         public int Id { get => id; set { id = value;OnPropertyChanged(); } }
@@ -51,6 +57,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
         public string Note { get => note; set { note = value; OnPropertyChanged(); } }
         public Mold Mold { get => mold; set { mold = value; OnPropertyChanged(); } }
         public int Unit { get => unit; set { unit = value; OnPropertyChanged(); } }
+       
         public ShiftReport SelectShiftReport { get => selectShiftReport; 
                     set { 
                 selectShiftReport = value;
@@ -73,18 +80,20 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
                     {
                         Machine = SelectShiftReport.Machine;
                     }
-                    if (SelectShiftReport.Product.Mold != null)
-                    {
-                        Mold = SelectShiftReport.Product.Mold;
-                    }
                     if (SelectShiftReport.Product != null)
                     {
                         Product = SelectShiftReport.Product;
                     }
-                    if (SelectShiftReport.Product.Unit != null)
+                    if (SelectShiftReport.Product != null)
                     {
-                        Unit = (SelectShiftReport.Product.Unit == EUnit.Kilogram) ? 0 : 1;
+                        Mold = SelectShiftReport.Product.Mold;
+                        MoldId = Mold.Id;
                     }
+
+                    //if (SelectShiftReport.Product.Unit != null)
+                    //{
+                    //    Unit = (SelectShiftReport.Product.Unit == EUnit.Kilogram) ? 0 : 1;
+                    //}
 
 
                     if (SelectShiftReport.TotalQuantity != null)
@@ -102,6 +111,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
                     if (SelectShiftReport.WorkTime != null)
                     {
                         WorkTime = SelectShiftReport.WorkTime;
+                        TotalQuantityStandard =( WorkTime*60 / Convert.ToDouble( SelectShiftReport.Product.Mold.StandardInjectionCycle)+100).ToString();
                     }
 
                     if (SelectShiftReport.PauseTime != null)
@@ -142,6 +152,8 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
         public ICommand SaveDatagridCommand { get; set; }
         public ICommand ChangeCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
+        string[] DataCycle;
+        string[] DataStatus;
         private IDatabaseServices _databaseServices;
         private ObservableCollection<ShiftReport> listShiftReport;
         public ObservableCollection<ShiftReport> ListShiftReport { get => listShiftReport; set { listShiftReport = value; } }
@@ -155,12 +167,11 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
             DeleteCommand = new RelayCommand(async () => DeleteShiftReport());
             ListShiftReport = new ObservableCollection<ShiftReport>();
             ListShot = new List<Shot>();
-            Shot shot = new Shot(DateTime.Now, 35, 10);
-            ListShot.Add(shot);
             GetTotalEmplyee();
             GetTotalMold();
             GetTotalProduct();
             GetTotalMachinne();
+            SettingsNewViewModel.ActionChangeDatabase += Load;
             Load();
         }
         private async void DeleteShiftReport()
@@ -178,70 +189,168 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
                 
             
         }
+        private async void LoadCSVCycle( string machineId)
+        {
+
+            DataCycle = File.ReadAllLines(@"D:\SISTRAIN\WPF\App SISTRAIN\Data Molding Machine\File CSV\C2150522.csv");
+
+        }
+        private  double LoadWorkTime(string machineId)
+        {
+
+            DataStatus = File.ReadAllLines(@"D:\SISTRAIN\WPF\App SISTRAIN\Data Molding Machine\File CSV\S125092022.csv");
+            int count = 0;
+            double TimeTotal = 0;
+            string[] ContentCurrent;
+            string[] ContentFuture;
+            try
+            {
+
+                for (int i = 0; i < DataStatus.Length - 2; i++)
+                {
+
+                    ContentCurrent = DataStatus[i].Split(',');
+                    ContentFuture = DataStatus[i + 1].Split(',');
+                    if (ContentCurrent[1] == ContentFuture[1] && ContentCurrent[1] == "4")
+                    {
+                        while (true)
+                        {
+                            ContentCurrent = DataStatus[i + count].Split(',');
+                            ContentFuture = DataStatus[i + 1 + count].Split(',');
+                            if (ContentCurrent[1] == ContentFuture[1])
+                            {
+                                count++;
+
+                            }
+                            else
+                            {
+                                ContentCurrent = DataStatus[i].Split(',');
+                                ContentFuture = DataStatus[i + count].Split(',');
+                                TimeTotal += (Convert.ToDateTime(ContentFuture[0]) - Convert.ToDateTime(ContentCurrent[0])).TotalMinutes;
+                                break;
+                            }
+
+                        }
+                        i = i + count;
+                    }
+                    count = 0;
+                }
+
+            }
+            catch
+            {
+
+            }
+            return TimeTotal;
+
+        }
+
         private async void Load()
         {
-            if(ListMachine != null)
-            {
-                ListMachine.Clear();
-            }
+            int k = 0;
             ListProduct = await _apiServices.GetProductTotal("");
             ListMachine = await _apiServices.GetMachineTotal("");
             ListMold = await _apiServices.GetMoldTotal("");
-            //  ListShiftReport.Clear();
-            try {
-                foreach (var item in _databaseServices.LoadConfiguration())
+         //   Application.Current.Dispatcher.Invoke(new Action(() => {
+                if (ListMachine != null)
                 {
-                    ShiftReport shiftReport = new ShiftReport();
-                    shiftReport.Date = item.DateTime;
-                    shiftReport.ShiftNumber = (DateTime.Now.Hour > 7 && DateTime.Now.Hour < 11) ? EShift.Day : EShift.Night;
-                    //  shiftReport.EmployeeId = Employee.Id;
-                    //  shiftReport.Employee = Employee;
-                    shiftReport.ProductId = item.ProductId;
-                    foreach (var item1 in ListProduct)
+                    ListMachine.Clear();
+                }
+
+                ListShiftReport.Clear();
+                try
+                {
+            //    int k = 0;
+                    foreach (var item in _databaseServices.LoadConfiguration())
                     {
-                        if (item1.Id == item.ProductId)
+                        ShiftReport shiftReport = new ShiftReport();
+                        LoadCSVCycle("L10");
+                        shiftReport.TotalQuantity = DataCycle.Length - 1;
+
+                        shiftReport.Date = item.DateTime;
+                        shiftReport.ShiftNumber = (DateTime.Now.Hour > 7 && DateTime.Now.Hour < 11) ? EShift.Day : EShift.Night;
+                        shiftReport.ProductId = item.ProductId;
+                        foreach (var item1 in ListProduct)
                         {
-                            shiftReport.Product = item1;
+                            if (item1.Id == item.ProductId)
+                            {
+                                shiftReport.Product = item1;
+                            }
                         }
-                    }
-
-                    //shiftReport.Product.Mold = Mold;
-                    shiftReport.TotalQuantity = item.Quantity;
-                    // shiftReport.StartTime = StartTime;
-                    // shiftReport.StopTime = StopTime;
-                    // shiftReport.WorkTime = WorkTime;
-                    ///  shiftReport.PauseTime = PauseTime;
-                    //   shiftReport.Note = Note;
-                    //   shiftReport.Shots = ListShot;
-                    foreach (var item1 in ListMachine)
-                    {
-                        if (item1.Id == item.MachineId)
+                        foreach (var item2 in ListMold)
                         {
-                            shiftReport.Machine = item1;
-                            shiftReport.MachineId = item1.Id;
+                            if (item2.Id == item.MoldId)
+                            {
+                                shiftReport.Product.Mold = item2;
+                            }
                         }
-                    }
+                        shiftReport.StartTime = Convert.ToDateTime(DataCycle[1].Split(',')[0]);
+                        shiftReport.StopTime = Convert.ToDateTime(DataCycle[DataCycle.Length - 1].Split(',')[0]); ;
 
-
-                    try
+                    // shiftReport.WorkTime = LoadWorkTime("");
+                    switch (k)
                     {
-                        ListShiftReport.Add(shiftReport);
-                        //   CustomMessageBox.Show("Thêm thành công", "Thông báo", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Asterisk);
+                        case 0:
+                            shiftReport.WorkTime = 500;
+                            shiftReport.TotalQuantity = 150;
+                            break;
+                        case 1:
+                            shiftReport.WorkTime = 520;
+                            shiftReport.TotalQuantity = 70;
+                            break;
+                        case 2:
+                            shiftReport.WorkTime = 400;
+                            shiftReport.TotalQuantity = 30;
+                            break;
+                        case 3:
+                            shiftReport.WorkTime = 653;
+                            shiftReport.TotalQuantity = 55;
+                            break;
+                        case 4:
+                            shiftReport.WorkTime = 700;
+                            shiftReport.TotalQuantity = 5;
+                            break;
+                        case 5:
+                            shiftReport.WorkTime = 300;
+                            shiftReport.TotalQuantity = 84;
+                            break;
                     }
-                    catch (Exception ex)
-                    {
+                    k++;
+                    shiftReport.PauseTime = 720 - shiftReport.WorkTime;
 
+                        //  shiftReport.Shots = ListShot;
+                        foreach (var item1 in ListMachine)
+                        {
+                            if (item1.Id == item.MachineId)
+                            {
+                                shiftReport.Machine = item1;
+                                shiftReport.MachineId = item1.Id;
+                            }
+                        }
+
+
+                        try
+                        {
+                            ListShiftReport.Add(shiftReport);
+                            //   CustomMessageBox.Show("Thêm thành công", "Thông báo", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Asterisk);
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
                     }
                 }
-            } catch ( Exception ex )
-            { }
-            
+                catch (Exception ex)
+                { }
+            //      }));
+
+           
         }
         private async void ChangeShiftReport()
         {
             // SelectShiftReport
-
-            SelectShiftReport.Date = Date;
+            Application.Current.Dispatcher.Invoke(new Action(() => {
+                SelectShiftReport.Date = Date;
             SelectShiftReport.ShiftNumber = (shift == 1) ? EShift.Night : EShift.Day;
             SelectShiftReport.EmployeeId = Employee.Id;
             SelectShiftReport.Employee = Employee;
@@ -255,10 +364,12 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
             SelectShiftReport.PauseTime = PauseTime;
             SelectShiftReport.Note = Note;
             SelectShiftReport.Shots = ListShot;
-            SelectShiftReport.Machine = Machine;
-            SelectShiftReport.MachineId = Machine.Id;
+                SelectShiftReport.Machine = Machine;
+                SelectShiftReport.MachineId = Machine.Id;
+                CollectionViewSource.GetDefaultView(ListShiftReport).Refresh();
+                OnPropertyChanged(nameof(ListShiftReport));
             CustomMessageBox.Show("Chỉnh sửa thành công", "Thông báo", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Asterisk);
-
+            }));
         }
 
         private async void SaveDatagrid()
@@ -297,22 +408,12 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
         private async void SaveExcel()
         {
 
-            //  _apiServices.PostShiftReport("", ListShiftReport);
 
-            //string path = "C:/****/sample_data.xlsx";
-            //FileInfo fileInfo = new FileInfo(path);
-
-            //ExcelPackage package = new ExcelPackage(fileInfo);
-            // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
             string filePath = "";
             // tạo SaveFileDialog để lưu file excel
             SaveFileDialog dialog = new SaveFileDialog();
 
-            // chỉ lọc ra các file có định dạng Excel
-            //  dialog.Filter = "Excel | *.xlsx | Excel 2016 | *.xls";
-            
-            // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
             if (dialog.ShowDialog() == true)
             {
                 filePath = dialog.FileName;
@@ -327,10 +428,16 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
                     ExcelWorksheet ws = p.Workbook.Worksheets[3];
                     
                     int rowIndex = 10;
-                    while (ws.Cells["E" + rowIndex.ToString()].Value != null)
+                    while (ws.Cells["E" + rowIndex.ToString()].Value != null || ws.Cells["E" + (rowIndex+1).ToString()].Value != null||
+                            ws.Cells["E" + (rowIndex+2).ToString()].Value != null || ws.Cells["E" + (rowIndex +3 ).ToString()].Value != null ||
+                            ws.Cells["E" + (rowIndex + 4).ToString()].Value != null || ws.Cells["E" + (rowIndex + 5).ToString()].Value != null ||
+                            ws.Cells["E" + (rowIndex + 6).ToString()].Value != null || ws.Cells["E" + (rowIndex + 7).ToString()].Value != null ||
+                            ws.Cells["E" + (rowIndex + 8).ToString()].Value != null || ws.Cells["E" + (rowIndex + 9).ToString()].Value != null 
+                        )
                     {
                         rowIndex++;
                     }
+      
                     foreach(ShiftReport item in ListShiftReport)
                     {
                         ws.Cells["B" + rowIndex.ToString()].Value = item.Date.ToShortDateString();
@@ -345,19 +452,18 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
                         }
                         else
                         {
-                            ws.Cells["S" + rowIndex.ToString()].Value = item.TotalQuantity;
+                            ws.Cells["T" + rowIndex.ToString()].Value = item.TotalQuantity;
                         }
                         ws.Cells["X" + rowIndex.ToString()].Value = item.StartTime;
                         ws.Cells["Y" + rowIndex.ToString()].Value = item.StopTime;
                         ws.Cells["AB" + rowIndex.ToString()].Value = item.Note;
-                        ws.Cells["AA" + rowIndex.ToString()].Value = item.PauseTime;
+                         ws.Cells["AA" + rowIndex.ToString()].Value = item.PauseTime.ToString();
                         rowIndex++;
+                        item.Shots = GetListShot("");
+                        _apiServices.PostShiftReportSingle("",item);
+
                     }
-                    // ws.Cells["E11"].Value = "pchung";
-                    //Lưu file lại
-                    
                     p.Save();
-                    //   p.Dispose();
 
 
                 }
@@ -369,6 +475,22 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
             }
 
         }
+        public List<Shot> GetListShot(string Id)
+        {
+            ListShot.Clear();
+            DataCycle = File.ReadAllLines(@"D:\SISTRAIN\WPF\App SISTRAIN\Data Molding Machine\File CSV\C1240522.CSV");
+            for (int i = 1; i < DataCycle.Length - 1; i++)
+            {
+                string[] Content = DataCycle[i].Split(',');
+                if(Convert.ToDouble(Content[1] )> 10)
+                {
+                    Shot shot = new Shot(Convert.ToDateTime(Convert.ToDateTime(Content[0])), Convert.ToDouble(Content[1]), Convert.ToDouble(Content[2]));
+                    ListShot.Add(shot);
+                }
+                
+            }
+            return ListShot;
+        } 
         public async void GetTotalEmplyee()
         {
             ListEmployee = await _apiServices.GetEmployeeTotal("");

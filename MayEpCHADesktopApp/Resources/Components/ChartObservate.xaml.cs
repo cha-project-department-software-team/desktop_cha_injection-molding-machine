@@ -27,17 +27,17 @@ namespace MayEpCHADesktopApp.Resources.Components
         public Func<Double, string> yformatter { set; get; }
         private SeriesCollection seriesCollection;
         public SeriesCollection SeriesCollection { get => seriesCollection; set { seriesCollection = value; OnPropertyChanged(); } }
-        private string[] lables;
-        public string[] Lables { get => lables; set { lables = value; OnPropertyChanged(); } }
-        public string Title { get => title; set { title = value;OnPropertyChanged(); }  }
+        private List<string> labels;
+        public List<string> Labels { get => labels; set { labels = value; OnPropertyChanged(); } }
+        public string Title { get => title; set { title = value; OnPropertyChanged(); } }
 
         private string title;
 
-        private ChartValues<Double> data ;
+        private ChartValues<Double> data;
         public ChartValues<Double> Data { get => data; set { data = value; OnPropertyChanged(); } }
         private ChartValues<Double> speed;
         public ChartValues<Double> Speed { get => speed; set { speed = value; OnPropertyChanged(); } }
-        
+
         LineSeries LineSpeed =
         new LineSeries()
         {
@@ -65,48 +65,38 @@ namespace MayEpCHADesktopApp.Resources.Components
             SeriesCollection = new SeriesCollection();
             Data = new ChartValues<double>();
             Speed = new ChartValues<double>();
-          Lables = new string[10] ;
-            
-        //    yformatter = value => value.ToString();
+            Labels = new List<string>();
+
+            //    yformatter = value => value.ToString();
             chart();
+            this.DataContext = this;
         }
         public void chart()
         {
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Speed.Add(30);
+                Labels.Add("abc");
             }
-            Data.Add(31);
-            Data.Add(29.5); 
-            Data.Add(30);
-            Data.Add(30);
-            Data.Add(29.9);
-            Data.Add(29.9);
-            Data.Add(29.9);
-            Data.Add(30);
-            Data.Add(30);
-            Data.Add(29.8);
-            Data.Add(29.9);
-            Data.Add(29.7);
-            Data.Add(30);
-            Data.Add(30);
-            Data.Add(30);
-            Data.Add(30.2);
-            Data.Add(29.9);
-            Data.Add(30);
-            Data.Add(30);
+            //Data.Add(31);
+            //Data.Add(29.5); 
+            //Data.Add(30);
+            //Data.Add(30);
+            //Data.Add(29.9);
+
 
 
 
             LineSpeed.Values = Data;
             LineData.Values = Speed;
             SeriesCollection.Add(LineData);
+            
             SeriesCollection.Add(LineSpeed);
-            Lables[0] = "5";
-            Lables[1] = "5";
-            Lables[2] = "5";
-            Lables[3] = "5";
-            Lables[4] = "5";
+            //Lables[0] = "0.1";
+            //Lables[1] = "0.2";
+            //Lables[2] = "0.3";
+            //Lables[3] = "0.4";
+            //Lables[4] = "0.5";
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -116,5 +106,37 @@ namespace MayEpCHADesktopApp.Resources.Components
 
 
         }
+        //public SeriesCollection SeriesCollection { get; set; }
+        //public string[] Labels { get; set; }
+        //public Func<double, string> yFormatter { get; set; }
+        //public ChartObservate()
+        //{
+        //    InitializeComponent();
+        //    SeriesCollection = new SeriesCollection
+        //    {
+        //        new LineSeries
+        //        {
+        //            Title = "Series 1",
+        //            Values = new ChartValues<double> { 4, 6, 5, 2 ,4 }
+        //        },
+        //        new LineSeries
+        //        {
+        //            Title = "Series 2",
+        //            Values = new ChartValues<double> { 6, 7, 3, 4 ,6 },
+        //            PointGeometry = null
+        //        },
+        //        new LineSeries
+        //        {
+        //            Title = "Series 3",
+        //            Values = new ChartValues<double> { 4,2,7,2,7 },
+        //            PointGeometry = DefaultGeometries.Square,
+        //            PointGeometrySize = 15
+        //        }
+        //    };
+        //    this.DataContext = this;
+        //    Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May" };
+        //    yFormatter = value => value.ToString("C");
+        //}
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using MayEpCHADesktopApp.Core.Services.Communication.ModelMQTT;
+﻿using MayEpCHADesktopApp.Core.Database.ModelDatabase;
+using MayEpCHADesktopApp.Core.Model;
 using MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels;
 using System;
 using System.Collections.Generic;
@@ -32,9 +33,38 @@ namespace MayEpCHADesktopApp.Resources.Components
             InitializeComponent();
 
         }
+        public string SetCycle
+        {
+            get { return (string)GetValue(SetCycleProperty); }
+            set { SetValue(SetCycleProperty, value); OnPropertyChanged(); }
+        }
+
+        public static readonly DependencyProperty SetCycleProperty =
+            DependencyProperty.Register("SetCycle", typeof(string), typeof(MachineInformationDetail), new PropertyMetadata("00",OnChangeCycle));
+        //
+        public Product Product
+        {
+            get { return (Product)GetValue(ProductProperty); }
+            set { 
+                SetValue(ProductProperty, value); OnPropertyChanged(); }
+        }
+        static Product product = new Product("kk","kk",new Mold(),"kk",EUnit.Kilogram,56  );
+        
+        public static readonly DependencyProperty ProductProperty =
+            DependencyProperty.Register("Product", typeof(Product), typeof(MachineInformationDetail), new PropertyMetadata(product, OnChange));
+        public ObservableCollection<Product> ListProduct
+        {
+            get { return (ObservableCollection<Product>)GetValue(ListProductProperty); }
+            set { SetValue(ListProductProperty, value); OnPropertyChanged(); }
+        }
+
+        public static readonly DependencyProperty ListProductProperty =
+            DependencyProperty.Register("ListProduct", typeof(ObservableCollection<Product>), typeof(MachineInformationDetail));
+        //
+
         public string Status
         {
-            get { return (string)GetValue(StatusProperty); }
+            get { return (string)GetValue(StatusProperty);}
             set { SetValue(StatusProperty, value); OnPropertyChanged(); }
         }
 
@@ -129,6 +159,14 @@ namespace MayEpCHADesktopApp.Resources.Components
 
         public static readonly DependencyProperty CycleStandardProperty =
             DependencyProperty.Register("CycleStandard", typeof(string), typeof(MachineInformationDetail), new PropertyMetadata("50"));
+        public string SetMold
+        {
+            get { return (string)GetValue(SetMoldProperty); }
+            set { SetValue(SetMoldProperty, value); OnPropertyChanged(); }
+        }
+
+        public static readonly DependencyProperty SetMoldProperty =
+            DependencyProperty.Register("SetMold", typeof(string), typeof(MachineInformationDetail), new PropertyMetadata("50"));
         public string RealCycle
         {
             get { return (string)GetValue(RealCycleProperty); }
@@ -152,7 +190,48 @@ namespace MayEpCHADesktopApp.Resources.Components
         {
             MachineInformationDetail mc = d as MachineInformationDetail;
               mc.Tag = e.NewValue.ToString();
+         //   MessageBox.Show("ll");
              
+
+        }
+        private static void OnChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+
+            MachineInformationDetail mc = d as MachineInformationDetail;
+            try
+            {
+                if (mc.Product != null )
+                {
+                    mc.SetMold = mc.Product.Mold.Id;
+                    mc.SetCycle = mc.Product.Mold.StandardInjectionCycle.ToString();
+                   // mc.Tag = mc.MachineName+","+mc.Product.Id.ToString()+","+ mc.Product.Mold.Id.ToString()+","+ mc.SetCycle;
+                }
+            }
+            catch { }
+
+
+
+
+        }
+        private static void OnChangeCycle(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+
+            MachineInformationDetail mc = d as MachineInformationDetail;
+            try
+            {
+                if ( mc.SetCycle != null)
+                {
+                    if(mc.SetCycle != "0")
+                    {
+                        if (mc.Product != null)
+                        {
+                            mc.Tag = mc.MachineName + "," + mc.Product.Id.ToString() + "," + mc.Product.Mold.Id.ToString() + "," + mc.SetCycle;
+                        }
+                    }
+   
+                }
+            }
+            catch { }
 
         }
 
@@ -171,13 +250,13 @@ namespace MayEpCHADesktopApp.Resources.Components
         public static readonly DependencyProperty BackgroundMachineDetailProperty =
          DependencyProperty.Register("BackgroundMachineDetail", typeof(SolidColorBrush), typeof(MachineInformationDetail), new PropertyMetadata((SolidColorBrush)new BrushConverter().ConvertFrom("#96D6FF")));
         ///tạm dừng
-        public static readonly RoutedEvent ClickEventPause =
-    EventManager.RegisterRoutedEvent(nameof(ClickPause), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MachineInformationDetail));
+        public static readonly RoutedEvent ClickEventBack =
+    EventManager.RegisterRoutedEvent(nameof(ClickBack), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MachineInformationDetail));
 
-        public event RoutedEventHandler ClickPause
+        public event RoutedEventHandler ClickBack
         {
-            add { AddHandler(ClickEventPause, value); }
-            remove { RemoveHandler(ClickEventPause, value); }
+            add { AddHandler(ClickEventBack, value); }
+            remove { RemoveHandler(ClickEventBack, value); }
         }
         /// <summary>
         /// /////
@@ -194,8 +273,15 @@ namespace MayEpCHADesktopApp.Resources.Components
         {
       
                         RaiseEvent(new RoutedEventArgs(ClickEventChangeMold));           
-            
-
         }
+        private void Button1_Click(object sender, RoutedEventArgs e)
+        {
+
+            RaiseEvent(new RoutedEventArgs(ClickEventBack));
+        }
+        //
+
+
+
     }
 }

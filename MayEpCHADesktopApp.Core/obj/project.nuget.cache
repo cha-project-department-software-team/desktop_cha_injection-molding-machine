@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CowRXVluNJHxQqVjI6PSkz1AB0NpPpUKOmoSoZ6Qebsd1M7nJDWlG7pI1bHcJX4A9H6HmIxXP11YOC8iwFjW3g==",
+  "dgSpecHash": "+CBj7zWL1xnLFE+wp3i9RxbW561268wPIJvDqcm9UWLV1zCQSq9YuPcQbW7nUNCcZCMj9m/9oyzwubNzV07NmA==",
   "success": true,
-  "projectFilePath": "D:\\SISTRAIN\\WPF\\App SISTRAIN\\Offical\\MayEpCHADesktopApp.Core\\MayEpCHADesktopApp.Core.csproj",
+  "projectFilePath": "D:\\SISTRAIN\\WPF\\App SISTRAIN\\InjectionMoldingMachine\\desktop_cha_injection-molding-machine-develop\\MayEpCHADesktopApp.Core\\MayEpCHADesktopApp.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Quoc Vuong\\.nuget\\packages\\epplus\\6.0.3\\epplus.6.0.3.nupkg.sha512",
     "C:\\Users\\Quoc Vuong\\.nuget\\packages\\epplus.interfaces\\6.0.0\\epplus.interfaces.6.0.0.nupkg.sha512",

@@ -473,7 +473,7 @@
                            FontSize="25"
                            HorizontalContentAlignment="Left"
                            Width="250"
-                           Margin="20 0"
+                           Margin="20 0 20 0"
                            HorizontalAlignment="Left"
                            VerticalContentAlignment="Center"
                            ></Label>
@@ -507,18 +507,17 @@
                            VerticalContentAlignment="Center"
                            Margin="20 0"
                            ></Label>
-                                    <ComboBox Padding="20 4 5 6"
+                                    <Label Padding="20 4 5 6"
                               Width="250"
-                                  IsEditable="True"
+                                  
                                   materialDesign:HintAssist.Hint="Chọn mã"
                                   FontSize="25"
-                                   DisplayMemberPath="Id"
-                                  ItemsSource="{Binding ListMold}"
-                                  SelectedItem="{Binding Mold}"
+                                  Content="{Binding MoldId}"
+         
                               HorizontalAlignment="Right"
                               Height="{Binding ElementName=Gr1, Path=ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.65}">
 
-                                    </ComboBox>
+                                    </Label>
                                 </Grid>
                                 <Grid Grid.Row="1">
                                     <Label Content="Chu kì ép:"

@@ -31,14 +31,11 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
         private double cycleInjection;
         public Product Product { get => product; set { product = value; 
                 ProductId = Product.Id ;
-                foreach(var item in ListMold)
-                {
-                    if(item.Id == Product.MoldId)
-                    {
-                        Mold = item;
-                        CycleInjection = Mold.StandardInjectionCycle;
-                    }
-                }
+
+                        Mold = Product.Mold;
+                MoldId =  Mold.Id ; 
+                CycleInjection = Mold.StandardInjectionCycle;
+
                 
                 
                 OnPropertyChanged(); } }
@@ -75,6 +72,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
         public ObservableCollection<Configuration> ListConfigurationShift2 { get => listConfigurationShift2; set { listConfigurationShift2 = value; OnPropertyChanged(); } }
         public static Action ActionChangeDatabase { get; set; }
         #endregion var
+        public static event Action ActionLoad;
         public ICommand Shift1 { set; get; }
         public ICommand Shift2 { set; get; }
         public ICommand AddCommandShift2 { set; get; }
@@ -87,6 +85,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
         private IBusControl _busControl;
         DispatcherTimer TSendConfigShift1 = new DispatcherTimer();
         DispatcherTimer TSendConfigShift2 = new DispatcherTimer();
+        DispatcherTimer TSend = new DispatcherTimer();
         public SettingsNewViewModel(IDatabaseServices databaseServices, IApiServices apiServices, IBusControl busControl)
         {
             _databaseServices = databaseServices;
@@ -99,20 +98,24 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
             ClearCommandShift2 = new RelayCommand(async () => await Clear());
             TSendConfigShift2.Tick += ActionTimer;
             TSendConfigShift1.Tick += ActionTimer;
+
+            TSend.Tick += ActionTimer;
             GetTotalMachine();
             GetTotalMold();
             GetTotalProduct();
+            GetTotalEmployee();
             Load();
             // SendTest();
             //  Send();
             //xóa sạch database
             
             //xóa database 2 ngày trước
-           // DeleteConfig();
+            DeleteConfig();
             //chạy thực tế
             // StartTimer();
             //chạy mô phỏng
-            StartTimerTest();
+            // StartTimerTest();
+           // SendConfigToESP3219h00();
 
         }
         //chạy timer mô phỏng
@@ -125,13 +128,13 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
             if ((SetPointMinuteTime - DateTime.Now.Minute ) < 0)
             {
                 time = (SetPointHourTime - DateTime.Now.Hour - 1) * 3600 + (SetPointMinuteTime - DateTime.Now.Minute + 60) * 60 ;
-                TSendConfigShift1.Interval = TimeSpan.FromSeconds(time);
+                TSendConfigShift1.Interval = TimeSpan.FromSeconds(10);
                 TSendConfigShift1.Start();
             }
             else
             {
                 time = (SetPointHourTime - DateTime.Now.Hour ) * 3600 + (SetPointMinuteTime - DateTime.Now.Minute) * 60;
-                TSendConfigShift1.Interval = TimeSpan.FromSeconds(60);
+                TSendConfigShift1.Interval = TimeSpan.FromSeconds(10);
                 TSendConfigShift1.Start();
 
             }
@@ -202,64 +205,107 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
         //khi khởi động app hiện cái gì
         public void Load()
         {
-            if (ListConfigurationShift2 != null)
-            {
-                ListConfigurationShift2.Clear();
-            }
+            //if (ListConfigurationShift2 != null)
+            //{
+            //    ListConfigurationShift2.Clear();
+            //}
 
-            if (DateTime.Now.Hour > 19 || DateTime.Now.Hour < 24)
-            {
-
-
-                foreach (var configuration in _databaseServices.LoadConfiguration())
-                {
-                    if (configuration.DateTime.Day == DateTime.Now.Day && configuration.DateTime.Hour > 17 && configuration.DateTime.Hour < 21)
-                    {
-                        ListConfigurationShift2.Add(configuration);
-                    }
-                }
-
-            }
-            else if (DateTime.Now.Hour > 0 || DateTime.Now.Hour < 19)
-            {
-                foreach (var configuration in _databaseServices.LoadConfiguration())
-                {
-                    if ((Convert.ToInt32(configuration.DateTime.Day) == (Convert.ToInt32(DateTime.Now.Day.ToString()) - 1) && configuration.DateTime.Hour > 17 && configuration.DateTime.Hour < 19) || configuration.DateTime.Day == DateTime.Now.Day)
-                    {
-                        ListConfigurationShift2.Add(configuration);
-                    }
-                }
-            }
-
-            ////test neen cho hieenr thi heets
-            //ListConfigurationShift2.Clear();
-            //foreach (var configuration in _databaseServices.LoadConfiguration())
+            //if (DateTime.Now.Hour > 19 && DateTime.Now.Hour < 24)
             //{
 
-            //        ListConfigurationShift2.Add(configuration);
+
+            //    foreach (var configuration in _databaseServices.LoadConfiguration())
+            //    {
+            //        if (configuration.DateTime.Day == DateTime.Now.Day && configuration.DateTime.Hour > 17 && configuration.DateTime.Hour < 21)
+            //        {
+            //            ListConfigurationShift2.Add(configuration);
+            //        }
+            //    }
 
             //}
+            //else if (DateTime.Now.Hour > 0 && DateTime.Now.Hour < 19)
+            //{
+            //    foreach (var configuration in _databaseServices.LoadConfiguration())
+            //    {
+            //        if ((Convert.ToInt32(configuration.DateTime.Day) == (Convert.ToInt32(DateTime.Now.Day.ToString()) - 1) && configuration.DateTime.Hour > 17 && configuration.DateTime.Hour < 19) || configuration.DateTime.Day == DateTime.Now.Day)
+            //        {
+            //            ListConfigurationShift2.Add(configuration);
+            //        }
+            //    }
+            //}
+
+            //test neen cho hieenr thi heets
+            ListConfigurationShift2.Clear();
+            foreach (var configuration in _databaseServices.LoadConfiguration())
+            {
+
+                ListConfigurationShift2.Add(configuration);
+
+            }
 
 
         }
         //khi tới 19h
         public async void SendConfigToESP3219h00()
         {
-            
-            foreach(var configuration in _databaseServices.LoadConfiguration())
-            {
-                if(configuration.DateTime.Day == DateTime.Now.Day && configuration.DateTime.Hour > 17 && configuration.DateTime.Hour < 19)
-                {
-                    var endpoint = await _busControl.GetSendEndpoint(new Uri("http://127.0.0.1:8181/send-config"));
-                    await endpoint.Send<ConfigurationMessage>(new ConfigurationMessage
-                    {
-                        MachineId = configuration.MachineId,
-                        Timestamp = DateTime.UtcNow,
-                        MoldId = configuration.MoldId,
-                        CycleTime = configuration.CycleInjection,
-                        ProductId = configuration.ProductId
 
-                    });
+            foreach (var configuration in _databaseServices.LoadConfiguration())
+            {
+                //if(configuration.DateTime.Day == DateTime.Now.Day && configuration.DateTime.Hour > 17 && configuration.DateTime.Hour < 19)
+                if (configuration.DateTime.Day == DateTime.Now.Day && configuration.DateTime.Hour > 0 && configuration.DateTime.Hour < 19)
+                {
+                    //var endpoint = await _busControl.GetSendEndpoint(new Uri("http://127.0.0.1:8181/send-config"));
+                    //await endpoint.Send<ConfigurationMessage>(new ConfigurationMessage
+                    //{
+                    //    MachineId = configuration.MachineId,
+                    //    Timestamp = DateTime.UtcNow,
+                    //    MoldId = configuration.MoldId,
+                    //    CycleTime = configuration.CycleInjection,
+                    //    ProductId = configuration.ProductId
+
+                    //});
+                    ShiftReport shiftReport = new ShiftReport();
+                    shiftReport.Date = configuration.DateTime.Date;
+                    shiftReport.ShiftNumber = (shift == 1) ? EShift.Night : EShift.Day;
+                    //shiftReport.EmployeeId = ListEmployee[2].Id;
+                    //shiftReport.Employee = ListEmployee[2];
+                  //  shiftReport.Employee = Employee;
+                    shiftReport.ProductId = configuration.ProductId;
+                    foreach(var item in ListProduct)
+                    {
+                        if(item.Id == configuration.ProductId)
+                        {
+                            shiftReport.Product = item;
+                            foreach (var item2 in ListMold)
+                            {
+                                if(item.MoldId == item2.Id)
+                                {
+                                    shiftReport.Product.Mold = item2;
+                                }
+                            }
+                        }
+                    }
+                    
+                    
+                    shiftReport.TotalQuantity = configuration.Quantity;
+                    shiftReport.StartTime = DateTime.Now;
+                    shiftReport.StopTime = DateTime.Now;
+                    shiftReport.WorkTime = 0;
+                    shiftReport.PauseTime = 0;
+                    shiftReport.Note = "oo";
+                  //  shiftReport.Shots = ListShot;
+                    shiftReport.Machine = Machine;
+                    shiftReport.MachineId = configuration.MachineId;
+                    foreach (var item in ListMachine)
+                    {
+                        if (item.Id == configuration.MachineId)
+                        {
+                            shiftReport.Machine = item;
+                        }
+                    }
+                    shiftReport.EmployeeId = ListEmployee[2].Id;
+                    shiftReport.Employee = ListEmployee[2];
+                    _apiServices.PostShiftReportSingle("", shiftReport);
                     // post
                     //ShiftReport shiftReport = new ShiftReport();
                     //shiftReport.MachineId = configuration.MachineId;
@@ -269,10 +315,9 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
                     //shiftReport.ShiftNumber = EShift.Night;
                     //_apiServices.PostShiftReportSingle("",shiftReport);
 
-
                 }
             }
-            _databaseServices.InsertEventAsync(new EventMachine() { DateTime = DateTime.Now, NameEvent = "Ca2" });
+           // _databaseServices.InsertEventAsync(new EventMachine() { DateTime = DateTime.Now, NameEvent = "Ca2" });
         }
         public async void SendConfigToESP327h00()
         {
@@ -280,64 +325,106 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
             {
                 //if ((Convert.ToInt32( configuration.DateTime.Date) == (Convert.ToInt32(DateTime.Now.Date.ToString()) -1) && configuration.DateTime.Hour > 17 && configuration.DateTime.Hour < 19) || configuration.DateTime.Date == DateTime.Now.Date)
                 //{
-                    var endpoint = await _busControl.GetSendEndpoint(new Uri("http://127.0.0.1:8181/send-config"));
-                    await endpoint.Send<ConfigurationMessage>(new ConfigurationMessage
+                    //var endpoint = await _busControl.GetSendEndpoint(new Uri("http://127.0.0.1:8181/send-config"));
+                    //await endpoint.Send<ConfigurationMessage>(new ConfigurationMessage
+                    //{
+                    //    MachineId = configuration.MachineId,
+                    //    Timestamp = DateTime.UtcNow,
+                    //    MoldId = configuration.MoldId,
+                    //    CycleTime = configuration.CycleInjection,
+                    //    ProductId = configuration.ProductId
+
+                    //});
+                ShiftReport shiftReport = new ShiftReport();
+                shiftReport.Date = configuration.DateTime.Date;
+                shiftReport.ShiftNumber = (shift == 1) ? EShift.Night : EShift.Day;
+                shiftReport.EmployeeId = "";
+                //  shiftReport.Employee = Employee;
+                shiftReport.ProductId = configuration.ProductId;
+                foreach (var item in ListProduct)
+                {
+                    if (item.Id == configuration.ProductId)
                     {
-                        MachineId = configuration.MachineId,
-                        Timestamp = DateTime.UtcNow,
-                        MoldId = configuration.MoldId,
-                        CycleTime = configuration.CycleInjection,
-                        ProductId = configuration.ProductId
+                        shiftReport.Product = item;
+                        foreach (var item2 in ListMold)
+                        {
+                            if (item.MoldId == item2.Id)
+                            {
+                                shiftReport.Product.Mold = item2;
+                            }
+                        }
+                    }
+                }
 
-                    });
-                    //ShiftReport shiftReport = new ShiftReport();
-                    //shiftReport.MachineId = configuration.MachineId;
-                    //shiftReport.Date = configuration.DateTime;
-                    //shiftReport.TotalQuantity = configuration.Quantity;
-                    //shiftReport.ProductId = configuration.ProductId;
-                    //shiftReport.ShiftNumber = EShift.Day;
-                    //_apiServices.PostShiftReportSingle("", shiftReport);
 
-         //       }
+                shiftReport.TotalQuantity = configuration.Quantity;
+                shiftReport.StartTime = DateTime.Now;
+                shiftReport.StopTime = DateTime.Now;
+                shiftReport.WorkTime = 0;
+                shiftReport.PauseTime = 0;
+                shiftReport.Note = "";
+                //  shiftReport.Shots = ListShot;
+                shiftReport.Machine = Machine;
+                shiftReport.MachineId = configuration.MachineId;
+                foreach (var item in ListMachine)
+                {
+                    if (item.Id == configuration.MachineId)
+                    {
+                        shiftReport.Machine = item;
+                    }
+                }
+                _apiServices.PostShiftReportSingle("", shiftReport);
+
+                //ShiftReport shiftReport = new ShiftReport();
+                //shiftReport.MachineId = configuration.MachineId;
+                //shiftReport.Date = configuration.DateTime;
+                //shiftReport.TotalQuantity = configuration.Quantity;
+                //shiftReport.ProductId = configuration.ProductId;
+                //shiftReport.ShiftNumber = EShift.Day;
+                //_apiServices.PostShiftReportSingle("", shiftReport);
+
+                //       }
             }
             _databaseServices.InsertEventAsync(new EventMachine() { DateTime = DateTime.Now, NameEvent = "Ca2" });
         }
         //Xú lí khi 19h không mở áp
         public void ActionTimer(object? sender, EventArgs e)
         {
+            CustomMessageBox.Show("juhjygvjhgc");
            // Send();
             SendTest();
         }
         public async void SendTest()
         {
-            foreach (var configuration in _databaseServices.LoadConfiguration())
-            {
-                if (configuration.DateTime.Day == DateTime.Now.Day )
-                {
-                    var endpoint = await _busControl.GetSendEndpoint(new Uri("http://127.0.0.1:8181/send-config"));
-                    await endpoint.Send<ConfigurationMessage>(new ConfigurationMessage
-                    {
-                        MachineId = configuration.MachineId,
-                        Timestamp = DateTime.UtcNow,
-                        MoldId = configuration.MoldId,
-                        CycleTime = configuration.CycleInjection,
-                        ProductId = configuration.ProductId
+            //foreach (var configuration in _databaseServices.LoadConfiguration())
+            //{
+            //    if (configuration.DateTime.Day == DateTime.Now.Day )
+            //    {
+            //        var endpoint = await _busControl.GetSendEndpoint(new Uri("http://127.0.0.1:8181/send-config"));
+            //        await endpoint.Send<ConfigurationMessage>(new ConfigurationMessage
+            //        {
+            //            MachineId = configuration.MachineId,
+            //            Timestamp = DateTime.UtcNow,
+            //            MoldId = configuration.MoldId,
+            //            CycleTime = configuration.CycleInjection,
+            //            ProductId = configuration.ProductId
 
-                    });
-                    // post
-                    //ShiftReport shiftReport = new ShiftReport();
-                    //shiftReport.MachineId = configuration.MachineId;
-                    //shiftReport.Date = configuration.DateTime.Date;
-                    //shiftReport.TotalQuantity = configuration.Quantity;
-                    //shiftReport.ProductId = configuration.ProductId;
-                    //shiftReport.ShiftNumber = EShift.Night;
-                    //_apiServices.PostShiftReportSingle("", shiftReport);
+            //        });
+            //        // post
+            //        //ShiftReport shiftReport = new ShiftReport();
+            //        //shiftReport.MachineId = configuration.MachineId;
+            //        //shiftReport.Date = configuration.DateTime.Date;
+            //        //shiftReport.TotalQuantity = configuration.Quantity;
+            //        //shiftReport.ProductId = configuration.ProductId;
+            //        //shiftReport.ShiftNumber = EShift.Night;
+            //        //_apiServices.PostShiftReportSingle("", shiftReport);
 
 
 
-                }
+            //    }
 
-            }
+            //}
+            SendConfigToESP3219h00();
         }
         public void Send()
         {
@@ -379,7 +466,8 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
         }
         private Task Delete()
         {
-            if (DateTime.Now.Hour > 18 && DateTime.Now.Hour < 20)
+            //DateTime.Now.Hour > 10 && DateTime.Now.Hour < 20
+            if (true)
             {
                 try
                 {
@@ -406,7 +494,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
         }
         public void AddDataGrid()
         {
-            if (DateTime.Now.Hour > 18 && DateTime.Now.Hour < 20)
+            if (DateTime.Now.Hour > 7 && DateTime.Now.Hour < 20|| true)
             {
 
                 try
@@ -450,6 +538,11 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
         {
             ListMachine = new ObservableCollection<Machine>();
             ListMachine = await _apiServices.GetMachineTotal("");
+        }
+        public async void GetTotalEmployee()
+        {
+            ListEmployee = new ObservableCollection<Employee>();
+            ListEmployee = await _apiServices.GetEmployeeTotal("");
         }
     }
 }

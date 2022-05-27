@@ -36,12 +36,14 @@
                                                 FlowDirection="LeftToRight" 
                                                 Height="{Binding ElementName=Gr1, Path=ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.8}"
                                                 FontSize="25"
+                                                SelectedDate="{Binding DateTimeStart}"
                                                 Margin="20,0,3,0"
                                 Width="200"/>
                     <DatePicker materialDesign:HintAssist.Hint="Ngày kết thúc"
                                                 FlowDirection="LeftToRight" 
                                                 Height="{Binding ElementName=Gr1, Path=ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.8}"
                                                 FontSize="25"
+                                                SelectedDate="{Binding DateTimeStop}"
                                                 Margin="50,0,3,0"
                                 Width="200"/>
                     <Label FontSize="25"
@@ -53,7 +55,11 @@
                     <ComboBox Width="229"
                               Margin="10 0 0 0"
                               BorderThickness="1" 
+                              IsEditable="True"
                               Padding="20 5 5 5"
+                              ItemsSource="{Binding ListEmployee}"
+                              SelectedItem="{Binding Employee}"
+                              DisplayMemberPath="Id"
                                Height="{Binding ElementName=Gr1, Path=ActualHeight, Converter={Converter:SizeConverter}, ConverterParameter=0.8}"
 
                               materialDesign:HintAssist.Hint="Chọn công nhân"
@@ -105,23 +111,21 @@
                              Margin="0 5 0 10">
             <ScrollViewer>
                 <Grid>
-                    <StackPanel Name="st1" Width="{Binding ElementName=ob, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.495}"
+                    <StackPanel Name="st1" Width="{Binding ElementName=ob, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.95}"
                         HorizontalAlignment="Left"
-                        Margin="5 3 0 10">
-                        <components:ChartObservate>
-                            
-                        </components:ChartObservate>
+                        Margin="26 3 0 10">
+
 
 
 
                     </StackPanel>
-                    <StackPanel Name="st2"  Width="{Binding ElementName=ob, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.495}"
+                    <!--<StackPanel Name="st2"  Width="{Binding ElementName=ob, Path=ActualWidth, Converter={Converter:SizeConverter}, ConverterParameter=0.495}"
                         HorizontalAlignment="Right"
                         Margin="5 3 0 10">
 
 
 
-                    </StackPanel>
+                    </StackPanel>-->
 
                 </Grid>
             </ScrollViewer>

@@ -12,58 +12,12 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
 
     public class MachineViewModel : ViewModels.BaseViewModels.BaseViewModel
     {
-
-        //public string Count4 { get => count4; set { count4 = value; OnPropertyChanged(); } }
-        //private string count5 { get; set; }
-        public delegate void ReceiveCycleMessage(MachineMessage Message);
-        public static ReceiveCycleMessage Sender;
-        private CycleMessageConsumer cycleMessageConsumer;
-        public string StatusTempt;
         public string Status { get => status; set { status = value; OnPropertyChanged(); } }
         private string status { get; set; }
-        public static string Trangthai;
-
         public MachineViewModel()
         {
-           /// Sender += ReiceveStatus;
-            //Status = "7";
-            
+            Status = "3";
         }
-        //public void ReiceverAction()
-        //{
-        //    if (StatusTempt != null )
-        //    {
-        //        Status = StatusTempt;
-        //       // PreStatus = Trangthai;
-        //        //switch (Status)
-        //        //{
-        //        //    case "1":
-        //        //        StatusBackground1 = new SolidColorBrush(Colors.Red);
-        //        //        break;
-        //        //    case "2":
-        //        //        StatusBackground1 = new SolidColorBrush(Colors.Green);
-        //        //        break;
-        //        //    case "3":
-        //        //        StatusBackground1 = new SolidColorBrush(Colors.Yellow);
-        //        //        break;
-        //        //    case "4":
-        //        //        StatusBackground1 = new SolidColorBrush(Colors.GreenYellow);
-        //        //        break;
-        //        //    case "5":
-        //        //        StatusBackground1 = new SolidColorBrush(Colors.Orange);
-        //        //        break;
-        //        //    case "6":
-        //        //        StatusBackground1 = new SolidColorBrush(Colors.Purple);
-        //        //        break;
-        //        //    case "7":
-        //        //        StatusBackground1 = new SolidColorBrush(Colors.Gray);
-        //        //        break;
-        //        //}
-        //    }
-
-
-        //}
-
         public void ReiceverAction(MachineMessage machineMessage)
         {
             switch (machineMessage.MachineStatus)

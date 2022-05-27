@@ -56,9 +56,6 @@ namespace MayEpCHADesktopApp.Core.Services.Communication.Consumer
         public async Task Consume(ConsumeContext<MachineMessage> context)
         {
             var message = context.Message;
-            MachineViewModel.Sender(message);
-            DetailMachineViewModel.MachineMessage(message);
-            
 
             Display(message);
             

@@ -16,8 +16,8 @@ namespace MayEpCHADesktopApp.Core.Services
     {
         private HttpClient httpClient;
         private  HttpRequestMessage httpRequest;
-        //private string Address = "https://localhost:7202/";
-        private string Address = "http://10.84.70.81:8082/";
+        private string Address = "https://localhost:7202/";
+       // private string Address = "http://10.84.70.81:8082/";
         public ObservableCollection<Employee> ListEmployee = new ObservableCollection<Employee>();
         public  ObservableCollection<Mold> ListMold = new ObservableCollection<Mold>();
         public ObservableCollection<Product> ListProduct = new ObservableCollection<Product>();
@@ -120,7 +120,7 @@ namespace MayEpCHADesktopApp.Core.Services
                 {
                     using (httpRequest = new HttpRequestMessage())
                     {
-                        string Url = Address+"api/products";
+                        string Url = Address+"api/products/details";
                         httpRequest.Method = System.Net.Http.HttpMethod.Get;
                         httpRequest.RequestUri = new Uri(Url);
                         HttpResponseMessage httpResponse = await httpClient.SendAsync(httpRequest);
@@ -230,7 +230,7 @@ namespace MayEpCHADesktopApp.Core.Services
                         }
                         else
                         {
-                            //     CustomMessageBox.Show("Gửi dữ liệu không thành công.", "Lỗi", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Error);
+                                CustomMessageBox.Show("Gửi dữ liệu không thành công.", "Lỗi", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Error);
                         }
 
                     }

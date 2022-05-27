@@ -2641,11 +2641,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SISTRAIN\\WPF\\App SISTRAIN\\Offical\\MayEpCHADesktopApp.Core\\MayEpCHADesktopApp.Core.csproj",
+      "projectUniqueName": "D:\\SISTRAIN\\WPF\\App SISTRAIN\\InjectionMoldingMachine\\desktop_cha_injection-molding-machine-develop\\MayEpCHADesktopApp.Core\\MayEpCHADesktopApp.Core.csproj",
       "projectName": "MayEpCHADesktopApp.Core",
-      "projectPath": "D:\\SISTRAIN\\WPF\\App SISTRAIN\\Offical\\MayEpCHADesktopApp.Core\\MayEpCHADesktopApp.Core.csproj",
+      "projectPath": "D:\\SISTRAIN\\WPF\\App SISTRAIN\\InjectionMoldingMachine\\desktop_cha_injection-molding-machine-develop\\MayEpCHADesktopApp.Core\\MayEpCHADesktopApp.Core.csproj",
       "packagesPath": "C:\\Users\\Quoc Vuong\\.nuget\\packages\\",
-      "outputPath": "D:\\SISTRAIN\\WPF\\App SISTRAIN\\Offical\\MayEpCHADesktopApp.Core\\obj\\",
+      "outputPath": "D:\\SISTRAIN\\WPF\\App SISTRAIN\\InjectionMoldingMachine\\desktop_cha_injection-molding-machine-develop\\MayEpCHADesktopApp.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Quoc Vuong\\AppData\\Roaming\\NuGet\\NuGet.Config",

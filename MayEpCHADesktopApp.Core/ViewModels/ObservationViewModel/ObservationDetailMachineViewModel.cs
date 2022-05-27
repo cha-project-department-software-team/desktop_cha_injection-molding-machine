@@ -86,7 +86,6 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
         }
         private void OnCurrentViewModelChanged()
         {
-            
             OnPropertyChanged(nameof(CurrentViewModel));
         }
         private Task GoToUnit()

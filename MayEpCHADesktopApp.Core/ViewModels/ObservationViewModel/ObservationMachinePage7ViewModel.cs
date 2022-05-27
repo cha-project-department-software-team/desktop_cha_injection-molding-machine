@@ -38,6 +38,8 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
             MachineMessageConsumer.ML10 += DetailMachineViewModelL10.GetMachineStatus;
             MachineMessageConsumer.ML11 += DetailMachineViewModelL11.GetMachineStatus;
             MachineMessageConsumer.ML12 += DetailMachineViewModelL12.GetMachineStatus;
+            UaBooleanDataConsumer.ML12 += DetailMachineViewModelL12.ReiceverBoolUaAction;
+            UaIntegerDataConsumer.ML12 += DetailMachineViewModelL12.ReiceverIntUaAction;
 
         }
 

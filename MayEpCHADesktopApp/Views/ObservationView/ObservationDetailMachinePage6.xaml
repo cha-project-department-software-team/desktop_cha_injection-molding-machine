@@ -50,7 +50,10 @@
                             DataContext="{Binding DetailMachineViewModelL3}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="ClickChangeMold">
-                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}" />
+                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}"  CommandParameter="{Binding ElementName=L12}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="ClickBack">
+                                <prism:InvokeCommandAction Command="{Binding  BackCommand}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
 
@@ -70,14 +73,22 @@
                             CountProduct="{Binding Count}"
                             Animation1="{Binding A}"
                             Animation2="{Binding B}"
+                            SetMold="{Binding SetMold}"
+                            SetCycle="{Binding SetCycle}"
                             ContentBt="{Binding Content}"
+                            ListEvent="{Binding ListEvent}"
+                             ListProduct="{Binding ListProduct}"
+                            Product="{Binding Product}"
                             Mode="{Binding Mode}"
                             StatusBackground="{Binding Status,Converter={Converter:IntToColorConverter}}"
                             Status="{Binding Status,Converter={Converter:StringtoStringStatusMachine}}"
                             DataContext="{Binding DetailMachineViewModelL4}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="ClickChangeMold">
-                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}" />
+                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}"  CommandParameter="{Binding ElementName=L12}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="ClickBack">
+                                <prism:InvokeCommandAction Command="{Binding  BackCommand}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
 
@@ -95,7 +106,7 @@
                 <materialDesign:Card Margin="10 10 10 5"
                                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <components:MachineInformationDetail
-                                MachineName="L5"
+                            MachineName="L5"
                             CycleStandard="{Binding CycleStandard}"
                             RealCycle="{Binding Cycle}"
                             ProductCode="{Binding ProductId}"
@@ -103,14 +114,22 @@
                             CountProduct="{Binding Count}"
                             Animation1="{Binding A}"
                             Animation2="{Binding B}"
+                            SetMold="{Binding SetMold}"
+                            SetCycle="{Binding SetCycle}"
                             ContentBt="{Binding Content}"
+                            ListEvent="{Binding ListEvent}"
+                             ListProduct="{Binding ListProduct}"
+                            Product="{Binding Product}"
                             Mode="{Binding Mode}"
                             StatusBackground="{Binding Status,Converter={Converter:IntToColorConverter}}"
                             Status="{Binding Status,Converter={Converter:StringtoStringStatusMachine}}"
                             DataContext="{Binding DetailMachineViewModelL5}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="ClickChangeMold">
-                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}" />
+                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}"  CommandParameter="{Binding ElementName=L12}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="ClickBack">
+                                <prism:InvokeCommandAction Command="{Binding  BackCommand}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
 
@@ -130,14 +149,22 @@
                             CountProduct="{Binding Count}"
                             Animation1="{Binding A}"
                             Animation2="{Binding B}"
+                            SetMold="{Binding SetMold}"
+                            SetCycle="{Binding SetCycle}"
                             ContentBt="{Binding Content}"
+                            ListEvent="{Binding ListEvent}"
+                             ListProduct="{Binding ListProduct}"
+                            Product="{Binding Product}"
                             Mode="{Binding Mode}"
                             StatusBackground="{Binding Status,Converter={Converter:IntToColorConverter}}"
                             Status="{Binding Status,Converter={Converter:StringtoStringStatusMachine}}"
                             DataContext="{Binding DetailMachineViewModelL6}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="ClickChangeMold">
-                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}" />
+                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}"  CommandParameter="{Binding ElementName=L12}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="ClickBack">
+                                <prism:InvokeCommandAction Command="{Binding  BackCommand}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
 
@@ -163,7 +190,12 @@
                             CountProduct="{Binding Count}"
                             Animation1="{Binding A}"
                             Animation2="{Binding B}"
+                            SetMold="{Binding SetMold}"
+                            SetCycle="{Binding SetCycle}"
                             ContentBt="{Binding Content}"
+                            ListEvent="{Binding ListEvent}"
+                             ListProduct="{Binding ListProduct}"
+                            Product="{Binding Product}"
                             Mode="{Binding Mode}"
                             StatusBackground="{Binding Status,Converter={Converter:IntToColorConverter}}"
                             Status="{Binding Status,Converter={Converter:StringtoStringStatusMachine}}"
@@ -171,7 +203,10 @@
                         >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="ClickChangeMold">
-                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}" />
+                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}"  CommandParameter="{Binding ElementName=L12}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="ClickBack">
+                                <prism:InvokeCommandAction Command="{Binding  BackCommand}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
 
@@ -191,14 +226,22 @@
                             CountProduct="{Binding Count}"
                             Animation1="{Binding A}"
                             Animation2="{Binding B}"
+                            SetMold="{Binding SetMold}"
+                            SetCycle="{Binding SetCycle}"
                             ContentBt="{Binding Content}"
+                            ListEvent="{Binding ListEvent}"
+                             ListProduct="{Binding ListProduct}"
+                            Product="{Binding Product}"
                             Mode="{Binding Mode}"
                             StatusBackground="{Binding Status,Converter={Converter:IntToColorConverter}}"
                             Status="{Binding Status,Converter={Converter:StringtoStringStatusMachine}}"
                             DataContext="{Binding DetailMachineViewModelL8}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="ClickChangeMold">
-                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}" />
+                                <prism:InvokeCommandAction Command="{Binding  ChangeMoldCommand}"  CommandParameter="{Binding ElementName=L12}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="ClickBack">
+                                <prism:InvokeCommandAction Command="{Binding  BackCommand}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
 

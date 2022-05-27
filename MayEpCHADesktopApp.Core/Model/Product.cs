@@ -18,7 +18,7 @@ namespace MayEpCHADesktopApp.Core.Model
             PiecesPerKilogram = piecesPerKilogram;
         }
 
-        private Product()
+        public Product()
         {
 
         }

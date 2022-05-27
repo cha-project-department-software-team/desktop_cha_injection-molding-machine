@@ -1,6 +1,8 @@
 ﻿using ImmServiceContainers;
 using MassTransit;
 using MayEpCHADesktopApp.Core.Components;
+using MayEpCHADesktopApp.Core.Services.Communication.ModelMQTT;
+//using MayEpCHADesktopApp.Core.Database.ModelDatabase;
 using MayEpCHADesktopApp.Core.Model;
 using MayEpCHADesktopApp.Core.Services.Communication.Consumer;
 using MayEpCHADesktopApp.Core.Services.Interfaces;
@@ -15,6 +17,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Threading;
 
@@ -62,7 +65,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
         public string CycleStandard { get => cycleStandard; set { cycleStandard = value; OnPropertyChanged(); } }
 
         //
-        private string listEvent1 { get; set; }
+
 
         //
       
@@ -101,12 +104,13 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
         public ObservableCollection<Employee> ListEmployee { get => listEmployee; set { listEmployee = value; OnPropertyChanged(); } }
         private ObservableCollection<Machine> listMachine;
         public ObservableCollection<Machine> ListMachine { get => listMachine; set { listMachine = value; OnPropertyChanged(); } }
-        public delegate void ReceiveCycleMessage(CycleMessage Message);
-        public static ReceiveCycleMessage Sender;
+        private ObservableCollection<EventMachine> listEvent;
+        public ObservableCollection<EventMachine> ListEvent { get => listEvent; set { listEvent = value; OnPropertyChanged(); } }
 
-
-        public delegate void ReceiveMachineMessage(MachineMessage Message);
-        public static ReceiveMachineMessage MachineMessage;
+        private string setCycle;
+        public string SetCycle { get => setCycle; set { setCycle = value; OnPropertyChanged(); } }
+        private string setMold;
+        public string SetMold { get => setMold; set { setMold = value; OnPropertyChanged(); } }
         private Product product;
         public Product Product { get => product; set { product = value; OnPropertyChanged();
                 try {
@@ -115,6 +119,8 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                         if (Product.MoldId == item.Id)
                         {
                             Mold = item;
+                            SetMold = Mold.Id;
+                            SetCycle = Mold.StandardInjectionCycle.ToString();
                             break;
                         }
                     }
@@ -132,23 +138,24 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
         private IDatabaseServices _databaseServices;
         private IApiServices _apiServices;  
         public ICommand ChangeMoldCommand { get; set; }
-
+        public ICommand BackCommand { get; set; }
         //IBusControl bus
         //IDatabaseServices databaseServices
-        public DetailMachineViewModel(IBusControl bus, IDatabaseServices databaseServices, IApiServices apiServices) {
-            _bus = bus;
-            _databaseServices = databaseServices;
-            _apiServices = apiServices;
+        //IBusControl bus, IDatabaseServices databaseServices, IApiServices apiServices
+        public DetailMachineViewModel() {
+            //_bus = bus;
+            //_databaseServices = databaseServices;
+            //_apiServices = apiServices;
             Content = "Tạm dừng";
             Animation1 = true;
             Animation2 = false;
-            Sender = new ReceiveCycleMessage(GetCycleMessage);
-            MachineMessage = new ReceiveMachineMessage(GetMachineStatus);
             ListMold = new ObservableCollection<Mold>();
             ListMachine = new ObservableCollection<Machine>();
             ListEmployee = new ObservableCollection<Employee>();
-            GetTotalMold();
-            GetTotalProduct();
+            ListEvent = new ObservableCollection<EventMachine>();
+            //GetTotalMold();
+            //GetTotalProduct();
+            
 
             #region int
             Status = "1";
@@ -158,9 +165,18 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
 
             #endregion int
             // _apiServices = apiServices;
-            ChangeMoldCommand = new RelayObjectCommand<object>((p) => { return p == null ? false : true; }, async (p) => Pause(p));
-
+            //  ChangeMoldCommand = new RelayCommand( async () => Pause());
+            ChangeMoldCommand = new RelayObjectCommand<object>((p) => { return true; }, async (p) => Pause(p));
+            BackCommand  = new RelayCommand(async () => Back());
         }
+
+        private void Back()
+        {
+            Content = "Tạm dừng";
+            A = true;
+            B = false;
+        }
+
         public async  void Command(CommandMessage commandMessage)
         {
             var endpoint = await _bus.GetSendEndpoint(new Uri("http://127.0.0.1:8181/send-config"));
@@ -173,34 +189,54 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
         }
         public void GetMachineStatus(MachineMessage Message)
         {
+            EventMachine eventMachine = new EventMachine();
 
             switch (Message.MachineStatus)
             {
                 case EMachineStatus.PowerOff:
                     Status = "1";
+                    
+                    eventMachine.NameEvent = "Power off";
+                    eventMachine.Status = 0;
+                    eventMachine.DateTime = DateTime.UtcNow;
+                    ListEvent.Add(eventMachine);
                     break;
                 case EMachineStatus.PowerOn:
-                    Status= "2";
+                    Status = "2";
                     break;
                 case EMachineStatus.Disconnect:
                     Status = "3";
+                    
+                    eventMachine.NameEvent = "Ngắt kết nối";
+                    eventMachine.Status = 0;
+                    eventMachine.DateTime = DateTime.UtcNow;
+                    ListEvent.Add(eventMachine);
                     break;
-                case EMachineStatus.OnProduction:
+                case EMachineStatus.Connected:
                     Status = "4";
                     break;
-                case EMachineStatus.Idle:
+                case EMachineStatus.OnProduction:
                     Status = "5";
                     break;
-                case EMachineStatus.ErrorOnGoing:
+                case EMachineStatus.Idle:
                     Status = "6";
                     break;
-                case EMachineStatus.ErrorOutGoing:
+                case EMachineStatus.ErrorOnGoing:
                     Status = "7";
+                    
+                    eventMachine.NameEvent = "ErrorOnGoing";
+                    eventMachine.Status = 0;
+                    eventMachine.DateTime = DateTime.UtcNow;
+                    ListEvent.Add(eventMachine);
+                    break;
+                case EMachineStatus.ErrorOutGoing:
+                    Status = "8";
                     break;
 
             }
 
-        }   
+        }
+        public int TemptCycle;
          public  void GetCycleMessage(CycleMessage Message)
         {
 
@@ -218,20 +254,113 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
             {
                 Mode = "Bán Tự động";
             }
+
+            // if(Math.Abs((Convert.ToInt32(Cycle)-Convert.ToInt32(CycleStandard))*10) > (Convert.ToInt32(CycleStandard)) || true ){
+            Application.Current.Dispatcher.Invoke(new Action(() => {
+                EventMachine eventMachine = new EventMachine();
+                eventMachine.NameEvent = "Lỗi chu kì ép";
+                eventMachine.Status = 0;
+                eventMachine.DateTime = DateTime.UtcNow;
+                //  eventMachine.Cycle = Message.SetCycle.ToString();
+                ListEvent.Add(eventMachine);
+                CollectionViewSource.GetDefaultView(ListEvent).Refresh();
+                OnPropertyChanged("ListEvent");
+            }));
+            //EventMachine eventMachine = new EventMachine();
+            //    eventMachine.NameEvent = "Lỗi chu kì ép";
+            //    eventMachine.Status = 0;
+            //    eventMachine.DateTime = DateTime.UtcNow;
+            //   //  eventMachine.Cycle = Message.SetCycle.ToString();
+            //    ListEvent.Add(eventMachine);
+            //CollectionViewSource.GetDefaultView(ListEvent).Refresh();
+            OnPropertyChanged("ListEvent");
+            A = false;
+            B = true;
+            A = true;
+            B = false;
+            
+            //   }
+            TemptCycle = Convert.ToInt32( Cycle);
+        }
+        public void ReiceverBoolUaAction(UaBooleanData message)
+        {
+            string[] Data = message.Name.Split('.');
+            switch (Data[1])
+            {
+                case "GreenAlarm":
+                    if (message.Value)
+                    {
+                        Status = "5";
+                    }
+
+                    break;
+                case "YellowAlarm":
+                    if (message.Value)
+                    {
+                        Status = "6";
+                    }
+                    break;
+                case "RedAlarm":
+                    if (message.Value)
+                    {
+                        Status = "3";
+                    }
+                    break;
+                case "SafetyDoor":
+
+                      Status = "6";
+
+                    break;
+            }
+        }
+
+        public void ReiceverIntUaAction(UaIntegerData message)
+        {
+            string[] Data = message.Name.Split('.');
+            switch (Data[1])
+            {
+                case "LastCycle":
+                    Cycle = message.Value.ToString();
+
+                    break;
+                case "CounterShot":
+                    Count = message.Value.ToString();
+                    break;
+                    //case "bRedAlarm":
+
+                    // break;
+
+            }
+            foreach (var item in _databaseServices.LoadConfiguration())
+            {
+                if(Data[1] == item.MachineId)
+                {
+                    MoldId = item.MoldId;
+                    ProductId = item.ProductId;
+                    foreach(var item2 in listMold)
+                    {
+                        CycleStandard = item.MoldId;
+                    }
+                }
+            }
+            Application.Current.Dispatcher.Invoke(new Action(() => {
+                EventMachine eventMachine = new EventMachine();
+                eventMachine.NameEvent = "Lỗi chu kì ép";
+                eventMachine.Status = 0;
+                eventMachine.DateTime = DateTime.UtcNow;
+                //  eventMachine.Cycle = Message.SetCycle.ToString();
+                ListEvent.Add(eventMachine);
+                CollectionViewSource.GetDefaultView(ListEvent).Refresh();
+                OnPropertyChanged("ListEvent");
+            }));
         }
 
         private void Pause(object p)
         {
+            
+            string Namemachine ="L1";
+           
 
-            string Namemachine ="";
-            if (p != null)
-            {
-                Namemachine = (p as UserControl).Tag.ToString();
-            }
-            else
-            {
-                Namemachine = "M24";
-            }
             try
             {
               
@@ -242,13 +371,13 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     {
                         Content = "Tiếp tục";
 
-                        Command(new CommandMessage
-                        {
-                            MachineId = Namemachine,
-                            Timestamp = DateTime.UtcNow,
-                            Command = ECommand.ChangeMold,
+                        //Command(new CommandMessage
+                        //{
+                        //    MachineId = Namemachine,
+                        //    Timestamp = DateTime.UtcNow,
+                        //    Command = ECommand.ChangeMold,
 
-                        });
+                        //});
                         A = false;
                         B = true;
                         Content = "Tiếp tục";
@@ -261,6 +390,10 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                     MessageBoxResult result = CustomMessageBox.Show("Bạn muốn máy hoạt động với thông số đã nhập??", "Cảnh báo", MessageBoxButton.OKCancel, MessageBoxImage.Information);
                     if (result == MessageBoxResult.OK)
                     {
+                      //  MessageBox.Show(SetMold);
+                        //MessageBox.Show((p as UserControl).Tag.ToString());
+                        //MessageBox.Show(SetCycle);
+                        string[] Config = (p as UserControl).Tag.ToString().Split(',');
 
                         //ShiftReport shiftReport = new ShiftReport();
                         //shiftReport.MachineId = Namemachine;
@@ -273,23 +406,37 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                         //shiftReport.ProductId = Product.Id;
                         //shiftReport.ShiftNumber = EShift.Night;
                         //_apiServices.PostShiftReportSingle("", shiftReport);
-                        ConfigCommand(new ConfigurationMessage
-                        {
-                            MachineId = Namemachine,
-                            Timestamp = DateTime.UtcNow,
-                            MoldId = Mold.Id,
-                            CycleTime = Convert.ToInt32(Cycle),
-                            ProductId = Product.Id
+                        //ConfigCommand(new ConfigurationMessage
+                        //{
+                        //    MachineId = Config[0],
+                        //    Timestamp = DateTime.UtcNow,
+                        //    MoldId = Config[2],
+                        //    CycleTime = Convert.ToInt32(Config[3]),
+                        //    ProductId = Config[1]
 
-                        }); ;
-                        Command(new CommandMessage
-                        {
-                            MachineId = Namemachine,
-                            Timestamp = DateTime.UtcNow,
-                            Command = ECommand.ChangeMoldDone,
+                        //}); ;
+                        //Command(new CommandMessage
+                        //{
+                        //    MachineId = Namemachine,
+                        //    Timestamp = DateTime.UtcNow,
+                        //    Command = ECommand.ChangeMoldDone,
 
-                        });
+                        //});
+                        Application.Current.Dispatcher.Invoke(new Action(() => {
+                            EventMachine eventMachine = new EventMachine();
+                            eventMachine.NameEvent = "ChangeMold";
+                            eventMachine.Status = 0;
+                            eventMachine.DateTime = DateTime.UtcNow;
+                            ListEvent.Add(eventMachine);
+                            //  eventMachine.Cycle = Message.SetCycle.ToString();
+                            ListEvent.Add(eventMachine);
+                            CollectionViewSource.GetDefaultView(ListEvent).Refresh();
+                            OnPropertyChanged("ListEvent");
+                        }));
+                        EventMachine eventMachine = new EventMachine();
+                        
 
+                      //  _databaseServices.InsertEventAsync(eventMachine);
                         Content = "Tạm dừng";
                         A = true;
                         B = false;
@@ -312,7 +459,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
     }
     public async void GetTotalProduct()
     {
-        ListProduct = await _apiServices.GetProductTotal("");
+           ListProduct = await _apiServices.GetProductTotal("");
     }
 
 
