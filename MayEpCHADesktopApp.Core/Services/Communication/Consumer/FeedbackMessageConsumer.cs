@@ -30,12 +30,8 @@ namespace MayEpCHADesktopApp.Core.Services.Communication.Consumer
                     ReceiveSychTime?.Invoke();
                     break;
             }
-            
-          //  Console.WriteLine("Feedback: {0}", message.Mess);
-        }
-       
-            
-        
 
+            //  Console.WriteLine("Feedback: {0}", message.Mess);
+        }
     }
 }

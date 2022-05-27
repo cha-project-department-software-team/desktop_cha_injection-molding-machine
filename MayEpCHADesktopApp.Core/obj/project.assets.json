@@ -2636,19 +2636,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Quoc Vuong\\.nuget\\packages\\": {}
+    "C:\\Users\\thuye\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SISTRAIN\\WPF\\App SISTRAIN\\InjectionMoldingMachine\\desktop_cha_injection-molding-machine-develop\\MayEpCHADesktopApp.Core\\MayEpCHADesktopApp.Core.csproj",
+      "projectUniqueName": "D:\\lab\\cha\\dự án\\máy ép\\desktop_cha_injection-molding-machine-develop\\MayEpCHADesktopApp.Core\\MayEpCHADesktopApp.Core.csproj",
       "projectName": "MayEpCHADesktopApp.Core",
-      "projectPath": "D:\\SISTRAIN\\WPF\\App SISTRAIN\\InjectionMoldingMachine\\desktop_cha_injection-molding-machine-develop\\MayEpCHADesktopApp.Core\\MayEpCHADesktopApp.Core.csproj",
-      "packagesPath": "C:\\Users\\Quoc Vuong\\.nuget\\packages\\",
-      "outputPath": "D:\\SISTRAIN\\WPF\\App SISTRAIN\\InjectionMoldingMachine\\desktop_cha_injection-molding-machine-develop\\MayEpCHADesktopApp.Core\\obj\\",
+      "projectPath": "D:\\lab\\cha\\dự án\\máy ép\\desktop_cha_injection-molding-machine-develop\\MayEpCHADesktopApp.Core\\MayEpCHADesktopApp.Core.csproj",
+      "packagesPath": "C:\\Users\\thuye\\.nuget\\packages\\",
+      "outputPath": "D:\\lab\\cha\\dự án\\máy ép\\desktop_cha_injection-molding-machine-develop\\MayEpCHADesktopApp.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Quoc Vuong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\thuye\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2733,7 +2733,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   },

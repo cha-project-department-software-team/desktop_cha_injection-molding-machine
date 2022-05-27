@@ -9,7 +9,6 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
   
     public class ReportExportExcelViewModel : ViewModels.BaseViewModels.BaseViewModel
     {
-
         public ReportExportExcelViewModel()
         {
 

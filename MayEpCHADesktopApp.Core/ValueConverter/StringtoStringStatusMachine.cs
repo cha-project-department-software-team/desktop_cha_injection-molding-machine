@@ -19,7 +19,7 @@ namespace MayEpCHADesktopApp.Core.ValueConverter
         static StringtoStringStatusMachine converter;
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-           string Status;
+            string Status;
             switch (value)
             {
                 // PowerOff

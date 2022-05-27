@@ -22,9 +22,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
         public ObservationMachinePage7ViewModel(DetailMachineViewModel detailMachineViewModel1,
                                                 DetailMachineViewModel detailMachineViewModel2,
                                                 DetailMachineViewModel detailMachineViewModel3,
-                                                DetailMachineViewModel detailMachineViewModel4
-                                         
-            )
+                                                DetailMachineViewModel detailMachineViewModel4)
         {
             DetailMachineViewModelL9 = detailMachineViewModel1;
             DetailMachineViewModelL10 = detailMachineViewModel2;
@@ -40,8 +38,6 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
             MachineMessageConsumer.ML12 += DetailMachineViewModelL12.GetMachineStatus;
             UaBooleanDataConsumer.ML12 += DetailMachineViewModelL12.ReiceverBoolUaAction;
             UaIntegerDataConsumer.ML12 += DetailMachineViewModelL12.ReiceverIntUaAction;
-
         }
-
     }
 }

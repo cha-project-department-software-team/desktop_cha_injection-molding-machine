@@ -11,13 +11,13 @@ using System.Windows.Input;
 
 namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
 {
-    public class SettingsViewModel:ViewModels.BaseViewModels.BaseViewModel
+    public class SettingsViewModel : ViewModels.BaseViewModels.BaseViewModel
     {
         private readonly NavigationStore _navigationStore;
 
         public ICommand SettingsNew { get; set; }
         public ICommand SettingsPrevious { get; set; }
-        
+
         public bool IsCurrentSettings { get => isCurrentSettings; set { isCurrentSettings = value; OnPropertyChanged(); } }
         private bool isCurrentSettings;
         public bool IsNewSettings { get => isNewSettings; set { isNewSettings = value; OnPropertyChanged(); } }
@@ -45,7 +45,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.SettingsViewModels
 
         private void _navigationStore_CurrentButtonChanged()
         {
-            
+
             switch (_navigationStore.SelectButton)
             {
 

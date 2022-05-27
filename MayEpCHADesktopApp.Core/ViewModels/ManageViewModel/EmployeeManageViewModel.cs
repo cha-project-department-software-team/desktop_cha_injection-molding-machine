@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace MayEpCHADesktopApp.Core.ViewModels.ManageViewModel
 {
     public class EmployeeManageViewModel : ViewModels.BaseViewModels.BaseViewModel
@@ -14,16 +15,17 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ManageViewModel
         private IApiServices _apiServices;
         private ObservableCollection<Employee> listEmployee;
         public ObservableCollection<Employee> ListEmployee { get => listEmployee; set { listEmployee = value; } }
-        
-        public EmployeeManageViewModel( IApiServices apiServices)
+
+        public EmployeeManageViewModel(IApiServices apiServices)
         {
             _apiServices = apiServices;
             GetTotalEmplyee();
         }
+
         public async void GetTotalEmplyee()
         {
-          ListEmployee = new ObservableCollection<Employee>();
-          ListEmployee = await _apiServices.GetEmployeeTotal("");
+            ListEmployee = new ObservableCollection<Employee>();
+            ListEmployee = await _apiServices.GetEmployeeTotal("");
         }
     }
 }

@@ -51,6 +51,5 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
             UaBooleanDataConsumer.ML2 += DetailMachineViewModelL2.ReiceverBoolUaAction;
             UaIntegerDataConsumer.ML2 += DetailMachineViewModelL2.ReiceverIntUaAction;
         }
-
     }
 }

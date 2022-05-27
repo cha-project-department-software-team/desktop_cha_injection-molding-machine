@@ -15,7 +15,6 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
     {
         private readonly NavigationStore _navigationStore;
         private INavigationService _navigationService;
-
         public ICommand ObservationDetailMachineCommand { get; set; }
         public ICommand ObservationMachineCommand { get; set; }
         public bool IsMachine { get => isMachine; set { isMachine = value; OnPropertyChanged(); } }
@@ -23,8 +22,6 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
         public bool IsDetailMachine { get => isDetailMachine; set { isDetailMachine = value; OnPropertyChanged(); } }
         private bool isDetailMachine;
         public ViewModels.BaseViewModels.BaseViewModel CurrentViewModel => _navigationStore.CurrentViewModel;
-
-
 
         public ObservationViewModel(NavigationStore navigationStore,
                                     INavigationService _ObservationDetailMachineService,
@@ -54,6 +51,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
         {
             SwitchButton(_navigationStore.SelectButton);
         }
+
         public void SwitchButton(int selectButton)
         {
             switch (selectButton)
@@ -78,7 +76,6 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
         {
             OnPropertyChanged(nameof(CurrentViewModel));
         }
-
 
         public override void Dispose()
         {

@@ -11,20 +11,21 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ManageViewModel
 {
     public class MoldCodeViewModel : ViewModels.BaseViewModels.BaseViewModel
     {
-        private  IApiServices _apiServices;
+        private IApiServices _apiServices;
         private ObservableCollection<Mold> listMold;
         public ObservableCollection<Mold> ListMold { get => listMold; set { listMold = value; } }
 
         public MoldCodeViewModel(IApiServices apiServices)
         {
             _apiServices = apiServices;
-            
+
             GetTotalMold();
         }
+
         public async void GetTotalMold()
         {
             ListMold = await _apiServices.GetMoldTotal("");
-           
+
         }
     }
 }

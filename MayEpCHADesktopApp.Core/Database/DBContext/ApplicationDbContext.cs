@@ -26,6 +26,7 @@ namespace MayEpCHADesktopApp.Core.Database.DBContext
             optionsBuilder.UseSqlite("Data Source=DBModingInjection.db");
             base.OnConfiguring(optionsBuilder);
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<EventMachine>()
@@ -33,9 +34,6 @@ namespace MayEpCHADesktopApp.Core.Database.DBContext
             modelBuilder.Entity<Configuration>()
                 .HasKey(s => s.Id);
             base.OnModelCreating(modelBuilder);
-
-
         }
-
     }
 }

@@ -65,10 +65,10 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ManageViewModel
         {
             OnPropertyChanged(nameof(CurrentViewModel));
         }
+
         public override void Dispose()
         {
             base.Dispose();
         }
-
     }
 }

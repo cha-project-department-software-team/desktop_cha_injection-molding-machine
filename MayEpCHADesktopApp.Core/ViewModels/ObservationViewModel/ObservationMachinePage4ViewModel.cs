@@ -22,6 +22,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
         public DetailMachineViewModel DetailMachineViewModel6 { get => _detailMachineViewModel6; set { _detailMachineViewModel6 = value; OnPropertyChanged(); } }
         private DetailMachineViewModel _detailMachineViewModel5;
         public DetailMachineViewModel DetailMachineViewModel5 { get => _detailMachineViewModel5; set { _detailMachineViewModel5 = value; OnPropertyChanged(); } }
+
         public ObservationMachinePage4ViewModel(DetailMachineViewModel detailMachineViewModel1,
                                                 DetailMachineViewModel detailMachineViewModel2,
                                                 DetailMachineViewModel detailMachineViewModel3,
@@ -49,6 +50,5 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
             MachineMessageConsumer.M9 += DetailMachineViewModel9.GetMachineStatus;
             MachineMessageConsumer.M10 += DetailMachineViewModel10.GetMachineStatus;
         }
-
     }
 }

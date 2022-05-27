@@ -47,10 +47,10 @@ namespace MayEpCHADesktopApp.Core.ValueConverter
                     solidColorBrush = new SolidColorBrush(Colors.Red);
                     break;
                 //ErrorOutGoing
-   
+
                 default:
                     solidColorBrush = new SolidColorBrush(Colors.Gray);
-                    break ;
+                    break;
             }
             return solidColorBrush;
         }

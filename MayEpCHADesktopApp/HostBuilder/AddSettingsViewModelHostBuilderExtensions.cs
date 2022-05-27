@@ -26,16 +26,16 @@ namespace MayEpCHADesktopApp.HostBuilder
         public static IHostBuilder AddSettings(this IHostBuilder host)
         {
             host.ConfigureServices(services =>
-
             {
                 services.AddSingleton<SettingsNewViewModel>();
                 services.AddSingleton<SettingsPreviousViewModel>();
-                
-                services.AddSingleton<SettingsViewModel>((IServiceProvider serviceprovider) => {
+
+                services.AddSingleton<SettingsViewModel>((IServiceProvider serviceprovider) =>
+                {
                     var Store = serviceprovider.GetRequiredService<NavigationStore>();
                     return new SettingsViewModel(Store, CreateSettingsNewViewModel(serviceprovider, Store),
                                                     CreateSettingsPreviousViewModel(serviceprovider, Store)
-                                                   
+
                                                     );
                 });
 

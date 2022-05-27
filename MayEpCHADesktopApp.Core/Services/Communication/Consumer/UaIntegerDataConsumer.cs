@@ -13,12 +13,14 @@ namespace MayEpCHADesktopApp.Core.Services.Communication.Consumer
         public static event Action<UaIntegerData> ML2;
         public static event Action<UaIntegerData> ML5;
         public static event Action<UaIntegerData> ML12;
+
         public async Task Consume(ConsumeContext<UaIntegerData> context)
         {
             var message = context.Message;
 
             Console.WriteLine("Name: {0}, Value: {1}", message.Name, message.Value);
         }
+
         void Display(UaIntegerData uaIntegerData)
         {
             string[] Data = uaIntegerData.Name.Split('.');
@@ -33,7 +35,6 @@ namespace MayEpCHADesktopApp.Core.Services.Communication.Consumer
                 case "L12":
                     ML12?.Invoke(uaIntegerData);
                     break;
-
             }
         }
     }

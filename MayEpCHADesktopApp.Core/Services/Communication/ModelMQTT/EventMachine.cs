@@ -26,8 +26,6 @@ namespace MayEpCHADesktopApp.Core.Services.Communication.ModelMQTT
         public string NameEvent { get; set; }
         public string MachineId { get; set; }
         public int Status { get; set; }
-
 #pragma warning restore
-
     }
 }

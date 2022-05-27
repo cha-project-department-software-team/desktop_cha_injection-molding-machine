@@ -14,11 +14,10 @@ namespace MayEpCHADesktopApp.Core.ViewModels.BaseViewModels
     public class NavigateCommand : CommandBase
     {
         private readonly INavigationService _navigationService;
-        
 
         public NavigateCommand(INavigationService navigationService)
         {
-           
+
             _navigationService = navigationService;
         }
 
@@ -26,8 +25,8 @@ namespace MayEpCHADesktopApp.Core.ViewModels.BaseViewModels
         {
             _navigationService.Navigate();
             _navigationService.SelectViewModel();
-            _navigationService.Sound(); 
-            
+            _navigationService.Sound();
+
         }
     }
 }

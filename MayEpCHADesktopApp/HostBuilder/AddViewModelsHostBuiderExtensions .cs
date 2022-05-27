@@ -26,19 +26,21 @@ namespace MayEpCHADesktopApp.HostBuilder
             host.ConfigureServices(services =>
 
             {
-            services.AddSingleton<LoginViewModel>();
-            services.AddTransient<DetailMachineViewModel>();
-            services.AddSingleton<CommanDesktop>();
+                services.AddSingleton<LoginViewModel>();
+                services.AddTransient<DetailMachineViewModel>();
+                services.AddSingleton<CommanDesktop>();
 
-                services.AddSingleton<MainViewModel>((IServiceProvider serviceprovider) => {
-                var Store = serviceprovider.GetRequiredService<NavigationStore>();
-                return new MainViewModel(Store, CreateLoginViewModel(serviceprovider, Store),
-                                                CreateObservationViewmodel(serviceprovider, Store),
-                                                CreateSettingsViewModel(serviceprovider, Store),
-                                                CreateAlertViewModel(serviceprovider, Store),
-                                                CreateManegeViewModel(serviceprovider, Store),
-                                                CreateReportViewModel(serviceprovider, Store)
-                                                ); });
+                services.AddSingleton<MainViewModel>((IServiceProvider serviceprovider) =>
+                {
+                    var Store = serviceprovider.GetRequiredService<NavigationStore>();
+                    return new MainViewModel(Store, CreateLoginViewModel(serviceprovider, Store),
+                                                    CreateObservationViewmodel(serviceprovider, Store),
+                                                    CreateSettingsViewModel(serviceprovider, Store),
+                                                    CreateAlertViewModel(serviceprovider, Store),
+                                                    CreateManegeViewModel(serviceprovider, Store),
+                                                    CreateReportViewModel(serviceprovider, Store)
+                                                    );
+                });
 
             });
 
@@ -70,6 +72,6 @@ namespace MayEpCHADesktopApp.HostBuilder
         {
             return new NavigationService(Store, serviceProvider.GetRequiredService<ObservationViewModel>());
         }
-       
+
     }
 }

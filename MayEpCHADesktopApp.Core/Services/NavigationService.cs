@@ -12,7 +12,7 @@ using System.Windows.Media;
 
 namespace MayEpCHADesktopApp.Core.Services
 {
-    public class NavigationService: ViewModels.BaseViewModels.BaseViewModel,INavigationService
+    public class NavigationService : ViewModels.BaseViewModels.BaseViewModel, INavigationService
     {
         private readonly NavigationStore _navigationStore;
         private readonly ViewModels.BaseViewModels.BaseViewModel _createViewModel;
@@ -21,17 +21,14 @@ namespace MayEpCHADesktopApp.Core.Services
         {
             _navigationStore = navigationStore;
             _createViewModel = createViewModel;
-             mediaPlayer = new MediaPlayer();
-    }
-
-
+            mediaPlayer = new MediaPlayer();
+        }
 
         public void Navigate()
         {
             _navigationStore.CurrentViewModel = _createViewModel;
-          
+        }
 
-        }     
         public void SelectViewModel()
         {
             switch (_createViewModel)
@@ -79,7 +76,7 @@ namespace MayEpCHADesktopApp.Core.Services
                 case MayEpCHADesktopApp.Core.ViewModels.ReportViewModels.ReportBillExportWareHouseViewModel:
                     _navigationStore.SelectButton = 4;
                     break;
-              //Manage
+                //Manage
                 case MayEpCHADesktopApp.Core.ViewModels.ManageViewModel.EmployeeManageViewModel:
                     _navigationStore.SelectButton = 1;
                     break;
@@ -98,7 +95,7 @@ namespace MayEpCHADesktopApp.Core.Services
 
         public void Sound()
         {
-        
+
             mediaPlayer.Open(new Uri(@"D:\SISTRAIN\WPF\App SISTRAIN\Offical\MayEpCHADesktopApp\Resources\Sound\ClickMouse.mp3"));
             mediaPlayer.Play();
         }

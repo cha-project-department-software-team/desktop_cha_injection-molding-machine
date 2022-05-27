@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 
 namespace MayEpCHADesktopApp.Core.Model
 {
-
-
     public class ShiftReports
     {
         [JsonProperty("items")]

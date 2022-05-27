@@ -9,15 +9,16 @@ using System.Windows.Media;
 
 namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
 {
-
     public class MachineViewModel : ViewModels.BaseViewModels.BaseViewModel
     {
         public string Status { get => status; set { status = value; OnPropertyChanged(); } }
         private string status { get; set; }
+
         public MachineViewModel()
         {
             Status = "3";
         }
+
         public void ReiceverAction(MachineMessage machineMessage)
         {
             switch (machineMessage.MachineStatus)
@@ -46,10 +47,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                 case EMachineStatus.ErrorOutGoing:
                     Status = "8";
                     break;
-
             }
         }
-
-
     }
 }

@@ -17,10 +17,9 @@ namespace MayEpCHADesktopApp.HostBuilder
         public static IHostBuilder AddViews(this IHostBuilder host)
         {
             host.ConfigureServices(services =>
-
             {
-            services.AddSingleton<MainWindow>((IServiceProvider serviceprovider) => { return new MainWindow(serviceprovider.GetRequiredService<MainViewModel>()); });
-             // services.AddTransient<MachineInformationDetail>();
+                services.AddSingleton<MainWindow>((IServiceProvider serviceprovider) => { return new MainWindow(serviceprovider.GetRequiredService<MainViewModel>()); });
+                // services.AddTransient<MachineInformationDetail>();
                 //services.AddSingleton<ObservateView>((IServiceProvider serviceprovider) => { return new ObservateView(serviceprovider.GetRequiredService<ObservationViewModel>());});
             });
 

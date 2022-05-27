@@ -30,17 +30,14 @@ namespace MayEpCHADesktopApp.Core.Database.Repository
 
         public async void DeleteAsync(Configuration configution)
         {
-             Load();
+            Load();
             foreach (var item in _configurations)
             {
-                if(configution.Id == item.Id)
+                if (configution.Id == item.Id)
                 {
                     _applicationDbContext.Configurations.Remove(item);
                 }
-                
             }
-
-            
             await _applicationDbContext.SaveChangesAsync();
         }
 
@@ -53,17 +50,17 @@ namespace MayEpCHADesktopApp.Core.Database.Repository
 
         public ObservableCollection<Configuration> Load()
         {
-            if(_configurations != null)
+            if (_configurations != null)
             {
                 _configurations.Clear();
             }
-               
+
             foreach (var configuration in _applicationDbContext.Configurations)
             {
                 _configurations.Add(configuration);
             }
-            
-           return _configurations;
+
+            return _configurations;
         }
     }
 }

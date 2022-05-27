@@ -17,13 +17,12 @@ namespace MayEpCHADesktopApp.Core.ViewModels
         private readonly NavigationStore _navigationStore;
         public ViewModels.BaseViewModels.BaseViewModel CurrentViewModel => _navigationStore.CurrentViewModel;
         public ICommand LoggingCommand { get; set; }
-
         public ICommand ObservateCommand { get; set; }
         public ICommand SettingsCommand { get; set; }
         public ICommand AlertCommand { get; set; }
         public ICommand ManageCommand { get; set; }
-        public ICommand ReportCommand { get; set; } 
-        //
+        public ICommand ReportCommand { get; set; }
+
         public int SelectButton { get; set; }
 
         private bool isButtonLogin;
@@ -54,7 +53,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels
                             )
         {
             _navigationStore = navigationStore;
-           // CurrentViewModel = new LoginViewModel();
+            // CurrentViewModel = new LoginViewModel();
             LoggingCommand = new NavigateCommand(_LogingnavigationService);
             ObservateCommand = new NavigateCommand(_ObservationViewModel);
             SettingsCommand = new NavigateCommand(_SettingsViewModel);
@@ -90,7 +89,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels
         }
         public void SwitchAnimationButton(int selectButton)
         {
-       //     CustomMessageBoxWindow cx = new CustomMessageBoxWindow("Đây là Messag Thông số cài đại là Cảnh báo","kkkk", MessageBoxButton.YesNo, MessageBoxImage.Error);
+            //     CustomMessageBoxWindow cx = new CustomMessageBoxWindow("Đây là Messag Thông số cài đại là Cảnh báo","kkkk", MessageBoxButton.YesNo, MessageBoxImage.Error);
             //cx.ShowDialog();
             switch (selectButton)
             {

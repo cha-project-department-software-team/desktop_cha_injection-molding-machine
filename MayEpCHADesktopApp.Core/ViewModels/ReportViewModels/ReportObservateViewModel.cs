@@ -13,7 +13,7 @@ using System.Windows.Input;
 
 namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
 {
-  
+
     public class ReportObservateViewModel : ViewModels.BaseViewModels.BaseViewModel
     {
         private IApiServices _apiServices;
@@ -43,12 +43,12 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
             ListShiftReport = await _apiServices.GetShiftReportTotal("");
             foreach (var Shift in ListShiftReport)
             {
-                if(( Shift.Date.Day ) < ( DateTime.Now.Day +1 ))
+                if ((Shift.Date.Day) < (DateTime.Now.Day + 1))
                 {
                     ChartObservationEmployee chart = new ChartObservationEmployee();
                     chart.Title = "Ngày " + (DateTime.Now.Day - j) + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
-                        ;
-                    if(Shift.Shots.Count > 10)
+                    ;
+                    if (Shift.Shots.Count > 10)
                     {
                         foreach (var shot in Shift.Shots)
                         {
@@ -67,16 +67,14 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
                     p.Children.Add(chart);
                 }
             }
- 
-
-
-
         }
+
         public async void GetTotalShiftReport()
         {
             //ListShiftReport = new ObservableCollection<ShiftReport>();
             //ListShiftReport = await _apiServices.GetShiftReportTotal("");
         }
+
         public async void GetTotalEmplyee()
         {
             ListEmployee = await _apiServices.GetEmployeeTotal("");

@@ -30,13 +30,10 @@ namespace MayEpCHADesktopApp.HostBuilder
                 services.AddSingleton<ReportViewModel>((IServiceProvider serviceprovider) =>
                 {
                     var Store = serviceprovider.GetRequiredService<NavigationStore>();
-                      return new ReportViewModel(Store, CreateShiftViewModel(serviceprovider, Store),
-                          CreateEmployeeViewModel(serviceprovider, Store), CreateExcelViewModel(serviceprovider, Store),
-                          CreateExportWareHouseViewModel(serviceprovider, Store));
+                    return new ReportViewModel(Store, CreateShiftViewModel(serviceprovider, Store),
+                        CreateEmployeeViewModel(serviceprovider, Store), CreateExcelViewModel(serviceprovider, Store),
+                        CreateExportWareHouseViewModel(serviceprovider, Store));
                 });
-
-
-
             });
 
             return host;

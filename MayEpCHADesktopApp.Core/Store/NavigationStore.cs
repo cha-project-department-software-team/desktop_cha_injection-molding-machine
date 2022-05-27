@@ -21,11 +21,14 @@ namespace MayEpCHADesktopApp.Core.Store
             }
         }
 
-        public int SelectButton { get => _selectButton;
-            set  { 
-                  _selectButton = value;
-                  OnCurrentButtonChanged();
-            } 
+        public int SelectButton
+        {
+            get => _selectButton;
+            set
+            {
+                _selectButton = value;
+                OnCurrentButtonChanged();
+            }
         }
 
         public event Action CurrentViewModelChanged;

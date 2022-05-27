@@ -20,7 +20,6 @@ namespace MayEpCHADesktopApp.HostBuilder
         public static IHostBuilder AddManageViewModel(this IHostBuilder host)
         {
             host.ConfigureServices(services =>
-
             {
                 services.AddSingleton<MoldCodeViewModel>();
                 services.AddSingleton<EmployeeManageViewModel>();
@@ -30,22 +29,24 @@ namespace MayEpCHADesktopApp.HostBuilder
                     var Store = serviceprovider.GetRequiredService<NavigationStore>();
                     return new ManageViewModel(Store, CreateEmployeeManageViewModel(serviceprovider, Store), CreateProductCodeViewModell(serviceprovider, Store), CreateMoldCodeViewModel(serviceprovider, Store));
                 });
-        });
-      
+            });
+
             return host;
         }
+
         private static INavigationService CreateEmployeeManageViewModel(IServiceProvider serviceprovider, NavigationStore Store)
         {
             return new NavigationService(Store, serviceprovider.GetRequiredService<EmployeeManageViewModel>());
         }
+
         private static INavigationService CreateProductCodeViewModell(IServiceProvider serviceprovider, NavigationStore Store)
         {
             return new NavigationService(Store, serviceprovider.GetRequiredService<ProductCodeViewModel>());
         }
+
         private static INavigationService CreateMoldCodeViewModel(IServiceProvider serviceprovider, NavigationStore Store)
         {
             return new NavigationService(Store, serviceprovider.GetRequiredService<MoldCodeViewModel>());
         }
-
     }
 }

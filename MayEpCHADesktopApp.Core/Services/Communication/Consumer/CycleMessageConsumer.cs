@@ -10,12 +10,13 @@ using System.Threading.Tasks;
 
 namespace MayEpCHADesktopApp.Core.Services.Communication.Consumer
 {
-    public  class CycleMessageConsumer : IConsumer<CycleMessage>
+    public class CycleMessageConsumer : IConsumer<CycleMessage>
     {
         public CycleMessageConsumer(MQTTStore mQTTstore)
         {
 
         }
+
         public static event Action<CycleMessage> M1;
         public static event Action<CycleMessage> M2;
         public static event Action<CycleMessage> M3;
@@ -59,15 +60,14 @@ namespace MayEpCHADesktopApp.Core.Services.Communication.Consumer
         public async Task Consume(ConsumeContext<CycleMessage> context)
         {
             var message = context.Message;
-            
+
             Display(message);
 
-           // Console.WriteLine("Timestamp: {0}\r\nCycleTime: {1}\r\nOpenTime: {2}\r\nMode: {3}\r\nCounterShot: {4}\r\nMoldId: {5}\r\nSetCycle: {6}\r\n", message.Timestamp, message.CycleTime, message.OpenTime, message.Mode, message.CounterShot, message.MoldId, message.SetCycle);
+            // Console.WriteLine("Timestamp: {0}\r\nCycleTime: {1}\r\nOpenTime: {2}\r\nMode: {3}\r\nCounterShot: {4}\r\nMoldId: {5}\r\nSetCycle: {6}\r\n", message.Timestamp, message.CycleTime, message.OpenTime, message.Mode, message.CounterShot, message.MoldId, message.SetCycle);
         }
+
         private void Display(CycleMessage Message)
         {
-
-
             switch (Message.MachineId)
             {
                 case "M1":
@@ -193,9 +193,6 @@ namespace MayEpCHADesktopApp.Core.Services.Communication.Consumer
                     break;
                 default:
                     break;
-
-
-
             }
         }
 

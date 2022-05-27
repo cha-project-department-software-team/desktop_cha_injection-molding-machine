@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace MayEpCHADesktopApp.Core.Database.ModelDatabase
 {
-
     public class Configuration
     {
 #pragma warning disable CS8618

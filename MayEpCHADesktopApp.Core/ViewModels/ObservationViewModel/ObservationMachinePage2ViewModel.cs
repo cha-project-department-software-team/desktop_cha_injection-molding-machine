@@ -49,6 +49,5 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
             MachineMessageConsumer.M21 += DetailMachineViewModel21.GetMachineStatus;
             MachineMessageConsumer.M22 += DetailMachineViewModel22.GetMachineStatus;
         }
-
     }
 }

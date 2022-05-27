@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MayEpCHADesktopApp.Core.Model
 {
-    public class Employee: ViewModels.BaseViewModels.BaseViewModel
+    public class Employee : ViewModels.BaseViewModels.BaseViewModel
     {
         private Employee()
         {
@@ -19,6 +19,7 @@ namespace MayEpCHADesktopApp.Core.Model
             FirstName = firstName;
             LastName = lastName;
         }
+
         private string id;
         private string firstName { get; set; }
         private string lastName { get; set; }

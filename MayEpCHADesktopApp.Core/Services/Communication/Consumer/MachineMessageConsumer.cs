@@ -52,21 +52,16 @@ namespace MayEpCHADesktopApp.Core.Services.Communication.Consumer
         public static event Action<MachineMessage> ML11;
         public static event Action<MachineMessage> ML12;
 
-
         public async Task Consume(ConsumeContext<MachineMessage> context)
         {
             var message = context.Message;
 
             Display(message);
-            
-
-        //    Console.WriteLine("MachineMessage: MachineId: {0}, Timestamp: {1}, MachineStatus: {2}", message.MachineId, message.Timestamp, message.MachineStatus);
-
+            //    Console.WriteLine("MachineMessage: MachineId: {0}, Timestamp: {1}, MachineStatus: {2}", message.MachineId, message.Timestamp, message.MachineStatus);
         }
+
         private void Display(MachineMessage Message)
         {
-            
-
             switch (Message.MachineId)
             {
                 case "M1":
@@ -192,9 +187,6 @@ namespace MayEpCHADesktopApp.Core.Services.Communication.Consumer
                     break;
                 default:
                     break;
-                    
-
-
             }
         }
     }

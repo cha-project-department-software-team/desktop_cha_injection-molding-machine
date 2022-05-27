@@ -14,7 +14,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
     public class ObservationDetailMachineViewModel : ViewModels.BaseViewModels.BaseViewModel
     {
 
-        private  INavigationService _navigationService;
+        private INavigationService _navigationService;
         private readonly INavigationService _navigationServicePage1;
         private readonly INavigationService _navigationServicePage2;
         private readonly INavigationService _navigationServicePage3;
@@ -47,7 +47,6 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
         public ICommand GoBackDoubleUnitCommand { set; get; }
         public int Page { get => page; set { page = value; OnPropertyChanged(); } }
 
-
         public ObservationDetailMachineViewModel(PageStore _PageStore,
                                                  NavigationStore navigationStore,
                                                  INavigationService _ObservationPage1,
@@ -57,8 +56,6 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
                                                  INavigationService _ObservationPage5,
                                                  INavigationService _ObservationPage6,
                                                  INavigationService _ObservationPage7
-
-
             )
         {
 
@@ -67,27 +64,26 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
             _store.CurrentPageChanged += _store_CurrentPageChanged;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
             _navigationServicePage1 = _ObservationPage1;
-            _navigationServicePage2= _ObservationPage2; 
-            _navigationServicePage3= _ObservationPage3;
-            _navigationServicePage4= _ObservationPage4;
-            _navigationServicePage5= _ObservationPage5;
-            _navigationServicePage6= _ObservationPage6;
-            _navigationServicePage7= _ObservationPage7;
+            _navigationServicePage2 = _ObservationPage2;
+            _navigationServicePage3 = _ObservationPage3;
+            _navigationServicePage4 = _ObservationPage4;
+            _navigationServicePage5 = _ObservationPage5;
+            _navigationServicePage6 = _ObservationPage6;
+            _navigationServicePage7 = _ObservationPage7;
             GoToUnitCommand = new RelayCommand(async () => await GoToUnit());
             GoToDoubleUnitCommand = new RelayCommand(async () => await GoToDoubleUnit());
             GoBackUnitCommand = new RelayCommand(async () => await GoBackUnit());
             GoBackDoubleUnitCommand = new RelayCommand(async () => await GoBackDoubleUnit());
-           
+
             _store.Page = 1;
             Page = 1;
-            
-
-
         }
+
         private void OnCurrentViewModelChanged()
         {
             OnPropertyChanged(nameof(CurrentViewModel));
         }
+
         private Task GoToUnit()
         {
             Page++;
@@ -96,34 +92,37 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
                 Page = 1;
             }
             _store.Page = Page;
-            
+
 
             return Task.CompletedTask;
         }
+
         private Task GoToDoubleUnit()
         {
             Page = Page + 2;
-            if( Page > 7 )
+            if (Page > 7)
             {
                 Page = 1;
             }
             _store.Page = Page;
-            
-            
+
+
             return Task.CompletedTask;
         }
+
         private Task GoBackUnit()
         {
             Page--;
-            if ( Page < 0)
+            if (Page < 0)
             {
                 Page = 7;
             }
             _store.Page = Page;
-            
+
 
             return Task.CompletedTask;
         }
+
         private Task GoBackDoubleUnit()
         {
             Page = Page - 2;
@@ -132,10 +131,11 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
                 Page = 7;
             }
             _store.Page = Page;
-            
+
 
             return Task.CompletedTask;
         }
+
         private void _store_CurrentPageChanged()
         {
             Page = _store.Page;
@@ -176,16 +176,16 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ObservationViewModel
             _navigationService.Sound();
         }
 
-       public void SwitchPage(int data)
+        public void SwitchPage(int data)
         {
-            if (data != null && data >0 && data < 8)
+            if (data != null && data > 0 && data < 8)
             {
                 SelectPage(data);
-            } else
+            }
+            else
             {
                 SelectPage(1);
             }
         }
-        
     }
 }

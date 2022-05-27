@@ -12,25 +12,20 @@ namespace MayEpCHADesktopApp.Core.ViewModels.BaseViewModels
     {
         #region Protected Members
         public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual  void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         public virtual void Dispose() { }
-
-
 
         /// <summary>
         /// A global lock for property checks so prevent locking on different instances of expressions.
         /// Considering how fast this check will always be it isn't an issue to globally lock all callers.
         /// </summary>
         protected object mPropertyValueCheckLock = new object();
-
         #endregion
 
-
         #region Command Helpers
-
         /// <summary>
         /// Runs a command if the updating flag is not set.
         /// If the flag is true (indicating the function is already running) then the action is not run.
@@ -64,9 +59,6 @@ namespace MayEpCHADesktopApp.Core.ViewModels.BaseViewModels
                 updatingFlag = false;
             }
         }
-
-
-
         #endregion
     }
 }

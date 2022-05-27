@@ -33,8 +33,6 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
         private bool isBillWareHouse;
         public ViewModels.BaseViewModels.BaseViewModel CurrentViewModel => _navigationStore.CurrentViewModel;
 
-
-
         public ReportViewModel(NavigationStore navigationStore,
             INavigationService _ReportShiftService,
             INavigationService _ReportEmployeeService,
@@ -55,7 +53,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
             IsBillWareHouse = false;
             _navigationStore.CurrentViewModelChanged += _navigationStore_CurrentViewModelChanged;
             _navigationStore.CurrentButtonChanged += _navigationStore_CurrentButtonChanged;
-            
+
 
         }
 
@@ -97,7 +95,6 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
         {
             OnPropertyChanged(nameof(CurrentViewModel));
         }
-
 
         public override void Dispose()
         {

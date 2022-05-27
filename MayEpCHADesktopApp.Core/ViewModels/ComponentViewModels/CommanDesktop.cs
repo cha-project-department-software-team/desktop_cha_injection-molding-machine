@@ -19,7 +19,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
             FeedbackMessageConsumer.ReceiveSychTime += FeedbackMessageConsumer_Receive;
             FeedbackMessageConsumer.ReceiveRTCfail += FeedbackMessageConsumer_ReceiveRTCfail;
             FeedbackMessageConsumer.ReceiveSDcardfail += FeedbackMessageConsumer_ReceiveSDcardfail;
-            
+
         }
 
         private void FeedbackMessageConsumer_ReceiveSDcardfail()
@@ -42,7 +42,7 @@ namespace MayEpCHADesktopApp.Core.ViewModels.ComponentViewModels
                 Month = DateTime.Now.Month,
                 Day = DateTime.Now.Day,
                 Hour = DateTime.Now.Hour,
-                Min =  DateTime.Now.Minute,
+                Min = DateTime.Now.Minute,
                 Sec = DateTime.Now.Second,
 
             }); ; ;

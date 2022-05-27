@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace MayEpCHADesktopApp.Core.Model
 {
-    
     public class ShiftReport
     {
-        
         public ShiftReport(DateTime date, int id, EShift shiftNumber, Employee employee, string employeeId, Machine machine, string machineId, Product product, string productId, int totalQuantity, DateTime startTime, DateTime stopTime, double workTime, double pauseTime, string note, List<Shot> shots)
         {
             Date = date;
@@ -30,7 +28,7 @@ namespace MayEpCHADesktopApp.Core.Model
             Note = note;
             Shots = shots;
         }
-        
+
         public ShiftReport()
         {
 

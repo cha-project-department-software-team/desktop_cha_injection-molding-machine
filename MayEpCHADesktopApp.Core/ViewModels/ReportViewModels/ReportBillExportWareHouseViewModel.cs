@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace MayEpCHADesktopApp.Core.ViewModels.ReportViewModels
 {
-
     public class ReportBillExportWareHouseViewModel : ViewModels.BaseViewModels.BaseViewModel
     {
-
         public ReportBillExportWareHouseViewModel()
         {
 

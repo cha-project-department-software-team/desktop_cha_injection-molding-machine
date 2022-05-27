@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MayEpCHADesktopApp.Core.Services
 {
-    public class DatabaseService:IDatabaseServices
+    public class DatabaseService : IDatabaseServices
     {
         private readonly IConfigurationRepository _configurationRepository;
         private readonly IEventMachineRepository _eventMachineRepository;
@@ -22,7 +22,7 @@ namespace MayEpCHADesktopApp.Core.Services
 
         public void ClearConfig()
         {
-          //  _configurationRepository.Clear();
+            //  _configurationRepository.Clear();
         }
 
         public void ClearEvent()
